@@ -61,10 +61,50 @@ function generic_civicrm_upgrade($op, CRM_Queue_Queue $queue = NULL) {
 
 /**
  * Implementation of hook_civicrm_managed
+ * 
+ * @author Erik Hommel (erik.hommel@civicoop.org - http://www.civicoop.org)
  *
  * Generate a list of entities to create/deactivate/delete when this module
  * is installed, disabled, uninstalled.
  */
 function generic_civicrm_managed(&$entities) {
+    /*
+     * create specific groups for PUM
+     */
+    $entities[] = array(
+        'module'    => 'nl.pum.generic',
+        'name'      => 'Experts',
+        'entity'    => 'Group',
+        'params'    => array(
+            'version'       => 3,
+            'name'          => 'Experts',
+            'title'         => 'Experts',
+            'description'   => 'Test Group for Experts',
+            'is_active'     =>  1,
+            'group_type'    =>  array(2 => 1))
+    );
+    /*
+     * create specific relationship types for PUM
+     */
+    $entities[] = array(
+        'module'    => 'nl.pum.generic',
+        'name'      => 'Country Co-ordinator',
+        'entity'    => 'RelationshipType',
+        'params'    => array(
+            'version'       => 3,
+            'name_a_b'      => 'Contactpersoon of',
+            'name_b_a'      => 'Contactperson is',
+            'label_a_b'     => 'Contactperson of',
+            'label_b_a'     => 'Contactperson is',
+            'contact_type_a'=> 'Individual',
+            'contact_type_b'=> 'Organization',
+            'description'   => 'Country Co-ordinator relationship',
+            'is_active'     =>  1
+        )
+    );
+    /*
+     * create specific activity types for PUM
+     */
+    
   return _generic_civix_civicrm_managed($entities);
 }
