@@ -176,102 +176,30 @@ function generic_civicrm_install() {
         );
         try {
             $optionGroup = civicrm_api3('OptionGroup', 'Create', $optionGroupParams);
+                
             /*
-             * create Option Values for Option Group Marital Status
+             * create Custom Field Marital Status
              */
-            if (isset($optionGroup['id'])) {
-                $optionValueParams = array(
-                    'option_group_id'   =>  $optionGroup['id'],
-                    'label'             =>  "Married",
-                    'name'              =>  "Married",
-                    'value'             =>  1,
-                    'is_active'         =>  0                    
-                );
-                try {
-                    civicrm_api3('OptionValue', 'Create', $optionValueParams);
-                }
-                catch (CiviCRM_API3_Exception $e) {
-                }
-                
-                $optionValueParams = array(
-                    'option_group_id'   =>  $optionGroup['id'],
-                    'label'             =>  "Single",
-                    'name'              =>  "Single",
-                    'value'             =>  2,
-                    'is_active'         =>  0                    
-                );
-                try {
-                    civicrm_api3('OptionValue', 'Create', $optionValueParams);
-                }
-                catch (CiviCRM_API3_Exception $e) {
-                }
-                
-                $optionValueParams = array(
-                    'option_group_id'   =>  $optionGroup['id'],
-                    'label'             =>  "Widowed",
-                    'name'              =>  "Widowed",
-                    'value'             =>  3,
-                    'is_active'         =>  0                    
-                );
-                try {
-                    civicrm_api3('OptionValue', 'Create', $optionValueParams);
-                }
-                catch (CiviCRM_API3_Exception $e) {
-                }
-                
-                $optionValueParams = array(
-                    'option_group_id'   =>  $optionGroup['id'],
-                    'label'             =>  "Partner",
-                    'name'              =>  "Partner",
-                    'value'             =>  4,
-                    'is_active'         =>  0                    
-                );
-                try {
-                    civicrm_api3('OptionValue', 'Create', $optionValueParams);
-                }
-                catch (CiviCRM_API3_Exception $e) {
-                }
-                
-                $optionValueParams = array(
-                    'option_group_id'   =>  $optionGroup['id'],
-                    'label'             =>  "Unknown",
-                    'name'              =>  "Unknown",
-                    'value'             =>  5,
-                    'is_active'         =>  0                    
-                );
-                try {
-                    civicrm_api3('OptionValue', 'Create', $optionValueParams);
-                }
-                catch (CiviCRM_API3_Exception $e) {
-                }
-                
-                /*
-                 * create Custom Field Marital Status
-                 */
-                $customFieldParams = array(
-                    'custom_group_id'   =>  $customGroup['id'],
-                    'name'              =>  "Marital_Status",
-                    'label'             =>  "Marital Status",
-                    'data_type'         =>  "String",
-                    'html_type'         =>  "Select",
-                    'is_required'       =>  0,
-                    'is_searchable'     =>  1,
-                    'option_group_id'   =>  $optionGroup['id'],
-                    'is_active'         =>  0
-                );
-                try {
-                    civicrm_api3('CustomField', 'Create', $customFieldParams);
-                    $customFieldsCreated[] = "Marital Status";
-                }
-                catch (CiviCRM_API3_Exception $e) {
-                    $message = "Custom field Marital Status NOT created. Error message from API : ";
-                    $message .= $e->getMessage();
-                    CRM_Utils_System::setUFMessage($message);
-                }
-            } else {
-                CRM_Utils_System::setUFMessage("Custom field Marital Status NOT created because no Option Group id found");
+            $customFieldParams = array(
+                'custom_group_id'   =>  $customGroup['id'],
+                'name'              =>  "Marital_Status",
+                'label'             =>  "Marital Status",
+                'data_type'         =>  "String",
+                'html_type'         =>  "Select",
+                'is_required'       =>  0,
+                'is_searchable'     =>  1,
+                'option_group_id'   =>  $optionGroup['id'],
+                'is_active'         =>  0
+            );
+            try {
+                civicrm_api3('CustomField', 'Create', $customFieldParams);
+                $customFieldsCreated[] = "Marital Status";
             }
-            
+            catch (CiviCRM_API3_Exception $e) {
+                $message = "Custom field Marital Status NOT created. Error message from API : ";
+                $message .= $e->getMessage();
+                CRM_Utils_System::setUFMessage($message);
+            }
         }
         catch (CiviCRM_API3_Exception $e) {
             $message = "Option group and custom field for Marital Status NOT created. Error message from API : ";
@@ -289,100 +217,29 @@ function generic_civicrm_install() {
         );
         try {
             $optionGroup = civicrm_api3('OptionGroup', 'Create', $optionGroupParams);
+                
             /*
-             * create Option Values for Option Group Nationality
+             * create Custom Field Nationality
              */
-            if (isset($optionGroup['id'])) {
-                $optionValueParams = array(
-                    'option_group_id'   =>  $optionGroup['id'],
-                    'label'             =>  "Dutch",
-                    'name'              =>  "Dutch",
-                    'value'             =>  1,
-                    'is_active'         =>  0                    
-                );
-                try {
-                    civicrm_api3('OptionValue', 'Create', $optionValueParams);
-                }
-                catch (CiviCRM_API3_Exception $e) {
-                }
-                
-                $optionValueParams = array(
-                    'option_group_id'   =>  $optionGroup['id'],
-                    'label'             =>  "English",
-                    'name'              =>  "English",
-                    'value'             =>  2,
-                    'is_active'         =>  0                    
-                );
-                try {
-                    civicrm_api3('OptionValue', 'Create', $optionValueParams);
-                }
-                catch (CiviCRM_API3_Exception $e) {
-                }
-                
-                $optionValueParams = array(
-                    'option_group_id'   =>  $optionGroup['id'],
-                    'label'             =>  "Belgian",
-                    'name'              =>  "Belgian",
-                    'value'             =>  3,
-                    'is_active'         =>  0                    
-                );
-                try {
-                    civicrm_api3('OptionValue', 'Create', $optionValueParams);
-                }
-                catch (CiviCRM_API3_Exception $e) {
-                }
-                
-                $optionValueParams = array(
-                    'option_group_id'   =>  $optionGroup['id'],
-                    'label'             =>  "German",
-                    'name'              =>  "German",
-                    'value'             =>  4,
-                    'is_active'         =>  0                    
-                );
-                try {
-                    civicrm_api3('OptionValue', 'Create', $optionValueParams);
-                }
-                catch (CiviCRM_API3_Exception $e) {
-                }
-                
-                $optionValueParams = array(
-                    'option_group_id'   =>  $optionGroup['id'],
-                    'label'             =>  "Unknown",
-                    'name'              =>  "Unknown",
-                    'value'             =>  5,
-                    'is_active'         =>  0                    
-                );
-                try {
-                    civicrm_api3('OptionValue', 'Create', $optionValueParams);
-                }
-                catch (CiviCRM_API3_Exception $e) {
-                }
-                
-                /*
-                 * create Custom Field Nationality
-                 */
-                $customFieldParams = array(
-                    'custom_group_id'   =>  $customGroup['id'],
-                    'name'              =>  "Nationality",
-                    'label'             =>  "Nationality",
-                    'data_type'         =>  "String",
-                    'html_type'         =>  "Select",
-                    'is_required'       =>  0,
-                    'is_searchable'     =>  1,
-                    'option_group_id'   =>  $optionGroup['id'],
-                    'is_active'         =>  0
-                );
-                try {
-                    civicrm_api3('CustomField', 'Create', $customFieldParams);
-                    $customFieldsCreated[] = "Nationality";
-                }
-                catch (CiviCRM_API3_Exception $e) {
-                    $message = "Custom field Nationality NOT created. Error message from API : ";
-                    $message .= $e->getMessage();
-                    CRM_Utils_System::setUFMessage($message);
-                }
-            } else {
-                CRM_Utils_System::setUFMessage("Custom field Nationality NOT created because no Option Group id found");
+            $customFieldParams = array(
+                'custom_group_id'   =>  $customGroup['id'],
+                'name'              =>  "Nationality",
+                'label'             =>  "Nationality",
+                'data_type'         =>  "String",
+                'html_type'         =>  "Select",
+                'is_required'       =>  0,
+                'is_searchable'     =>  1,
+                'option_group_id'   =>  $optionGroup['id'],
+                'is_active'         =>  0
+            );
+            try {
+                civicrm_api3('CustomField', 'Create', $customFieldParams);
+                $customFieldsCreated[] = "Nationality";
+            }
+            catch (CiviCRM_API3_Exception $e) {
+                $message = "Custom field Nationality NOT created. Error message from API : ";
+                $message .= $e->getMessage();
+                CRM_Utils_System::setUFMessage($message);
             }
             
         }
@@ -571,7 +428,7 @@ function generic_civicrm_enable() {
     $customGroupsEnabled = array();
     $customFieldsEnabled = array();
     /*
-     * enable option group and option values for Marital Status
+     * enable option groups
      */
     try {
         $optionGroup = civicrm_api3('OptionGroup', 'Getsingle', array('name' => "marital_status"));
@@ -590,35 +447,9 @@ function generic_civicrm_enable() {
         );
     try {
         civicrm_api3('OptionGroup', 'Create', $optionGroupParams);
-        try {
-            $optionValues = civicrm_api3('OptionValue', 'Get', array('option_group_id' => $optionGroup['id']));
-            foreach ($optionValues['values'] as $optionValue) {
-                try {
-                    $optionValueParams = array(
-                        'option_group_id'   =>  $optionGroup['id'],
-                        'is_active'         =>  1,
-                        'name'              =>  $optionValue['name'],
-                        'value'             =>  $optionValue['value'],
-                        'label'             =>  $optionValue['label']
-                    );
-                    try {
-                        civicrm_api3('CustomField', 'Create', $optionValueParams);
-                    }
-                    catch (CiviCRM_API3_Exception $e) {
-                    }
-                }
-                catch (CiviCRM_API3_Exception $e) {
-                }
-            }
-        }
-        catch (CiviCRM_API3_Exception $e) {
-        }
     }
     catch (CiviCRM_API3_Exception $e) {
     }
-    /*
-     * enable option group and option values for Nationality
-     */
     try {
         $optionGroup = civicrm_api3('OptionGroup', 'Getsingle', array('name' => "nationality"));
     }
@@ -636,29 +467,6 @@ function generic_civicrm_enable() {
         );
     try {
         civicrm_api3('OptionGroup', 'Create', $optionGroupParams);
-        try {
-            $optionValues = civicrm_api3('OptionValue', 'Get', array('option_group_id' => $optionGroup['id']));
-            foreach ($optionValues['values'] as $optionValue) {
-                try {
-                    $optionValueParams = array(
-                        'option_group_id'   =>  $optionGroup['id'],
-                        'is_active'         =>  1,
-                        'name'              =>  $optionValue['name'],
-                        'value'             =>  $optionValue['value'],
-                        'label'             =>  $optionValue['label']
-                    );
-                    try {
-                        civicrm_api3('CustomField', 'Create', $optionValueParams);
-                    }
-                    catch (CiviCRM_API3_Exception $e) {
-                    }
-                }
-                catch (CiviCRM_API3_Exception $e) {
-                }
-            }
-        }
-        catch (CiviCRM_API3_Exception $e) {
-        }
     }
     catch (CiviCRM_API3_Exception $e) {
     }
@@ -734,7 +542,7 @@ function generic_civicrm_disable() {
     $customGroupsDisabled = array();
     $customFieldsDisabled = array();
     /*
-     * disable option group and option values for Marital Status
+     * disable option groups
      */
     try {
         $optionGroup = civicrm_api3('OptionGroup', 'Getsingle', array('name' => "marital_status"));
@@ -753,35 +561,9 @@ function generic_civicrm_disable() {
         );
     try {
         civicrm_api3('OptionGroup', 'Create', $optionGroupParams);
-        try {
-            $optionValues = civicrm_api3('OptionValue', 'Get', array('option_group_id' => $optionGroup['id']));
-            foreach ($optionValues['values'] as $optionValue) {
-                try {
-                    $optionValueParams = array(
-                        'option_group_id'   =>  $optionGroup['id'],
-                        'is_active'         =>  0,
-                        'name'              =>  $optionValue['name'],
-                        'value'             =>  $optionValue['value'],
-                        'label'             =>  $optionValue['label']
-                    );
-                    try {
-                        civicrm_api3('CustomField', 'Create', $optionValueParams);
-                    }
-                    catch (CiviCRM_API3_Exception $e) {
-                    }
-                }
-                catch (CiviCRM_API3_Exception $e) {
-                }
-            }
-        }
-        catch (CiviCRM_API3_Exception $e) {
-        }
     }
     catch (CiviCRM_API3_Exception $e) {
     }
-    /*
-     * disable option group and option values for Nationality
-     */
     try {
         $optionGroup = civicrm_api3('OptionGroup', 'Getsingle', array('name' => "nationality"));
     }
@@ -799,29 +581,6 @@ function generic_civicrm_disable() {
         );
     try {
         civicrm_api3('OptionGroup', 'Create', $optionGroupParams);
-        try {
-            $optionValues = civicrm_api3('OptionValue', 'Get', array('option_group_id' => $optionGroup['id']));
-            foreach ($optionValues['values'] as $optionValue) {
-                try {
-                    $optionValueParams = array(
-                        'option_group_id'   =>  $optionGroup['id'],
-                        'is_active'         =>  0,
-                        'name'              =>  $optionValue['name'],
-                        'value'             =>  $optionValue['value'],
-                        'label'             =>  $optionValue['label']
-                    );
-                    try {
-                        civicrm_api3('CustomField', 'Create', $optionValueParams);
-                    }
-                    catch (CiviCRM_API3_Exception $e) {
-                    }
-                }
-                catch (CiviCRM_API3_Exception $e) {
-                }
-            }
-        }
-        catch (CiviCRM_API3_Exception $e) {
-        }
     }
     catch (CiviCRM_API3_Exception $e) {
     }
