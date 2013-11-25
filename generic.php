@@ -119,7 +119,7 @@ function generic_civicrm_install() {
          */
         $customFieldParams = array(
             'custom_group_id'   =>  $customGroup['id'],
-            'name'              =>  "Prins_Unique_ID",
+            'name'              =>  "Prinses_Unique_ID",
             'label'             =>  "Prins Unique ID",
             'data_type'         =>  "String",
             'html_type'         =>  "Text",
