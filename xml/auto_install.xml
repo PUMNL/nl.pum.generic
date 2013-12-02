@@ -86,7 +86,7 @@
       <note_columns>60</note_columns>
       <note_rows>4</note_rows>
       <column_name>nationality_31</column_name>
-      <option_group_name>nationality</option_group_name>
+      <option_group_name>Nationality</option_group_name>
       <custom_group_name>Additional_Data</custom_group_name>
     </CustomField>
     <CustomField>
@@ -138,7 +138,7 @@
       <note_columns>60</note_columns>
       <note_rows>4</note_rows>
       <column_name>marital_status_34</column_name>
-      <option_group_name>marital_status</option_group_name>
+      <option_group_name>Marital Status</option_group_name>
       <custom_group_name>Additional_Data</custom_group_name>
     </CustomField>
     <CustomField>
@@ -164,13 +164,13 @@
   </CustomFields>
   <OptionGroups>
     <OptionGroup>
-      <name>nationality</name>
+      <name>Nationality</name>
       <title>Nationality</title>
       <is_reserved>1</is_reserved>
       <is_active>1</is_active>
     </OptionGroup>
     <OptionGroup>
-      <name>marital_status</name>
+      <name>Marital Status</name>
       <title>Marital Status</title>
       <is_reserved>1</is_reserved>
       <is_active>1</is_active>
