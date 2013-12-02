@@ -231,3 +231,10 @@ function generic_civicrm_managed(&$entities) {
     
     return _generic_civix_civicrm_managed($entities);    
 }
+/**
+ *
+ * Implementation of hook_civicrm_uninstall
+ */
+function generic_civicrm_uninstall() {
+    return _generic_civix_civicrm_uninstall();
+}
