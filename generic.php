@@ -67,8 +67,7 @@ function generic_civicrm_install() {
             try {
                civicrm_api3('ActivityType', 'Create', $activityTypeParams);
                $createdActivityTypes[] = $activityTypeName;
-            }
-            catch (CiviCRM_API3_Exception $e) {
+            } catch (CiviCRM_API3_Exception $e) {
                 CRM_Utils_System::setUFMessage("Could not generate activity type $activityTypeName");
             }
         }
