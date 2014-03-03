@@ -22,8 +22,8 @@ class Generic_RelationshipType {
 					'contact_type_b'		=> 'Individual',
 					'contact_sub_type_b'	=> '',
 					'description'			=> 'Accountholder relationship',
-					'is_active'				=>  1
-				)
+					'is_active'				=>  1,
+				),
 			),
 			array(
 				'module'	=> 'nl.pum.generic',
@@ -40,8 +40,8 @@ class Generic_RelationshipType {
 					'contact_type_b'		=> 'Individual',
 					'contact_sub_type_b'	=> '',
 					'description'			=> 'Anamon relationship',
-					'is_active'				=>  1
-				)
+					'is_active'				=>  1,
+				),
 			),
 			array(
 				'module'	=> 'nl.pum.generic',
@@ -58,8 +58,8 @@ class Generic_RelationshipType {
 					'contact_type_b'		=> 'Individual',
 					'contact_sub_type_b'	=> '',
 					'description'			=> 'Aspect advisor relationship',
-					'is_active'				=>  1
-				)
+					'is_active'				=>  1,
+				),
 			),
 			array(
 				'module'	=> 'nl.pum.generic',
@@ -76,8 +76,8 @@ class Generic_RelationshipType {
 					'contact_type_b'		=> 'Organization',
 					'contact_sub_type_b'	=> '',
 					'description'			=> 'Country Coordinator relationship',
-					'is_active'				=>  1
-				)
+					'is_active'				=>  1,
+				),
 			),
 			array(
 				'module'	=> 'nl.pum.generic',
@@ -94,8 +94,8 @@ class Generic_RelationshipType {
 					'contact_type_b'		=> 'Organization',
 					'contact_sub_type_b'	=> '',
 					'description'			=> 'Customer contact relationship',
-					'is_active'				=>  1
-				)
+					'is_active'				=>  1,
+				),
 			),
 			array(
 				'module'	=> 'nl.pum.generic',
@@ -112,8 +112,8 @@ class Generic_RelationshipType {
 					'contact_type_b'		=> 'Organization',
 					'contact_sub_type_b'	=> '',
 					'description'			=> 'Customer relationship',
-					'is_active'				=>  1
-				)
+					'is_active'				=>  1,
+				),
 			),
 			array(
 				'module'	=> 'nl.pum.generic',
@@ -130,8 +130,8 @@ class Generic_RelationshipType {
 					'contact_type_b'		=> 'Organization',
 					'contact_sub_type_b'	=> '',
 					'description'			=> 'Employee relationship',
-					'is_active'				=>  1
-				)
+					'is_active'				=>  1,
+				),
 			),
 			array(
 				'module'	=> 'nl.pum.generic',
@@ -148,8 +148,8 @@ class Generic_RelationshipType {
 					'contact_type_b'		=> 'Organization',
 					'contact_sub_type_b'	=> '',
 					'description'			=> 'Head Office relationship',
-					'is_active'				=>  1
-				)
+					'is_active'				=>  1,
+				),
 			),
 			array(
 				'module'	=> 'nl.pum.generic',
@@ -166,8 +166,8 @@ class Generic_RelationshipType {
 					'contact_type_b'		=> 'Organization',
 					'contact_sub_type_b'	=> '',
 					'description'			=> 'Project member relationship',
-					'is_active'				=>  1
-				)
+					'is_active'				=>  1,
+				),
 			),
 			array(
 				'module'	=> 'nl.pum.generic',
@@ -184,8 +184,8 @@ class Generic_RelationshipType {
 					'contact_type_b'		=> 'Organization',
 					'contact_sub_type_b'	=> '',
 					'description'			=> 'Project Officer relationship',
-					'is_active'				=>  1
-				)
+					'is_active'				=>  1,
+				),
 			),
 			array(
 				'module'	=> 'nl.pum.generic',
@@ -202,8 +202,8 @@ class Generic_RelationshipType {
 					'contact_type_b'		=> 'Organization',
 					'contact_sub_type_b'	=> 'Customer',
 					'description'			=> 'Prospect Expert relationship',
-					'is_active'				=>  1
-				)
+					'is_active'				=>  1,
+				),
 			),
 			array(
 				'module'	=> 'nl.pum.generic',
@@ -220,8 +220,8 @@ class Generic_RelationshipType {
 					'contact_type_b'		=> 'Individual',
 					'contact_sub_type_b'	=> '',
 					'description'			=> 'PUM representative relationship',
-					'is_active'				=>  1
-				)
+					'is_active'				=>  1,
+				),
 			),
 			array(
 				'module'	=> 'nl.pum.generic',
@@ -238,8 +238,8 @@ class Generic_RelationshipType {
 					'contact_type_b'		=> 'Organization',
 					'contact_sub_type_b'	=> '',
 					'description'			=> 'PUM-expert relationship',
-					'is_active'				=>  1
-				)
+					'is_active'				=>  1,
+				),
 			),
 			array(
 				'module'	=> 'nl.pum.generic',
@@ -256,8 +256,8 @@ class Generic_RelationshipType {
 					'contact_type_b'		=> 'Individual',
 					'contact_sub_type_b'	=> 'Expert',
 					'description'			=> 'RCT Manager relationship',
-					'is_active'				=>  1
-				)
+					'is_active'				=>  1,
+				),
 			),
 			array(
 				'module'	=> 'nl.pum.generic',
@@ -274,9 +274,27 @@ class Generic_RelationshipType {
 					'contact_type_b'		=> 'Organization',
 					'contact_sub_type_b'	=> '',
 					'description'			=> 'Sector Coordinator relationship',
-					'is_active'				=>  1
-				)
-			)
+					'is_active'				=>  1,
+				),
+			),
+			array(
+				'module'	=> 'nl.pum.generic',
+				'name'		=> 'Projectmanager',
+				'entity'	=> 'RelationshipType',
+				'params'	=> array(
+					'version'				=> 3,
+					'name_a_b'				=> 'Projectmanager',
+					'name_b_a'				=> 'Projectmanager',
+					'label_a_b'				=> 'Projectmanager',
+					'label_b_a'				=> 'Projectmanager',
+					'contact_type_a'		=> 'Organization',
+					'contact_sub_type_a'	=> '',
+					'contact_type_b'		=> 'Individual',
+					'contact_sub_type_b'	=> '',
+					'description'			=> 'Projectmanager relationship',
+					'is_active'				=>  1,
+				),
+			),
 		);
 	}
 	

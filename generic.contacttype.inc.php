@@ -8,24 +8,24 @@ class Generic_ContactType {
 	static function required() {
 		return array(
 			array(
-				'name'			=> "Expert",
-				'parent'		=> "Individual",
-				'description'	=> "PUM Expert"
+				'name'			=> 'Expert',
+				'parent'		=> 'Individual',
+				'description'	=> 'PUM Expert'
 			),
 			array(
-				'name'			=> "Customer",
-				'parent'		=> "Organization",
-				'description'	=> "PUM Customer"
+				'name'			=> 'Customer',
+				'parent'		=> 'Organization',
+				'description'	=> 'PUM Customer'
 			),
 			array(
-				'name'			=> "Partner",
-				'parent'		=> "Organization",
-				'description'	=> "Partner Organisation"
+				'name'			=> 'Partner',
+				'parent'		=> 'Organization',
+				'description'	=> 'Partner Organisation'
 			),
 			array(
-				'name'			=> "Donor",
-				'parent'		=> "Organization",
-				'description'	=> "Donor Organisation"
+				'name'			=> 'Donor',
+				'parent'		=> 'Organization',
+				'description'	=> 'Donor Organisation'
 			)
 		);
 	}
@@ -74,8 +74,19 @@ class Generic_ContactType {
 		$required = self::required();
 		// set all contact types to enabled
 		foreach ($required as $contactType) {
-			$qryEnable = "UPDATE civicrm_contact_type SET is_active = 1 WHERE name = '" . $contactType['name'] . "'";
-			CRM_Core_DAO::executeQuery($qryEnable);
+			$params = array(
+				'version' => 3,
+				'sequential' => 1,
+				'name' => $contactType['name'],
+				);
+			$result = civicrm_api('ContactType', 'getsingle', $params);
+			if (in_array('is_error', $result)) {
+				// contact type not found: cannot enable
+			} else {
+				// contact type found: proceed
+				$qryEnable = "UPDATE civicrm_contact_type SET is_active = 1 WHERE name = '" . $contactType['name'] . "'";
+				CRM_Core_DAO::executeQuery($qryEnable);
+			}
 		}
 	}
 	
@@ -86,8 +97,19 @@ class Generic_ContactType {
 		$required = self::required();
 		// set all contact types to disabled
 		foreach ($required as $contactType) {
-			$qryEnable = "UPDATE civicrm_contact_type SET is_active = 0 WHERE name = '" . $contactType['name'] . "'";
-			CRM_Core_DAO::executeQuery($qryEnable);
+			$params = array(
+				'version' => 3,
+				'sequential' => 1,
+				'name' => $contactType['name'],
+				);
+			$result = civicrm_api('ContactType', 'getsingle', $params);
+			if (in_array('is_error', $result)) {
+				// contact type not found: cannot disable
+			} else {
+				// contact type found: proceed
+				$qryDisable = "UPDATE civicrm_contact_type SET is_active = 0 WHERE name = '" . $contactType['name'] . "'";
+				CRM_Core_DAO::executeQuery($qryDisable);
+			}
 		}
 	}
 	
