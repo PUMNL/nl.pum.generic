@@ -148,7 +148,7 @@ class Generic_CustomField {
 			),
 			array(
 				'group_name'			=>	'Assess expert activity',
-				'extends'				=>	array('Activities'),
+				'extends'				=>	array('Activity'),
 				'entities'				=>	array('Assess Expert Application', 'Interview'),
 				'style'					=>	'Inline',
 				'is_multiple'			=>	FALSE,
@@ -172,6 +172,7 @@ class Generic_CustomField {
 						'label'=>'Motivation',
 						'data_type'=>'Memo',
 						'html_type'=>'TextArea',
+						'text_length'=>255,
 						'start_date_years'=>NULL,
 						'end_date_years'=>NULL,
 						'date_format'=>NULL,
@@ -182,7 +183,7 @@ class Generic_CustomField {
 			),
 			array(
 				'group_name'			=>	'Customers Data',
-				'extends'				=>	array('Organisation'),
+				'extends'				=>	array('Organization'),
 				'entities'				=>	array('Customer'),
 				'style'					=>	'Tab',
 				'is_multiple'			=>	FALSE,
@@ -404,7 +405,7 @@ class Generic_CustomField {
 			),
 			array(
 				'group_name'			=>	'Interview Information',
-				'extends'				=>	array('Cases'),
+				'extends'				=>	array('Case'),
 				'entities'				=>	array('Expertapplication'),
 				'style'					=>	'Inline',
 				'is_multiple'			=>	FALSE,
@@ -428,7 +429,7 @@ class Generic_CustomField {
 			),
 			array(
 				'group_name'			=>	'Key Qualifications',
-				'extends'				=>	array('Cases'),
+				'extends'				=>	array('Case'),
 				'entities'				=>	array('Factfindingmission'),
 				'style'					=>	'Inline',
 				'is_multiple'			=>	FALSE,
@@ -452,7 +453,7 @@ class Generic_CustomField {
 			),
 			array(
 				'group_name'			=>	'Projectinformation',
-				'extends'				=>	array('Cases'),
+				'extends'				=>	array('Case'),
 				'entities'				=>	array('Factfindingmission, Projectrequest'),
 				'style'					=>	'Inline',
 				'is_multiple'			=>	FALSE,
@@ -575,7 +576,7 @@ class Generic_CustomField {
 			),
 			array(
 				'group_name'			=>	'Projectinformation / REP Assessment',
-				'extends'				=>	array('Cases'),
+				'extends'				=>	array('Case'),
 				'entities'				=>	array('Projectrequest'),
 				'style'					=>	'Inline',
 				'is_multiple'			=>	FALSE,
@@ -689,7 +690,7 @@ class Generic_CustomField {
 			),
 			array(
 				'group_name'			=>	'REP Assessment',
-				'extends'				=>	array('Activities'),
+				'extends'				=>	array('Activity'),
 				'entities'				=>	array('Rep assess Projectrequest'),
 				'style'					=>	'Inline',
 				'is_multiple'			=>	FALSE,
@@ -774,10 +775,16 @@ class Generic_CustomField {
 			// if group was not found: create it
 			if (is_null($customGroupId)) {
 				// create group (what does parameter 'extends_entity_column_id' do?)
+				if (empty($fieldGroup['entities'])) {
+					$extends_column_value = NULL;
+				} else {
+					$extends_column_value = CRM_Core_DAO::VALUE_SEPARATOR . implode(CRM_Core_DAO::VALUE_SEPARATOR, $fieldGroup['entities']) . CRM_Core_DAO::VALUE_SEPARATOR;
+				}
+				
 				$params = array(
 					'version'						=>	3,
 					'extends'						=>	$fieldGroup['extends'],
-					'extends_entity_column_value'	=>	$fieldGroup['entities'],
+					'extends_entity_column_value'	=>	$extends_column_value,
 					'title'							=>	$fieldGroup['group_name'],
 					'style'							=>	$fieldGroup['style'],
 					'is_multiple'					=>	$fieldGroup['is_multiple'],
@@ -808,7 +815,7 @@ class Generic_CustomField {
 							'version' => 3,
 							'q' => 'civicrm/ajax/rest',
 							'sequential' => 1,
-							'name' => $field['option_group_title'],
+							'title' => $field['option_group_title'],
 						);
 						$result = civicrm_api('OptionGroup', 'getsingle', $params);
 						

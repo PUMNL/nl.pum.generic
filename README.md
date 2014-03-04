@@ -15,11 +15,6 @@ Using Managed Entities for:
  - Relationship Types
 
 
-Known errors when installing:
------------------------------
-Some Custom Groups raise a fatal error.
-
-
 Known errors when disabling:
 ----------------------------
 Notice: Undefined index: name_a_b in civicrm_api3_relationship_type_create() (line 53 of C:\wamp\www\drupal\sites\drupalcivi.localhost\modules\contrib\civicrm\api\v3\RelationshipType.php).

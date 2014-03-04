@@ -277,7 +277,7 @@ class Generic_ActivityType {
 						'weight'		=> 0
 					)
 				);
-				$created[] = $activityType['label'];
+				$created[] = '"' . $activityType['label'] . '"';
 			}
 		}
 		$message = "Activity Types " . implode(", ", $created) . " successfully created";

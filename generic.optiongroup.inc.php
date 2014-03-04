@@ -253,49 +253,49 @@ class Generic_OptionGroup {
 				'values'		=>	array(
 					array(
 						'label'			=> 'Expertapplication',
-						'value'			=> NULL,
+						'value'			=> 'Expertapplication',
 						'weight'		=> 10,
 						'description'	=> 'Used to manage the expert application',
 					),
 					array(
 						'label'			=> 'Factfindingmission',
-						'value'			=> NULL,
+						'value'			=> 'Factfindingmission',
 						'weight'		=> 20,
 						'description'	=> 'A product used to further define the Projectproposal',
 					),
 					array(
 						'label'			=> 'Organise Event',
-						'value'			=> NULL,
+						'value'			=> 'Organise Event',
 						'weight'		=> 30,
 						'description'	=> 'Used in "Organise Event"',
 						),
 					array(
 						'label'			=> 'Projectrequest',
-						'value'			=> NULL,
+						'value'			=> 'Projectrequest',
 						'weight'		=> 40,
 						'description'	=> 'Used to assess the project request',
 						),
 					array(
 						'label'			=> 'Projectevaluation',
-						'value'			=> NULL,
+						'value'			=> 'Projectevaluation',
 						'weight'		=> 50,
 						'description'	=> 'Uses to assess and evaluate complete project',
 						),
 					array(
 						'label'			=> 'Advice',
-						'value'			=> NULL,
+						'value'			=> 'Advice',
 						'weight'		=> 60,
 						'description'	=> 'A product used to execute a project of the type: Advice',
 						),
 					array(
 						'label'			=> 'BLP',
-						'value'			=> NULL,
+						'value'			=> 'BLP',
 						'weight'		=> 70,
 						'description'	=> 'A product used to execute a project of the type: Business Link Programme',
 						),
 					array(
 						'label'			=> 'HBF',
-						'value'			=> NULL,
+						'value'			=> 'HBF',
 						'weight'		=> 80,
 						'description'	=> 'A product used to execute a project of the type: Hans Blankert Fonds',
 						),
@@ -318,7 +318,7 @@ class Generic_OptionGroup {
 			$params = array(
 				'version'		=> 3,
 				'sequential'	=> 1,
-				'name'			=> substr($optionGroup['group_name'],  0, 63)
+				'title'			=> $optionGroup['group_name'],
 			);
 			$result = civicrm_api('OptionGroup', 'getsingle', $params);
 			if (in_array('is_error', $result)) {

@@ -330,7 +330,7 @@ class Generic_RelationshipType {
 		$required = self::required();
 		foreach ($required as $relationship) {
 			$entities[] = $relationship;
-			$created[] = $relationship['name'];
+			$created[] = '"' . $relationship['name'] . '"';
 		}
 		$message = "Relationship Type " . implode(", ", $created) . " successfully created";
 		CRM_Utils_System::setUFMessage($message);
