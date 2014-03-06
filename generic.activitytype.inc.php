@@ -226,7 +226,67 @@ class Generic_ActivityType {
 				'component' => 'CiviCase',
 				'label' => 'Select and match PUM-expert to product',
 				'description' => 'Used in "Factfinding Mission"'
-				)
+				),
+			array(
+				'component' => 'CiviCase',
+				'label' => 'All involved assess projectresults',
+				'description' => 'Used in "Projectevaluation"'
+				),
+			array(
+				'component' => 'CiviCase',
+				'label' => 'Adjust Projectplan',
+				'description' => 'Used in "Advice"'
+				),
+			array(
+				'component' => 'CiviCase',
+				'label' => 'Projectmanager requests expert to create BLP product',
+				'description' => 'Used in "BLP"'
+				),
+			array(
+				'component' => 'CiviCase',
+				'label' => 'Assess BLP proposal by CC',
+				'description' => 'Used in "BLP"'
+				),
+			array(
+				'component' => 'CiviCase',
+				'label' => 'Assess BLP proposal by SC',
+				'description' => 'Used in "BLP"'
+				),
+			array(
+				'component' => 'CiviCase',
+				'label' => 'Prof send invoice and registration form link to customer',
+				'description' => 'Used in "BLP"'
+				),
+			array(
+				'component' => 'CiviCase',
+				'label' => 'Prof creates invitation letter for customer',
+				'description' => 'Used in "BLP"'
+				),
+			array(
+				'component' => 'CiviCase',
+				'label' => 'Prof assembles briefingsmap',
+				'description' => 'Used in "BLP"'
+				),
+			array(
+				'component' => 'CiviCase',
+				'label' => 'Prof checks and transfers approved budget',
+				'description' => 'Used in "BLP"'
+				),
+			array(
+				'component' => 'CiviCase',
+				'label' => 'Projectmanager or expert creates product HBF with concept budget'
+				,'description' => 'Used in "HBF"'
+				),
+			array(
+				'component' => 'CiviCase',
+				'label' => 'Check and assess HBF application',
+				'description' => 'Used in "HBF"'
+				),
+			array(
+				'component' => 'CiviCase',
+				'label' => 'Transfer the approved budget to projectmanager, expert or PUM Rep',
+				'description' => 'Used in "HBF"'
+				),
 		);
 	}
 	
