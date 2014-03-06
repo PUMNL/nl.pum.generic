@@ -321,6 +321,7 @@ class Generic_OptionGroup {
 				'title'			=> $optionGroup['group_name'],
 			);
 			$result = civicrm_api('OptionGroup', 'getsingle', $params);
+
 			if (in_array('is_error', $result)) {
 				// optiongroup not found: $optionGroupId remains NULL
 			} else {
@@ -346,7 +347,7 @@ class Generic_OptionGroup {
 				} else {
 					// group created: retrieve $customGroupId
 					$value = array_pop($result['values']);
-					$customGroupId = $value['id'];
+					$optionGroupId = $value['id'];
 					$created[] = $optionGroup['group_name'];
 				}
 			}

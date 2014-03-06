@@ -859,10 +859,33 @@ class Generic_CustomField {
 								'is_active'				=>	1,
 							);
 							$result = civicrm_api('CustomField', 'Create', $params);
+							/****************************************************************************************************
+							 * Observation in CiviCRM 4.4.4:
+							 * If $optionGroupId was provided, $result will now contain a DIFFERENT (new) option_group_id (BUG)
+							 ****************************************************************************************************/
 							if($result['is_error'] == 1) {
 								drupal_set_message('Error creating Custom Field "' . $field['label'] . '" in group "' . $fieldGroup['group_name'] . '": ' . $result['error_message']);
 							} else {
 								// report success?
+								// workaround for wrong optionGroupId
+								if (is_null($optionGroupId)) {
+									// no fix required
+								} else {
+									$newFieldDetails = array_pop($result['values']);
+									$currentOptionGroupId = $newFieldDetails['option_group_id'];
+									if ($currentOptionGroupId == $optionGroupId) {
+										// ok - bug must have been fixed
+									} else {
+										// apply datafix
+										// 1 - apply correct option_group_id to custom field
+										$fieldId = $newFieldDetails['id'];
+										$sql = "UPDATE civicrm_custom_field SET option_group_id=" . $optionGroupId . " WHERE id=" . $fieldId;
+										$sqlResult = CRM_Core_DAO::executeQuery($sql);
+										// 2 - remove unjust option group
+										$sql = "DELETE FROM civicrm_option_group WHERE id=" . $currentOptionGroupId;
+										$sqlResult = CRM_Core_DAO::executeQuery($sql);
+									}
+								}
 							}
 						} else {
 							// custom field alredy exist
