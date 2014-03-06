@@ -117,24 +117,6 @@ class Generic_RelationshipType {
 			),
 			array(
 				'module'	=> 'nl.pum.generic',
-				'name'		=> 'Employee',
-				'entity'	=> 'RelationshipType',
-				'params'	=> array(
-					'version'				=> 3,
-					'name_a_b'				=> 'Employee of',
-					'name_b_a'				=> 'Employer of',
-					'label_a_b'				=> 'Employee of',
-					'label_b_a'				=> 'Employer of',
-					'contact_type_a'		=> 'Individual',
-					'contact_sub_type_a'	=> '',
-					'contact_type_b'		=> 'Organization',
-					'contact_sub_type_b'	=> '',
-					'description'			=> 'Employee relationship',
-					'is_active'				=>  1,
-				),
-			),
-			array(
-				'module'	=> 'nl.pum.generic',
 				'name'		=> 'Head Office',
 				'entity'	=> 'RelationshipType',
 				'params'	=> array(
