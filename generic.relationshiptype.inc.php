@@ -281,9 +281,46 @@ class Generic_RelationshipType {
 	}
 	
 	/*
+	 * returns the definitions for standard civicrm relationship types to keep
+	 * ones not listed here (by name_b_a) and not listed in required() will be disabled in the install process
+	 */
+	static function tolerate() {
+		return array(
+			'Employer of',
+		);
+	}
+	
+	/*
 	 * handler for hook_civicrm_install
 	 */
-	static function install() {		
+	static function install() {
+		$required = self::required();
+		$tolerate = self::tolerate();
+		
+		foreach ($required as $relationship) {
+			$params = $relationship['params'];
+			$tolerate[] = $params['name_b_a'];
+		}
+		
+		// disable relationship types not listed in either required() or tolerate()
+		// fetch all relationship types listed in database
+		$params = array(
+			'version' => 3,
+			'sequential' => 1,
+			'is_active' => 1,
+		);
+		$result = civicrm_api('RelationshipType', 'get', $params);
+		
+		// compare each relationship type in database against the list of ones to keep
+		foreach ($result['values'] as $relationshipType) {
+			if (in_array($relationshipType['name_b_a'], $tolerate)) {
+				// listed: leave 'as is'
+			} else {
+				// not listed: disable
+				$qryDisable = "UPDATE civicrm_relationship_type SET is_active=0 WHERE name_b_a='" . $relationshipType['name_b_a'] . "'";
+				CRM_Core_DAO::executeQuery($qryDisable);
+			}
+		}
 	}
 	
 	/*

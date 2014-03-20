@@ -1,5 +1,6 @@
 <?php
 require_once 'generic.civix.php';
+
 require_once 'generic.contacttype.inc.php';
 require_once 'generic.activitytype.inc.php';
 require_once 'generic.group.inc.php';
@@ -99,4 +100,68 @@ function generic_civicrm_uninstall() {
 	Generic_Group::uninstall();
 	Generic_ContactType::uninstall();
     return _generic_civix_civicrm_uninstall();
+}
+
+/**
+ * Implementation of hook civicrm_navigationMenu
+ * Adds menu menu items for the entities controlled by this extension
+ */
+function generic_civicrm_navigationMenu(&$params) {
+/* ** under construction **
+    //$maxKey = ( max( array_keys($params) ) );
+	$pKey = 18;
+	dpm($params, 'navigationMenu parameters');
+	$lv1 = NULL;
+	$lv2 = NULL;
+	foreach ($params as $menuLv1) {
+		if ($menuLv1['attributes']['label'] == 'Contacts') {
+			$lv1 = $menuLv1['attributes']['navID'];
+		}
+	}
+	if (!is_null($lv1)) {
+		foreach ($params[$lv1]['child'] as $menuLv2) {
+			if ($menuLv1['attributes']['label'] == 'New Individual') {
+				// process individual types
+			}
+			if ($menuLv1['attributes']['label'] == 'New Household') {
+				// process household types
+			}
+			if ($menuLv1['attributes']['label'] == 'New Organization') {
+				// process organization types
+				// fetch child -> loop
+				// attributes['label'] = <nm> gevonden> -> activate, anders -> add to children
+			}
+		}
+	}
+dpm($lv1, 'Menu Level 1');
+	/*
+	$params[$pKey]['child]] = array (
+        'attributes' => array (
+            'label'      => 'Programmes, Projects and Products',
+            'name'       => 'Programmes, Projects and Products',
+            'url'        => null,
+            'permission' => null,
+            'operator'   => null,
+            'separator'  => null,
+            'parentID'   => null,
+            'navID'      => $maxKey+1,
+            'active'     => 1
+    ),
+        'child' =>  array (
+            '1' => array (
+                'attributes' => array (
+                    'label'      => 'List Programmes',
+                    'name'       => 'List Programmes',
+                    'url'        => 'civicrm/programmelist',
+                    'operator'   => null,
+                    'separator'  => 0,
+                    'parentID'   => $maxKey+1,
+                    'navID'      => 1,
+                    'active'     => 1
+                ),
+                'child' => null
+            ), 
+        ), 
+    );
+	*/
 }

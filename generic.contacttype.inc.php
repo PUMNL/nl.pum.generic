@@ -48,7 +48,7 @@ class Generic_ContactType {
 						'label'         =>  $contactType['name'],
 						'name'          =>  $contactType['name'],
 						'parent_id'     =>  $apiResult,
-						'description'	=>  $contactType['description'],
+						'description'	=>  'nl.pum.generic - ' . $contactType['description'],
 						'is_active'     =>  0,
 						'is_reserved'   =>  1
 					);
