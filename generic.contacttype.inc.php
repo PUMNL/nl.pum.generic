@@ -124,4 +124,44 @@ class Generic_ContactType {
 	 */
 	static function managed(&$entities) {
 	}
+	
+			
+	/*
+	 * executive foor hook_civicrm_navigationMenu
+	 *
+	 * Add "New ..." menu entries under "Contacts" for each of the required contact types
+	 */
+	static function hook_navigationMenu(&$params) {
+		/* navigation entries appear present, but not yet active
+		 * this function is currentlyl limited to 3 menu levels:
+		 * Contacts
+		 * 	+- New <parent type>
+		 *		+- New <custom type>
+		 */
+		$required = self::required();
+		
+		foreach($params as $mainKey=>$value) {
+			if ($params[$mainKey]['attributes']['name'] == 'Contacts') {
+				// within the Contacts menu: find the custom contact types in the sub menu structure, via their parent types
+				foreach ($required as $contactType) {
+					foreach($params[$mainKey]['child'] as $childKey=>$value) {
+						if ($params[$mainKey]['child'][$childKey]['attributes']['name'] == ('New ' . $contactType['parent'])) {
+							foreach($params[$mainKey]['child'][$childKey]['child'] as $typeKey=>$value) {
+								if($params[$mainKey]['child'][$childKey]['child'][$typeKey]['attributes']['name'] == ('New ' . $contactType['name'])) {
+									$params[$mainKey]['child'][$childKey]['child'][$typeKey]['attributes']['active'] = 1;
+								} else {
+									// not the requested contact type in nested sub menu
+								}
+							}
+						} else {
+							// not the requested parent entry in the Contacts submenu
+						}
+					}
+				}
+			} else {
+				// not the Contacts entry in main menu
+			}
+		}
+	}
+	
 }

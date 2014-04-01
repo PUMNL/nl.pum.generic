@@ -107,6 +107,7 @@ function generic_civicrm_uninstall() {
  * Adds menu menu items for the entities controlled by this extension
  */
 function generic_civicrm_navigationMenu(&$params) {
+	Generic_ContactType::hook_navigationMenu($params);
 /* ** under construction **
     //$maxKey = ( max( array_keys($params) ) );
 	$pKey = 18;
