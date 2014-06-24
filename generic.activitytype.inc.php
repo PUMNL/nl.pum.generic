@@ -296,6 +296,8 @@ class Generic_ActivityType {
 	 */
 	static function tolerate() {
 		return array(
+			'Open Case',
+			'Bulk Email',
 			'Change Case Start Date',
 			'Change Case Status',
 			'Change Case Type',
@@ -380,8 +382,8 @@ class Generic_ActivityType {
 						// listed: leave 'as is'
 					} else {
 						// not listed: disable
-						$qryDisable = "UPDATE civicrm_option_value SET is_active=0 WHERE option_group_id=" . $optionGroupId . " AND name='" . $activityType['name'] . "'";
-						CRM_Core_DAO::executeQuery($qryDisable);
+//						$qryDisable = "UPDATE civicrm_option_value SET is_active=0 WHERE option_group_id=" . $optionGroupId . " AND name='" . $activityType['name'] . "'";
+//						CRM_Core_DAO::executeQuery($qryDisable);
 					}
 				}
 			}

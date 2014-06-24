@@ -71,9 +71,9 @@ class Generic_RelationshipType {
 					'name_b_a'				=> 'Country Coordinator',
 					'label_a_b'				=> 'Country Coordinator',
 					'label_b_a'				=> 'Country Coordinator',
-					'contact_type_a'		=> 'Individual',
+					'contact_type_a'		=> '',
 					'contact_sub_type_a'	=> '',
-					'contact_type_b'		=> 'Organization',
+					'contact_type_b'		=> 'Individual',
 					'contact_sub_type_b'	=> '',
 					'description'			=> 'Country Coordinator relationship',
 					'is_active'				=>  1,
@@ -89,9 +89,9 @@ class Generic_RelationshipType {
 					'name_b_a'				=> 'Customer contact',
 					'label_a_b'				=> 'Customer contact',
 					'label_b_a'				=> 'Customer contact',
-					'contact_type_a'		=> 'Individual',
+					'contact_type_a'		=> '',
 					'contact_sub_type_a'	=> '',
-					'contact_type_b'		=> 'Organization',
+					'contact_type_b'		=> 'Individual',
 					'contact_sub_type_b'	=> '',
 					'description'			=> 'Customer contact relationship',
 					'is_active'				=>  1,
@@ -143,9 +143,9 @@ class Generic_RelationshipType {
 					'name_b_a'				=> 'Project member',
 					'label_a_b'				=> 'Project member',
 					'label_b_a'				=> 'Project member',
-					'contact_type_a'		=> 'Individual',
+					'contact_type_a'		=> '',
 					'contact_sub_type_a'	=> '',
-					'contact_type_b'		=> 'Organization',
+					'contact_type_b'		=> 'Individual',
 					'contact_sub_type_b'	=> '',
 					'description'			=> 'Project member relationship',
 					'is_active'				=>  1,
@@ -161,9 +161,9 @@ class Generic_RelationshipType {
 					'name_b_a'				=> 'Project Officer is',
 					'label_a_b'				=> 'Project Officer for',
 					'label_b_a'				=> 'Project Officer is',
-					'contact_type_a'		=> 'Individual',
+					'contact_type_a'		=> '',
 					'contact_sub_type_a'	=> '',
-					'contact_type_b'		=> 'Organization',
+					'contact_type_b'		=> 'Individual',
 					'contact_sub_type_b'	=> '',
 					'description'			=> 'Project Officer relationship',
 					'is_active'				=>  1,
@@ -251,9 +251,9 @@ class Generic_RelationshipType {
 					'name_b_a'				=> 'Sector Coordinator',
 					'label_a_b'				=> 'Sector Coordinator',
 					'label_b_a'				=> 'Sector Coordinator',
-					'contact_type_a'		=> 'Individual',
+					'contact_type_a'		=> '',
 					'contact_sub_type_a'	=> '',
-					'contact_type_b'		=> 'Organization',
+					'contact_type_b'		=> 'Individual',
 					'contact_sub_type_b'	=> '',
 					'description'			=> 'Sector Coordinator relationship',
 					'is_active'				=>  1,
@@ -317,8 +317,8 @@ class Generic_RelationshipType {
 				// listed: leave 'as is'
 			} else {
 				// not listed: disable
-				$qryDisable = "UPDATE civicrm_relationship_type SET is_active=0 WHERE name_b_a='" . $relationshipType['name_b_a'] . "'";
-				CRM_Core_DAO::executeQuery($qryDisable);
+//				$qryDisable = "UPDATE civicrm_relationship_type SET is_active=0 WHERE name_b_a='" . $relationshipType['name_b_a'] . "'";
+//				CRM_Core_DAO::executeQuery($qryDisable);
 			}
 		}
 	}
