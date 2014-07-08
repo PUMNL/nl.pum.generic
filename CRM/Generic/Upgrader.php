@@ -10,44 +10,38 @@ class CRM_Generic_Upgrader extends CRM_Generic_Upgrader_Base {
 
   /**
    * Example: Run an external SQL script when the module is installed
-   *
+   */
   public function install() {
-    $this->executeSqlFile('sql/myinstall.sql');
   }
 
   /**
    * Example: Run an external SQL script when the module is uninstalled
-   *
+   */
   public function uninstall() {
-   $this->executeSqlFile('sql/myuninstall.sql');
   }
 
   /**
    * Example: Run a simple query when a module is enabled
-   *
+   */
   public function enable() {
-    CRM_Core_DAO::executeQuery('UPDATE foo SET is_active = 1 WHERE bar = "whiz"');
   }
 
   /**
    * Example: Run a simple query when a module is disabled
-   *
+   */
   public function disable() {
-    CRM_Core_DAO::executeQuery('UPDATE foo SET is_active = 0 WHERE bar = "whiz"');
   }
 
   /**
-   * Example: Run a couple simple queries
-   *
-   * @return TRUE on success
-   * @throws Exception
-   *
-  public function upgrade_4200() {
-    $this->ctx->log->info('Applying update 4200');
-    CRM_Core_DAO::executeQuery('UPDATE foo SET bar = "whiz"');
-    CRM_Core_DAO::executeQuery('DELETE FROM bang WHERE willy = wonka(2)');
-    return TRUE;
-  } // */
+   * Upgrade 1001 - initiating sequence for (1) main activities and DSA payments and (2) payment lines
+   */
+/*  public function upgrade_1001() {
+    $this->ctx->log->info('Applying update 1001 (initiating sequences)');
+    //dpm(_generic_verify_sequencer());
+    return FALSE;
+  }
+*/
+
 
 
   /**

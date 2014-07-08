@@ -71,6 +71,7 @@ class Generic_RelationshipType {
 					'name_b_a'				=> 'Country Coordinator',
 					'label_a_b'				=> 'Country Coordinator',
 					'label_b_a'				=> 'Country Coordinator',
+					//'contact_type_a'		=> 'Individual',
 					'contact_type_a'		=> '',
 					'contact_sub_type_a'	=> '',
 					'contact_type_b'		=> 'Individual',
@@ -89,6 +90,7 @@ class Generic_RelationshipType {
 					'name_b_a'				=> 'Customer contact',
 					'label_a_b'				=> 'Customer contact',
 					'label_b_a'				=> 'Customer contact',
+					//'contact_type_a'		=> 'Individual',
 					'contact_type_a'		=> '',
 					'contact_sub_type_a'	=> '',
 					'contact_type_b'		=> 'Individual',
@@ -143,6 +145,7 @@ class Generic_RelationshipType {
 					'name_b_a'				=> 'Project member',
 					'label_a_b'				=> 'Project member',
 					'label_b_a'				=> 'Project member',
+					//'contact_type_a'		=> 'Individual',
 					'contact_type_a'		=> '',
 					'contact_sub_type_a'	=> '',
 					'contact_type_b'		=> 'Individual',
@@ -159,8 +162,9 @@ class Generic_RelationshipType {
 					'version'				=> 3,
 					'name_a_b'				=> 'Project Officer for',
 					'name_b_a'				=> 'Project Officer is',
-					'label_a_b'				=> 'Project Officer for',
-					'label_b_a'				=> 'Project Officer is',
+					'label_a_b'				=> 'Project Officer',
+					'label_b_a'				=> 'Project Officer',
+					//'contact_type_a'		=> 'Individual',
 					'contact_type_a'		=> '',
 					'contact_sub_type_a'	=> '',
 					'contact_type_b'		=> 'Individual',
@@ -240,7 +244,7 @@ class Generic_RelationshipType {
 					'description'			=> 'RCT Manager relationship',
 					'is_active'				=>  1,
 				),
-			),
+			), 
 			array(
 				'module'	=> 'nl.pum.generic',
 				'name'		=> 'Sector Coordinator',
@@ -251,6 +255,7 @@ class Generic_RelationshipType {
 					'name_b_a'				=> 'Sector Coordinator',
 					'label_a_b'				=> 'Sector Coordinator',
 					'label_b_a'				=> 'Sector Coordinator',
+					//'contact_type_a'		=> 'Individual',
 					'contact_type_a'		=> '',
 					'contact_sub_type_a'	=> '',
 					'contact_type_b'		=> 'Individual',
@@ -348,6 +353,7 @@ class Generic_RelationshipType {
 		$created = array();
 		$required = self::required();
 		foreach ($required as $relationship) {
+echo $relationship['name'] . '<br />';
 			$entities[] = $relationship;
 			$created[] = '"' . $relationship['name'] . '"';
 		}

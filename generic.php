@@ -166,3 +166,16 @@ dpm($lv1, 'Menu Level 1');
     );
 	*/
 }
+
+function _generic_verify_sequencer() {
+	$extensionParams = array('full_name' => 'nl.pum.sequence');
+	$extensionDefaults = array();
+	$extensionPresence = CRM_Core_BAO_Extension::retrieve($extensionParams, $extensionDefaults);
+	if (!empty($extensionPresence) && $extensionPresence->is_active == 1) {
+		// ok
+		return TRUE;
+	} else {
+		CRM_Core_Error::fatal("Mandatory module nl.pum.sequencer is not enabled!");
+		return FALSE;
+	}
+}
