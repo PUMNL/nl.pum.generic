@@ -10,38 +10,85 @@ class CRM_Generic_Upgrader extends CRM_Generic_Upgrader_Base {
 
   /**
    * Example: Run an external SQL script when the module is installed
-   */
+   *
   public function install() {
+    $this->executeSqlFile('sql/myinstall.sql');
   }
 
   /**
    * Example: Run an external SQL script when the module is uninstalled
-   */
+   *
   public function uninstall() {
+   $this->executeSqlFile('sql/myuninstall.sql');
   }
 
   /**
    * Example: Run a simple query when a module is enabled
-   */
+   *
   public function enable() {
+    CRM_Core_DAO::executeQuery('UPDATE foo SET is_active = 1 WHERE bar = "whiz"');
   }
 
   /**
    * Example: Run a simple query when a module is disabled
-   */
+   *
   public function disable() {
+    CRM_Core_DAO::executeQuery('UPDATE foo SET is_active = 0 WHERE bar = "whiz"');
   }
 
   /**
-   * Upgrade 1001 - initiating sequence for (1) main activities and DSA payments and (2) payment lines
+   * Upgrade 1001 - initiating sequences for
+   * 1: main activities and DSA payments
+   * 2: payment lines
    */
-/*  public function upgrade_1001() {
-    $this->ctx->log->info('Applying update 1001 (initiating sequences)');
-    //dpm(_generic_verify_sequencer());
-    return FALSE;
+  public function upgrade_1001() {
+	$this->ctx->log->info('Applying update 1001 (initiating sequences)');
+    if (!_generic_verify_sequencer()) {
+		CRM_Core_Error::fatal("Mandatory module nl.pum.sequencer is not enabled!");
+		return FALSE;
+	};
+	// sequence for main activities (and for DSA: participants)
+	// 7000 to infinite, step 1, no cycle
+	$params = array(
+		'version' => 3,
+		'q' => 'civicrm/ajax/rest',
+		'name' => 'main_activity',
+		'min_value' => 70000,
+		'cur_value' => 70000,
+	);
+	$result = civicrm_api('Sequence', 'create', $params);
+	if ($result['is_error']==1) {
+		return FALSE;
+	}
+	// sequence for payment lines
+	// 1 to 9999, cyclic
+	$params = array(
+		'version' => 3,
+		'q' => 'civicrm/ajax/rest',
+		'name' => 'payment_line',
+		'min_value' => 1,
+		'max_value' => 9999,
+		'cycle' => 1,
+	);
+	$result = civicrm_api('Sequence', 'create', $params);
+	if ($result['is_error']==1) {
+		return FALSE;
+	}
+	return TRUE;
   }
-*/
-
+  
+  /**
+   * Example: Run a couple simple queries
+   *
+   * @return TRUE on success
+   * @throws Exception
+   *
+  public function upgrade_4200() {
+    $this->ctx->log->info('Applying update 4200');
+    CRM_Core_DAO::executeQuery('UPDATE foo SET bar = "whiz"');
+    CRM_Core_DAO::executeQuery('DELETE FROM bang WHERE willy = wonka(2)');
+    return TRUE;
+  } // */
 
 
   /**

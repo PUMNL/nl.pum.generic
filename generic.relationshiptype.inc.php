@@ -352,13 +352,32 @@ class Generic_RelationshipType {
 	static function managed(&$entities) {
 		$created = array();
 		$required = self::required();
+		$needCacheFlush = FALSE;
 		foreach ($required as $relationship) {
-echo $relationship['name'] . '<br />';
+			if ($relationship['params']['contact_type_a']=='') {
+				// Error in CiviCRM 4.4.5:
+				// if contact_type_a=='' (for 'All contacts') and the entity does not yet exist, an error will occur and the module will report itself installed
+				// workaround: first make contact_type_a 'Individual', then update to '' using e.g. .../CiviCRM/clearcache
+				$params = array(
+					'version' => 3,
+					'q' => 'civicrm/ajax/rest',
+					'sequential' => 1,
+					'name_a_b' => $relationship['params']['name_a_b'],
+				);
+				$result = civicrm_api('RelationshipType', 'get', $params);
+				if ($result['count']==0) {
+					$relationship['params']['contact_type_a'] = 'Individual';
+					$needCacheFlush = TRUE;
+				}
+			}
 			$entities[] = $relationship;
 			$created[] = '"' . $relationship['name'] . '"';
 		}
 		$message = "Relationship Type " . implode(", ", $created) . " successfully created";
 		CRM_Utils_System::setUFMessage($message);
+		if ($needCacheFlush) {
+			CRM_Utils_System::setUFMessage('*** IMPORTANT ***: one ore more relationships have not yet been set to ALL CONTACTS. Please run <base url>/civicrm/clearcache now to solve this!');
+		}
 	}
 	
 }

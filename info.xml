@@ -14,8 +14,12 @@
   <compatibility>
     <ver>4.4</ver>
   </compatibility>
-  <comments>This is a locally tested extension</comments>
+  <comments>
+	This is a locally tested extension.
+	As of update 1001, this extension has a dependency on nl.pum.sequence
+  </comments>
   <civix>
     <namespace>CRM/Generic</namespace>
   </civix>
 </extension>
+
