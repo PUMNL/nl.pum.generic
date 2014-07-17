@@ -85,12 +85,22 @@ class CRM_Generic_Upgrader extends CRM_Generic_Upgrader_Base {
 	$this->executeCustomDataFile('xml/1002_install_custom_group.xml');
 	return TRUE;
   }
+
+  /**
+    * Upgrade 1004 - alter table civicrm_dsa_compose
+    */
+  public function upgrade_1004() {
+    $this->ctx->log->info('Applying update 1004 (create table civicrm_case_pum)');
+    // create table
+    $this->executeSqlFile('sql/civicrm_case_pum_1004.sql');
+    return TRUE;
+  }
   
   /**
-   * Upgrade 1003 - additional option group 'case type code' and initial case numbering
+   * Upgrade 1005 - additional option group 'case type code' and initial case numbering
    */
-  public function upgrade_1003() {
-	$this->ctx->log->info('Applying update 1003 (add PUM project numbering)');
+  public function upgrade_1005() {
+	$this->ctx->log->info('Applying update 1005 (add PUM project numbering)');
 	$sql = '
 SELECT cas.id AS case_id,
        ovl1.label,
