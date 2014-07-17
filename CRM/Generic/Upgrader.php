@@ -76,7 +76,67 @@ class CRM_Generic_Upgrader extends CRM_Generic_Upgrader_Base {
 	}
 	return TRUE;
   }
+   
+  /**
+   * Upgrade 1002 - add custom goup PUM_Case_number
+   */
+  public function upgrade_1002() {
+	$this->ctx->log->info('Applying update 1002 (add custom group PUM_Case_number)');
+	$this->executeCustomDataFile('xml/1002_install_custom_group.xml');
+	return TRUE;
+  }
   
+  /**
+   * Upgrade 1003 - additional option group 'case type code' and initial case numbering
+   */
+  public function upgrade_1003() {
+	$this->ctx->log->info('Applying update 1003 (add PUM project numbering)');
+	$sql = '
+SELECT cas.id AS case_id,
+       ovl1.label,
+       ovl2.value AS type_code,
+       con.contact_sub_type,
+       con.display_name,
+       ifnull(cy1.iso_code, cy2.iso_code) AS country,
+	   pum.id as pum_id,
+       pum.entity_id,
+       pum.case_sequence,
+       pum.case_type,
+       pum.case_country
+  FROM civicrm_case cas
+       LEFT JOIN civicrm_case_pum pum
+              ON pum.entity_id = cas.id,
+       civicrm_option_group ogp1,
+       civicrm_option_value ovl1,
+       civicrm_option_group ogp2,
+       civicrm_option_value ovl2,
+       civicrm_case_contact ccn,
+       civicrm_contact con
+       LEFT JOIN civicrm_country cy1
+		          ON cy1.name = con.display_name
+       LEFT JOIN civicrm_address adr
+              ON adr.contact_id = con.id
+			       AND adr.is_primary = 1
+       LEFT JOIN civicrm_country cy2
+		          ON adr.country_id = cy2.id
+ WHERE     ogp1.name = \'case_type\'
+       AND ovl1.option_group_id = ogp1.id
+       AND cas.case_type_id = ovl1.value
+       AND ogp2.name = \'case_type_code\'
+       AND ovl2.option_group_id = ogp2.id
+       AND ovl2.label = ovl1.label
+       AND ccn.case_id = cas.id
+       AND con.id = ccn.contact_id
+       AND con.contact_sub_type IN (\'Customer\', \'Country\')
+ORDER BY cas.id
+	';
+	$dao_find = CRM_Core_DAO::executeQuery($sql);
+	while($dao_find->fetch()) {
+		$this->_setMainActivityNumber($dao_find);
+	}
+	return TRUE;
+  }
+   
   /**
    * Example: Run a couple simple queries
    *
@@ -152,5 +212,38 @@ class CRM_Generic_Upgrader extends CRM_Generic_Upgrader_Base {
     }
     return TRUE;
   } // */
-
+  
+  static function _setMainActivityNumber($dao_qry_result_line) {
+  	$arFld = array();
+	$arVal = array();
+	if (is_null($dao_qry_result_line->entity_id) && (!is_null($dao_qry_result_line->case_id))) {
+		$arFld[]='entity_id';
+		$arVal[]=$dao_qry_result_line->case_id;
+	}
+	if (is_null($dao_qry_result_line->case_country) && (!is_null($dao_qry_result_line->country))) {
+		$arFld[]='case_country';
+		$arVal[]='\'' . $dao_qry_result_line->country . '\'';
+	}
+	if (is_null($dao_qry_result_line->case_type) && (!is_null($dao_qry_result_line->type_code))) {
+		$arFld[]='case_type';
+		$arVal[]='\'' . $dao_qry_result_line->type_code . '\'';
+	}
+	if (count($arFld)>0) {
+		if (is_null($dao_qry_result_line->case_sequence)) {
+			$arFld[]='case_sequence';
+			$arVal[]=CRM_Sequence_Page_PumSequence::nextval('main_activity');
+		}
+		if (is_null($dao_qry_result_line->pum_id)) {
+			// insert
+			$sql_case = 'INSERT INTO civicrm_case_pum (' . implode(', ', $arFld) . ') VALUES (' . implode(', ', $arVal) . ')';
+			} else {
+			// update
+			for ($n=0; $n<count($arFld); $n++) {
+				$arFld[$n] .= '=' . $arVal[$n];
+			}
+			$sql_case = 'UPDATE civicrm_case_pum SET ' . implode(', ', $arFld) . ' WHERE id=' . $dao_qry_result_line->pum_id;
+		}
+		$dao_case = CRM_Core_DAO::executeQuery($sql_case);
+	}
+  }
 }

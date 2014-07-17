@@ -301,6 +301,65 @@ class Generic_OptionGroup {
 						),
 				),
 			),
+			array(
+				'group_name'	=>	'case_type_code',
+				'values'		=>	array(
+					array(
+						'label'			=> 'Advice',
+						'value'			=> 'A',
+						'weight'		=> 10,
+						'description'	=> '',
+					),
+					array(
+						'label'			=> 'Business',
+						'value'			=> 'B',
+						'weight'		=> 20,
+						'description'	=> '',
+					),
+					array(
+						'label'			=> 'CTM',
+						'value'			=> 'C',
+						'weight'		=> 30,
+						'description'	=> '',
+					),
+					array(
+						'label'			=> 'Grant',
+						'value'			=> 'G',
+						'weight'		=> 50,
+						'description'	=> '',
+					),
+					array(
+						'label'			=> 'PDV',
+						'value'			=> 'P',
+						'weight'		=> 60,
+						'description'	=> '',
+					),
+					array(
+						'label'			=> 'Acquisitie',
+						'value'			=> 'Q',
+						'weight'		=> 70,
+						'description'	=> '',
+					),
+					array(
+						'label'			=> 'Remote Coaching',
+						'value'			=> 'R',
+						'weight'		=> 80,
+						'description'	=> '',
+					),
+					array(
+						'label'			=> 'Seminar',
+						'value'			=> 'S',
+						'weight'		=> 90,
+						'description'	=> '',
+					),
+					array(
+						'label'			=> 'Housing Support',
+						'value'			=> 'H',
+						'weight'		=> 199,
+						'description'	=> '',
+					),
+				),
+			),
 		);
 	}
 	

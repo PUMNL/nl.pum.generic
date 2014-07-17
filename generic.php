@@ -174,3 +174,71 @@ function _generic_verify_sequencer() {
 		return FALSE;
 	}
 }
+
+/**
+ * Implementation of hook_civicrm_postProcess
+ *
+ * Stores added fields in civicrm_case_pum
+ */
+function generic_civicrm_postProcess( $formName, &$form ) {	
+//dpm($form, 'Generic - postProcess form data ' . $formName);
+	switch($formName) {
+		case 'CRM_Case_Form_Case':
+			// looking for case_id = 11:
+			//$form->_submitValues['contact_select_id'][1] = 229
+			//$form->_submitValues['contact'][1] = Belgium
+			
+			//$form->_submitValues['case_type_id'] = 2
+			//$form->_contactID = 210 (Afghanistan)
+			$sql = '
+SELECT
+  cas.id AS case_id,
+  ovl1.label,
+  cod.value AS type_code,
+  con.contact_sub_type,
+  con.display_name,
+  ifnull(cy1.iso_code, cy2.iso_code) AS country,
+  pum.id AS pum_id,
+  pum.entity_id,
+  pum.case_sequence,
+  pum.case_type,
+  pum.case_country
+FROM
+  civicrm_case cas
+  LEFT JOIN civicrm_case_pum pum ON pum.entity_id = cas.id,
+  civicrm_case_contact ccn,
+  civicrm_option_group ogp1,
+  civicrm_option_value ovl1
+  LEFT JOIN (SELECT ovl2.*
+               FROM civicrm_option_group ogp2,
+                    civicrm_option_value ovl2
+              WHERE ogp2.name = \'case_type_code\' AND
+                    ovl2.option_group_id = ogp2.id) cod
+    ON cod.label = ovl1.label,
+  civicrm_contact con
+  LEFT JOIN civicrm_country cy1 ON cy1.name = con.display_name
+  LEFT JOIN civicrm_address adr
+    ON adr.contact_id = con.id AND
+       adr.is_primary = 1
+  LEFT JOIN civicrm_country cy2 ON adr.country_id = cy2.id
+WHERE
+  cas.case_type_id = \'' . $form->_submitValues['case_type_id'] . '\' AND
+  ccn.case_id = cas.id AND
+  ccn.contact_id = ' . $form->_currentlyViewedContactId  . ' AND
+  ogp1.name = \'case_type\' AND
+  ovl1.option_group_id = ogp1.id AND
+  cas.case_type_id = ovl1.value AND
+  con.id = ccn.contact_id
+ORDER BY
+  cas.id DESC
+LIMIT 1
+			';
+			$dao_find = CRM_Core_DAO::executeQuery($sql);
+			while($dao_find->fetch()) {
+				CRM_Generic_Upgrader::_setMainActivityNumber($dao_find);
+			}
+			break;
+			
+		default:
+	}
+}
