@@ -381,11 +381,11 @@ class Generic_OptionGroup {
 			);
 			$result = civicrm_api('OptionGroup', 'getsingle', $params);
 
-			if (in_array('is_error', $result)) {
-				// optiongroup not found: $optionGroupId remains NULL
-			} else {
+			if (isset($result['id'])) {
 				// optiongroup found: use id
 				$optionGroupId = $result['id'];
+			} else {
+				// optiongroup not found: $optionGroupId remains NULL
 			}
 		
 			// if group was not found: create it
