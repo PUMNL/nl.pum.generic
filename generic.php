@@ -130,7 +130,7 @@ function generic_civicrm_upgrade($op, CRM_Queue_Queue $queue = NULL) {
  * is installed, disabled, uninstalled.
  */
 function generic_civicrm_managed(&$entities) {
-    Generic_ContactType::managed($entities);
+  Generic_ContactType::managed($entities);
 	Generic_Group::managed($entities);
 	Generic_RelationshipType::managed($entities);
 	Generic_OptionGroup::managed($entities);

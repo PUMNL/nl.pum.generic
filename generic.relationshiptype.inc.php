@@ -195,9 +195,9 @@ class Generic_RelationshipType {
 				'entity'	=> 'RelationshipType',
 				'params'	=> array(
 					'version'				=> 3,
-					'name_a_b'				=> 'Representative',
+					'name_a_b'				=> 'Representative is',
 					'name_b_a'				=> 'Representative is',
-					'label_a_b'				=> 'Representative',
+					'label_a_b'				=> 'Representative for',
 					'label_b_a'				=> 'Representative for',
 					'contact_type_a'		=> 'Organization',
 					'contact_sub_type_a'	=> '',
@@ -358,7 +358,6 @@ class Generic_RelationshipType {
 				// workaround: first make contact_type_a 'Individual', then update to '' using e.g. .../CiviCRM/clearcache
 				$params = array(
 					'version' => 3,
-					'q' => 'civicrm/ajax/rest',
 					'sequential' => 1,
 					'name_a_b' => $relationship['params']['name_a_b'],
 				);
