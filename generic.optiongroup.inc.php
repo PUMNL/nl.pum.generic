@@ -301,6 +301,35 @@ class Generic_OptionGroup {
 						),
 				),
 			),
+      array(
+				'group_name'	=>	'case_status',
+				'values'		=>	array(
+					array(
+						'label'			=> 'Assess Expert Applicaton',
+						'value'			=> '8',
+						'weight'		=> 8,
+						'description'	=> 'Used in Expertapplication to show a CV has been uploaded by a Candidate Expert',
+					),
+          array(
+						'label'			=> 'Completed',
+						'value'			=> '11',
+						'weight'		=> 11,
+						'description'	=> '',
+					),
+          array(
+						'label'			=> 'Rejected',
+						'value'			=> '16',
+						'weight'		=> 16,
+						'description'	=> 'Used in the Case \'ExpertApplication\'. The SC has somewhere during the application proces decided this candidate is not suitable for PUM',
+					),
+          array(
+						'label'			=> 'Accepted',
+						'value'			=> '15',
+						'weight'		=> 15,
+						'description'	=> 'Used in Expert Application when the Candidate Expert has been accepted.',
+					),
+        ),
+      ),
 			array(
 				'group_name'	=>	'case_type_code',
 				'values'		=>	array(
