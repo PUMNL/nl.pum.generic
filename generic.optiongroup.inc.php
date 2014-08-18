@@ -311,6 +311,12 @@ class Generic_OptionGroup {
 						'description'	=> 'Used in Expertapplication to show a CV has been uploaded by a Candidate Expert',
 					),
           array(
+						'label'			=> 'Interview',
+						'value'			=> '7',
+						'weight'		=> 7,
+						'description'	=> 'Used in  Expert application case',
+					),
+          array(
 						'label'			=> 'Completed',
 						'value'			=> '11',
 						'weight'		=> 11,
