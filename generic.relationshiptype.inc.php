@@ -68,8 +68,8 @@ class Generic_RelationshipType {
 				'params'	=> array(
 					'version'				=> 3,
 					'name_a_b'				=> 'Country Coordinator is',
-					'name_b_a'				=> 'Country Coordinator is',
-					'label_a_b'				=> 'Country Coordinator for',
+					'name_b_a'				=> 'Country Coordinator for',
+					'label_a_b'				=> 'Country Coordinator is',
 					'label_b_a'				=> 'Country Coordinator for',
 					'contact_type_a'		=> 'Organization',
 					'contact_sub_type_a'	=> 'Country',
@@ -86,8 +86,8 @@ class Generic_RelationshipType {
 				'params'	=> array(
 					'version'				=> 3,
 					'name_a_b'				=> 'Has authorised',
-					'name_b_a'				=> 'Has authorised',
-					'label_a_b'				=> 'Authorised contact for',
+					'name_b_a'				=> 'Authorised contact for',
+					'label_a_b'				=> 'Has authorised',
 					'label_b_a'				=> 'Authorised contact for',
 					'contact_type_a'		=> 'Organization',
 					'contact_sub_type_a'	=> '',
@@ -196,8 +196,8 @@ class Generic_RelationshipType {
 				'params'	=> array(
 					'version'				=> 3,
 					'name_a_b'				=> 'Representative is',
-					'name_b_a'				=> 'Representative is',
-					'label_a_b'				=> 'Representative for',
+					'name_b_a'				=> 'Representative for',
+					'label_a_b'				=> 'Representative is',
 					'label_b_a'				=> 'Representative for',
 					'contact_type_a'		=> 'Organization',
 					'contact_sub_type_a'	=> '',
