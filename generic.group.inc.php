@@ -18,7 +18,19 @@ class Generic_Group {
 				'description'   => 'Test Group for Experts',
 				'is_active'     =>  1,
 				'group_type'    =>  array(2 => 1))
-			)
+			),
+			array(
+			'module'    => 'nl.pum.generic',
+			'name'      => 'Candidate Expert',
+			'entity'    => 'Group',
+			'params'    => array(
+				'version'       => 3,
+				'name'          => 'Candidate Expert',
+				'title'         => 'Candidate Expert',
+				'description'   => 'Gebruikt voor aanmelding van Experts',
+				'is_active'     =>  1,
+				'group_type'    =>  array(2 => 1))
+			),
 		);
 	}
 	
