@@ -147,6 +147,34 @@ ORDER BY cas.id
 	}
 	return TRUE;
   }
+  
+  /**
+   * Upgrade 1006 - initiating sequences for
+   * 1: main activities and DSA payments
+   * 2: payment lines
+   */
+  public function upgrade_1006() {
+	$this->ctx->log->info('Applying update 1006 (initiating sequence)');
+    if (!_generic_verify_sequencer()) {
+		CRM_Core_Error::fatal("Mandatory module nl.pum.sequencer is not enabled!");
+		return FALSE;
+	};
+	// sequence for invoice numbers
+	// 1 to 9999, cyclic
+	$params = array(
+		'version' => 3,
+		'q' => 'civicrm/ajax/rest',
+		'name' => 'invoice_number',
+		'min_value' => 1,
+		'max_value' => 9999,
+		'cycle' => 1,
+	);
+	$result = civicrm_api('Sequence', 'create', $params);
+	if ($result['is_error']==1) {
+		return FALSE;
+	}
+	return TRUE;
+  }
    
   /**
    * Example: Run a couple simple queries
