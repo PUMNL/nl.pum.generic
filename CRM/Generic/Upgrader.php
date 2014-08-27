@@ -8,11 +8,12 @@ class CRM_Generic_Upgrader extends CRM_Generic_Upgrader_Base {
   // By convention, functions that look like "function upgrade_NNNN()" are
   // upgrade tasks. They are executed in order (like Drupal's hook_update_N).
 
-  /**
-   * Example: Run an external SQL script when the module is installed
-   *
+  
   public function install() {
-    $this->executeSqlFile('sql/myinstall.sql');
+    $this->upgrade_1001();
+    $this->upgrade_1002();
+    $this->upgrade_1004();
+    $this->upgrade_1005();
   }
 
   /**
