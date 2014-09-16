@@ -287,6 +287,47 @@ class Generic_ActivityType {
 				'label' => 'Transfer the approved budget to projectmanager, expert or PUM Rep',
 				'description' => 'Used in "HBF"'
 				),
+      array(
+				'component' => 'CiviCase',
+				'label' => 'Intake Customer by CC',
+				'description' => 'Used in "Projectintake"'
+				),
+      array(
+				'component' => 'CiviCase',
+				'label' => 'Intake Customer by SC',
+				'description' => 'Used in "Projectintake"'
+				),
+      array(
+				'component' => 'CiviCase',
+				'label' => 'Intake Customer by Anamon',
+				'description' => 'Used in "Projectintake"'
+				),
+      array(
+				'component' => 'CiviCase',
+				'label' => 'Assessment Project Request by Rep',
+				'description' => 'Used in "Projectintake"'
+				),
+      
+      array(
+				'component' => 'CiviCase',
+				'label' => 'RCT Intake Report',
+				'description' => 'Used in "Expertapplication"'
+				),
+      array(
+				'component' => 'CiviCase',
+				'label' => 'Create Candidate Expert Account',
+				'description' => 'Used in "Expertapplication"'
+				),
+      array(
+				'component' => 'CiviCase',
+				'label' => 'Fill Out PUM CV',
+				'description' => 'Used in "Expertapplication"'
+				),
+      array(
+				'component' => 'CiviCase',
+				'label' => 'Contact with colleague',
+				'description' => 'Used in civi case to log contact info with a colleaugue'
+				),
 		);
 	}
 	
