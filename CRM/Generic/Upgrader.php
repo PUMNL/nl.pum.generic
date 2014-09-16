@@ -174,6 +174,33 @@ ORDER BY cas.id
 	}
 	return TRUE;
   }
+  
+   /**
+   * Upgrade 1007 - initiating sequence for dsa activities (surrogate for main activity)
+   * - 
+   */
+   public function upgrade_1007() {
+	$this->ctx->log->info('Applying update 1007 (initiating sequence)');
+    if (!_generic_verify_sequencer()) {
+		CRM_Core_Error::fatal("Mandatory module nl.pum.sequencer is not enabled!");
+		return FALSE;
+	};
+	// sequence for main activities (and for DSA: participants)
+	// 7000 to infinite, step 1, no cycle (like main activity)
+	$params = array(
+		'version' => 3,
+		'q' => 'civicrm/ajax/rest',
+		'name' => 'dsa_activity',
+		'min_value' => 70000,
+		'cur_value' => 70000,
+	);
+	$result = civicrm_api('Sequence', 'create', $params);
+	if ($result['is_error']==1) {
+		return FALSE;
+	}
+	return TRUE;
+  }
+
    
   /**
    * Example: Run a couple simple queries
