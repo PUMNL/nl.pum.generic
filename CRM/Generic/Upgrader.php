@@ -14,6 +14,7 @@ class CRM_Generic_Upgrader extends CRM_Generic_Upgrader_Base {
     $this->upgrade_1002();
     $this->upgrade_1004();
     $this->upgrade_1005();
+	$this->upgrade_1006();
   }
 
   /**
