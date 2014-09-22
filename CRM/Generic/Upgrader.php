@@ -8,13 +8,11 @@ class CRM_Generic_Upgrader extends CRM_Generic_Upgrader_Base {
   // By convention, functions that look like "function upgrade_NNNN()" are
   // upgrade tasks. They are executed in order (like Drupal's hook_update_N).
 
-  
+  /**
+   * Example: Run an external SQL script when the module is installed
+   *
   public function install() {
-    $this->upgrade_1001();
-    $this->upgrade_1002();
-    $this->upgrade_1004();
-    $this->upgrade_1005();
-	$this->upgrade_1006();
+    $this->executeSqlFile('sql/myinstall.sql');
   }
 
   /**
@@ -179,7 +177,6 @@ ORDER BY cas.id
   
    /**
    * Upgrade 1007 - initiating sequence for dsa activities (surrogate for main activity)
-   * - 
    */
    public function upgrade_1007() {
 	$this->ctx->log->info('Applying update 1007 (initiating sequence)');
@@ -202,7 +199,6 @@ ORDER BY cas.id
 	}
 	return TRUE;
   }
-
    
   /**
    * Example: Run a couple simple queries

@@ -1,334 +1,14 @@
 <?php
 
+require_once 'generic.activitytype.def.inc.php';
+
 class Generic_ActivityType {
 	
 	/*
 	 * returns the definitions for generic activity types
 	 */
 	static function required() {
-		return array(
-			array(
-				'component' => 'CiviCase',
-				'label' => 'Accept or Reject Product by Expert',
-				'description' => 'Used in "Factfinding Mission"'
-				),
-			array(
-				'component' => 'CiviCase',
-				'label' => 'Add Expert Information',
-				'description' => 'Used in "Factfinding Mission". In deze stap vult de Expert zijn beschikbaarheid en key qualifications aan zodat de klant hier straks de meest up to date info over heeft.'
-				),
-			array(
-				'component' => 'CiviCase',
-				'label' => 'Add key qualifications and availability to PUM-expert CV',
-				'description' => 'Used in "Factfinding Mission"'
-				),
-			array(
-				'component' => 'CiviCase',
-				'label' => 'Additional comments by Prof',
-				'description' => 'Used in "Factfinding Mission"'
-				),
-			array(
-				'component' => 'CiviCase',
-				'label' => 'Approve PUM-expert information by PrOf and send PUM-expert profile to customer',
-				'description' => 'Used in "Factfinding Mission"'
-				),
-			array(
-				'component' => 'CiviCase',
-				'label' => 'Approve PUM-expert information by SC',
-				'description' => 'Used in "Factfinding Mission"'
-				),
-			array(
-				'component' => 'CiviCase',
-				'label' => 'Approve PUM-expert information CC',
-				'description' => 'Used in "Factfinding Mission"'
-				),
-			array(
-				'component' => 'CiviCase',
-				'label' => 'Assess Expert Application',
-				'description' => 'Used in "Expertapplication" Assess the Expert Application containing Basic Condition, Additional Information en attached CV.'
-				),
-			array(
-				'component' => 'CiviCase',
-				'label' => 'Assess project proposal by anamon',
-				'description' => 'Used for "Projectrequest"'
-				),
-			array(
-				'component' => 'CiviCase',
-				'label' => 'Assess project proposal by cc',
-				'description' => 'Used for "Projectrequest"'
-				),
-			array(
-				'component' => 'CiviCase',
-				'label' => 'Assess project proposal by sc',
-				'description' => 'Used for "Projectrequest"'
-				),
-			array(
-				'component' => 'CiviCase',
-				'label' => 'Book contributors',
-				'description' => 'Used in "Organise Event"'
-				),
-			array(
-				'component' => 'CiviCase',
-				'label' => 'Book location',
-				'description' => 'Used in "Organise Event"'
-				),
-			array(
-				'component' => 'CiviCase',
-				'label' => 'Book meeting room',
-				'description' => 'Used for "Organise Event"'
-				),
-			array(
-				'component' => 'CiviCase',
-				'label' => 'Check agenda participants',
-				'description' => 'Used in "Organise Event"'
-				),
-			array(
-				'component' => 'CiviCase',
-				'label' => 'Compose programme',
-				'description' => 'Used in "Organise Event"'
-				),
-			array(
-				'component' => 'CiviCase',
-				'label' => 'Confirm participation',
-				'description' => 'Used in "Organise Event"'
-				),
-			array(
-				'component' => 'CiviCase',
-				'label' => 'Contact about Customer',
-				'description' => ''
-				),
-			array(
-				'component' => 'CiviCase',
-				'label' => 'Contact about Expert',
-				'description' => ''
-				),
-			array(
-				'component' => 'CiviCase',
-				'label' => 'Contact with Customer',
-				'description' => ''
-				),
-			array(
-				'component' => 'CiviCase',
-				'label' => 'Contact with Expert',
-				'description' => ''
-				),
-			array(
-				'component' => 'CiviCase',
-				'label' => 'Create concept project plan option',
-				'description' => 'Used in "FactfindingMission"'
-				),
-			array(
-				'component' => 'CiviCase',
-				'label' => 'Customer assesses PUM-expert profile',
-				'description' => 'Used in "Factfinding Mission"'
-				),
-			array(
-				'component' => 'CiviCase',
-				'label' => 'Customer enters evaluation form',
-				'description' => 'Used in "Factfindingmission"'
-				),
-			array(
-				'component' => 'CiviCase',
-				'label' => 'Examine options',
-				'description' => 'Used in "Organise Event"'
-				),
-			array(
-				'component' => 'CiviCase',
-				'label' => 'Expert to assess projectrequest',
-				'description' => 'Used in "Projectrequest"'
-				),
-			array(
-				'component' => 'CiviCase',
-				'label' => 'Factfinding missie',
-				'description' => ''
-				),
-			array(
-				'component' => 'CiviCase',
-				'label' => 'Invite applicant',
-				'description' => 'Used in "Expert Application" Uitnodigen van een geinteresseerde expert.'
-				),
-			array(
-				'component' => 'CiviCase',
-				'label' => 'Invite participants',
-				'description' => 'Used in "Organize Event"'
-				),
-			array(
-				'component' => 'CiviCase',
-				'label' => 'Invite to meeting',
-				'description' => 'Used for "Organise Event"'
-				),
-			array(
-				'component' => 'CiviCase',
-				'label' => 'KIT test',
-				'description' => 'Used in Expertapplication'
-				),
-			array(
-				'component' => 'CiviCase',
-				'label' => 'Plan activities',
-				'description' => 'Used in "Organise Event"'
-				),
-			array(
-				'component' => 'CiviCase',
-				'label' => 'PR enters debriefing form',
-				'description' => 'Used in "Factfindingmission"'
-				),
-			array(
-				'component' => 'CiviCase',
-				'label' => 'Prof assigns briefingdocuments for expert to cc',
-				'description' => 'Used in "Factfindingmission"'
-				),
-			array(
-				'component' => 'CiviCase',
-				'label' => 'Prof checks and transfers approved budget',
-				'description' => 'Used in "Factfinding Mission"'
-				),
-			array(
-				'component' => 'CiviCase',
-				'label' => 'Prof enters travel details and requests expert for OK',
-				'description' => 'Used for "Factfindingmissie"'
-				),
-			array(
-				'component' => 'CiviCase',
-				'label' => 'Prof enters travel details and requests organisation for OK and pick up details',
-				'description' => 'Used in "Factfindingmission"'
-				),
-			array(
-				'component' => 'CiviCase',
-				'label' => 'Prof requests visa for expert',
-				'description' => 'Used in "Factfindingmission"'
-				),
-			array(
-				'component' => 'CiviCase',
-				'label' => 'Prof sends travel request to BCD',
-				'description' => 'Used in "Factfindingmission"'
-				),
-			array(
-				'component' => 'CiviCase',
-				'label' => 'Prof sends visa forms to expert',
-				'description' => 'Used in "Factfindingmission"'
-				),
-			array(
-				'component' => 'CiviCase',
-				'label' => 'PUM Rep assess Projectrequest',
-				'description' => 'Used for "Projectrequest"'
-				),
-			array(
-				'component' => 'CiviCase',
-				'label' => 'Report on meeting',
-				'description' => 'Used in "Organise Event"'
-				),
-			array(
-				'component' => 'CiviCase',
-				'label' => 'SC enters debriefing form',
-				'description' => 'Used in "Factfindingmission"'
-				),
-			array(
-				'component' => 'CiviCase',
-				'label' => 'Select and match PUM-expert to product',
-				'description' => 'Used in "Factfinding Mission"'
-				),
-			array(
-				'component' => 'CiviCase',
-				'label' => 'All involved assess projectresults',
-				'description' => 'Used in "Projectevaluation"'
-				),
-			array(
-				'component' => 'CiviCase',
-				'label' => 'Adjust Projectplan',
-				'description' => 'Used in "Advice"'
-				),
-			array(
-				'component' => 'CiviCase',
-				'label' => 'Projectmanager requests expert to create BLP product',
-				'description' => 'Used in "BLP"'
-				),
-			array(
-				'component' => 'CiviCase',
-				'label' => 'Assess BLP proposal by CC',
-				'description' => 'Used in "BLP"'
-				),
-			array(
-				'component' => 'CiviCase',
-				'label' => 'Assess BLP proposal by SC',
-				'description' => 'Used in "BLP"'
-				),
-			array(
-				'component' => 'CiviCase',
-				'label' => 'Prof send invoice and registration form link to customer',
-				'description' => 'Used in "BLP"'
-				),
-			array(
-				'component' => 'CiviCase',
-				'label' => 'Prof creates invitation letter for customer',
-				'description' => 'Used in "BLP"'
-				),
-			array(
-				'component' => 'CiviCase',
-				'label' => 'Prof assembles briefingsmap',
-				'description' => 'Used in "BLP"'
-				),
-			array(
-				'component' => 'CiviCase',
-				'label' => 'Prof checks and transfers approved budget',
-				'description' => 'Used in "BLP"'
-				),
-			array(
-				'component' => 'CiviCase',
-				'label' => 'Projectmanager or expert creates product HBF with concept budget'
-				,'description' => 'Used in "HBF"'
-				),
-			array(
-				'component' => 'CiviCase',
-				'label' => 'Check and assess HBF application',
-				'description' => 'Used in "HBF"'
-				),
-			array(
-				'component' => 'CiviCase',
-				'label' => 'Transfer the approved budget to projectmanager, expert or PUM Rep',
-				'description' => 'Used in "HBF"'
-				),
-      array(
-				'component' => 'CiviCase',
-				'label' => 'Intake Customer by CC',
-				'description' => 'Used in "Projectintake"'
-				),
-      array(
-				'component' => 'CiviCase',
-				'label' => 'Intake Customer by SC',
-				'description' => 'Used in "Projectintake"'
-				),
-      array(
-				'component' => 'CiviCase',
-				'label' => 'Intake Customer by Anamon',
-				'description' => 'Used in "Projectintake"'
-				),
-      array(
-				'component' => 'CiviCase',
-				'label' => 'Assessment Project Request by Rep',
-				'description' => 'Used in "Projectintake"'
-				),
-      
-      array(
-				'component' => 'CiviCase',
-				'label' => 'RCT Intake Report',
-				'description' => 'Used in "Expertapplication"'
-				),
-      array(
-				'component' => 'CiviCase',
-				'label' => 'Create Candidate Expert Account',
-				'description' => 'Used in "Expertapplication"'
-				),
-      array(
-				'component' => 'CiviCase',
-				'label' => 'Fill Out PUM CV',
-				'description' => 'Used in "Expertapplication"'
-				),
-      array(
-				'component' => 'CiviCase',
-				'label' => 'Contact with colleague',
-				'description' => 'Used in civi case to log contact info with a colleaugue'
-				),
-		);
+		return Generic_ActivityType_Def::required();
 	}
 	
 	/*
@@ -369,7 +49,7 @@ class Generic_ActivityType {
 			// optiongroup found: use it as option_group_id in option values
 			foreach ($required as $activityType) {
 				$componentId = NULL;
-				$tolerate[] = $activityType['label']; // add $required elements to $tolerate to avoid disabling
+				$tolerate[] = $activityType['name']; // add $required elements to $tolerate to avoid disabling
 				
 				// translate component to id (null = 'Contacts OR Cases')
 				if (array_key_exists($activityType['component'], $existingComponents)) {
@@ -381,7 +61,7 @@ class Generic_ActivityType {
 					'version'			=> 3,
 					'sequential'		=> 1,
 					'option_group_id'	=> $optionGroupId,
-					'label'				=> $activityType['label'],
+					'name'				=> $activityType['name'],
 				);
 				$result = civicrm_api('OptionValue', 'getsingle', $params);
 				
@@ -396,7 +76,7 @@ class Generic_ActivityType {
 						'option_group_id'	=> $optionGroupId,
 						'component_id'		=> $componentId,
 						'label'				=> $activityType['label'],
-						'name'				=> $activityType['label'],
+						'name'				=> $activityType['name'],
 						'value'				=> $new_value,
 						'description'		=> 'nl.pum.generic - ' . $activityType['description'],
 						'is_reserved'		=> TRUE,
@@ -404,6 +84,7 @@ class Generic_ActivityType {
 					);
 					$result = civicrm_api('OptionValue', 'create', $params);
 					// result could be checked / reported here
+					$created[] = $activityType['name'];
 				} else {
 					// optiongroup exists - no further action
 				}
@@ -429,6 +110,10 @@ class Generic_ActivityType {
 				}
 			}
 		}
+		
+		$message = "Activity type ".implode(", ", $created)." succesfully created";
+		CRM_Utils_System::setUFMessage($message);
+		
 	}
 	
 	/*
@@ -451,7 +136,7 @@ class Generic_ActivityType {
 					'version' => 3,
 					'sequential' => 1,
 					'option_group_id' => $optionGroupId,
-					'label' => $activityType['label'],
+					'name' => $activityType['name'],
 				);
 				$result = civicrm_api('OptionValue', 'get', $params);
 				if (array_key_exists('id', $result)) {
@@ -484,7 +169,7 @@ class Generic_ActivityType {
 					'version' => 3,
 					'sequential' => 1,
 					'option_group_id' => $optionGroupId,
-					'label' => $activityType['label'],
+					'name' => $activityType['name'],
 				);
 				$result = civicrm_api('OptionValue', 'get', $params);
 				if (array_key_exists('id', $result)) {

@@ -1,401 +1,14 @@
 <?php
 
+require_once 'generic.optiongroup.def.inc.php';
+
 class Generic_OptionGroup {
 	
 	/*
 	 * returns the definitions for generic option groups
 	 */
 	static function required() {
-		return array(
-			array(
-				'group_name'	=>	'Advice',
-				'values'		=>	array(
-					array(
-						'label'			=> 'Approve',
-						'value'			=> 'Approve',
-						'weight'		=> 10,
-						'description'	=> '',
-					),
-					array(
-						'label'			=> 'Disapprove',
-						'value'			=> 'Disapprove',
-						'weight'		=> 20,
-						'description'	=> '',
-					),
-				),
-			),
-			array(
-				'group_name'	=>	'Are there commercial consultants with similar expertise available for this project in your region/country?',
-				'values'		=>	array(
-					array(
-						'label'			=> 'Choose',
-						'value'			=> 'Choose',
-						'weight'		=> 10,
-						'description'	=> '',
-					),
-					array(
-						'label'			=> 'Yes',
-						'value'			=> 'Yes',
-						'weight'		=> 20,
-						'description'	=> '',
-					),
-					array(
-						'label'			=> 'No',
-						'value'			=> 'No',
-						'weight'		=> 30,
-						'description'	=> '',
-					),
-				),
-			),
-			array(
-				'group_name'	=>	'Do you have financial means available to pay for local commercial consultant?',
-				'values'		=>	array(
-					array(
-						'label'			=> 'Choose',
-						'value'			=> 'Choose',
-						'weight'		=> 10,
-						'description'	=> '',
-					),
-					array(
-						'label'			=> 'Yes',
-						'value'			=> 'Yes',
-						'weight'		=> 20,
-						'description'	=> '',
-					),
-					array(
-						'label'			=> 'No',
-						'value'			=> 'No',
-						'weight'		=> 30,
-						'description'	=> '',
-					),
-				),
-			),
-			array(
-				'group_name'	=>	'English Language',
-				'values'		=>	array(
-					array(
-						'label'			=> 'Native Speaker',
-						'value'			=> 'Native Speaker',
-						'weight'		=> 10,
-						'description'	=> '',
-					),
-					array(
-						'label'			=> 'Fluent',
-						'value'			=> 'Fluent',
-						'weight'		=> 20,
-						'description'	=> '',
-					),
-					array(
-						'label'			=> 'Basic',
-						'value'			=> 'Basic',
-						'weight'		=> 30,
-						'description'	=> '',
-					),
-					array(
-						'label'			=> 'Poor',
-						'value'			=> 'Poor',
-						'weight'		=> 40,
-						'description'	=> '',
-					),
-				),
-			),
-			array(
-				'group_name'	=>	'Foreign Ownership',
-				'values'		=>	array(
-					array(
-						'label'		=> 'Yes',
-						'value'		=> 'Yes',
-						'weight'	=> 10,
-						'description'	=> '',
-					),
-					array(
-						'label'		=> 'No',
-						'value'		=> 'No',
-						'weight'	=> 20,
-						'description'	=> '',
-					),
-				),
-			),
-			array(
-				'group_name'	=>	'Franchising Contract',
-				'values'		=>	array(
-					array(
-						'label'			=> 'Yes',
-						'value'			=> 'Yes',
-						'weight'		=> 20,
-						'description'	=> '',
-					),
-					array(
-						'label'			=> 'No',
-						'value'			=> 'No',
-						'weight'		=> 30,
-						'description'	=> '',
-					),
-				),
-			),
-			array(
-				'group_name'	=>	'Have you received or will you in the near future receive managerial or technical assistance from other organisations?',
-				'values'		=>	array(
-					array(
-						'label'			=> 'Choose',
-						'value'			=> 'Choose',
-						'weight'		=> 10,
-						'description'	=> '',
-					),
-					array(
-						'label'			=> 'Yes',
-						'value'			=> 'Yes',
-						'weight'		=> 20,
-						'description'	=> '',
-					),
-					array(
-						'label'			=> 'No',
-						'value'			=> 'No',
-						'weight'		=> 30,
-						'description'	=> '',
-					),
-				),
-			),
-			array(
-				'group_name'	=>	'Is your company part of a holding/group of companies?',
-				'values'		=>	array(
-					array(
-						'label'			=> 'Yes',
-						'value'			=> 'Yes',
-						'weight'		=> 10,
-						'description'	=> '',
-					),
-					array(
-						'label'			=> 'No',
-						'value'			=> 'No',
-						'weight'		=> 20,
-						'description'	=> '',
-					),
-				),
-			),
-			array(
-				'group_name'	=>	'Legal form of the Organisation',
-				'values'		=>	array(
-					array(
-						'label'			=> 'Individual',
-						'value'			=> 'Individual',
-						'weight'		=> 10,
-						'description'	=> '',
-					),
-					array(
-						'label'			=> 'Cooperation',
-						'value'			=> 'Cooperation',
-						'weight'		=> 20,
-						'description'	=> '',
-					),
-					array(
-						'label'			=> 'Limited Liability Company',
-						'value'			=> 'Limited Liability Company',
-						'weight'		=> 30,
-						'description'	=> '',
-					),
-					array(
-						'label'			=> 'Joint Stock Company',
-						'value'			=> 'Joint Stock Company',
-						'weight'		=> 40,
-						'description'	=> '',
-					),
-					array(
-						'label'			=> 'Other',
-						'value'			=> 'Other',
-						'weight'		=> 50,
-						'description'	=> '',
-					),
-				),
-			),
-			array(
-				'group_name'	=>	'Marital Status',
-				'values'		=>	array(
-					array(
-						'label'			=> 'Married',
-						'value'			=> '1',
-						'weight'		=> 10,
-						'description'	=> '',
-					),
-					array(
-						'label'			=> 'Single',
-						'value'			=> '2',
-						'weight'		=> 20,
-						'description'	=> '',
-					),
-					array(
-						'label'			=> 'Partner',
-						'value'			=> '3',
-						'weight'		=> 30,
-						'description'	=> '',
-					),
-					array(
-						'label'			=> 'Unknown',
-						'value'			=> '4',
-						'weight'		=> 40,
-						'description'	=> '',
-					),
-					array(
-						'label'			=> 'Widowed',
-						'value'			=> '5',
-						'weight'		=> 50,
-						'description'	=> '',
-					),
-				),
-			),
-			array(
-				'group_name'	=>	'Nationality',
-				'values'		=>	array(
-				),
-			),
-			array(
-				'group_name'	=>	'case_type',
-				'values'		=>	array(
-					array(
-						'label'			=> 'Expertapplication',
-						'value'			=> 'Expertapplication',
-						'weight'		=> 10,
-						'description'	=> 'Used to manage the expert application',
-					),
-					array(
-						'label'			=> 'Factfindingmission',
-						'value'			=> 'Factfindingmission',
-						'weight'		=> 20,
-						'description'	=> 'A product used to further define the Projectproposal',
-					),
-					array(
-						'label'			=> 'Organise Event',
-						'value'			=> 'Organise Event',
-						'weight'		=> 30,
-						'description'	=> 'Used in "Organise Event"',
-						),
-					array(
-						'label'			=> 'Projectrequest',
-						'value'			=> 'Projectrequest',
-						'weight'		=> 40,
-						'description'	=> 'Used to assess the project request',
-						),
-					array(
-						'label'			=> 'Projectevaluation',
-						'value'			=> 'Projectevaluation',
-						'weight'		=> 50,
-						'description'	=> 'Uses to assess and evaluate complete project',
-						),
-					array(
-						'label'			=> 'Advice',
-						'value'			=> 'Advice',
-						'weight'		=> 60,
-						'description'	=> 'A product used to execute a project of the type: Advice',
-						),
-					array(
-						'label'			=> 'BLP',
-						'value'			=> 'BLP',
-						'weight'		=> 70,
-						'description'	=> 'A product used to execute a project of the type: Business Link Programme',
-						),
-					array(
-						'label'			=> 'HBF',
-						'value'			=> 'HBF',
-						'weight'		=> 80,
-						'description'	=> 'A product used to execute a project of the type: Hans Blankert Fonds',
-						),
-				),
-			),
-      array(
-				'group_name'	=>	'case_status',
-				'values'		=>	array(
-					array(
-						'label'			=> 'Assess Expert Applicaton',
-						'value'			=> '8',
-						'weight'		=> 8,
-						'description'	=> 'Used in Expertapplication to show a CV has been uploaded by a Candidate Expert',
-					),
-          array(
-						'label'			=> 'Interview',
-						'value'			=> '7',
-						'weight'		=> 7,
-						'description'	=> 'Used in  Expert application case',
-					),
-          array(
-						'label'			=> 'Completed',
-						'value'			=> '11',
-						'weight'		=> 11,
-						'description'	=> '',
-					),
-          array(
-						'label'			=> 'Rejected',
-						'value'			=> '16',
-						'weight'		=> 16,
-						'description'	=> 'Used in the Case \'ExpertApplication\'. The SC has somewhere during the application proces decided this candidate is not suitable for PUM',
-					),
-          array(
-						'label'			=> 'Accepted',
-						'value'			=> '15',
-						'weight'		=> 15,
-						'description'	=> 'Used in Expert Application when the Candidate Expert has been accepted.',
-					),
-        ),
-      ),
-			array(
-				'group_name'	=>	'case_type_code',
-				'values'		=>	array(
-					array(
-						'label'			=> 'Advice',
-						'value'			=> 'A',
-						'weight'		=> 10,
-						'description'	=> '',
-					),
-					array(
-						'label'			=> 'Business',
-						'value'			=> 'B',
-						'weight'		=> 20,
-						'description'	=> '',
-					),
-					array(
-						'label'			=> 'CTM',
-						'value'			=> 'C',
-						'weight'		=> 30,
-						'description'	=> '',
-					),
-					array(
-						'label'			=> 'Grant',
-						'value'			=> 'G',
-						'weight'		=> 50,
-						'description'	=> '',
-					),
-					array(
-						'label'			=> 'PDV',
-						'value'			=> 'P',
-						'weight'		=> 60,
-						'description'	=> '',
-					),
-					array(
-						'label'			=> 'Acquisitie',
-						'value'			=> 'Q',
-						'weight'		=> 70,
-						'description'	=> '',
-					),
-					array(
-						'label'			=> 'Remote Coaching',
-						'value'			=> 'R',
-						'weight'		=> 80,
-						'description'	=> '',
-					),
-					array(
-						'label'			=> 'Seminar',
-						'value'			=> 'S',
-						'weight'		=> 90,
-						'description'	=> '',
-					),
-					array(
-						'label'			=> 'Housing Support',
-						'value'			=> 'H',
-						'weight'		=> 199,
-						'description'	=> '',
-					),
-				),
-			),
-		);
+		return Generic_OptionGroup_Def::required();
 	}
 	
 	/*
@@ -412,7 +25,7 @@ class Generic_OptionGroup {
 			$params = array(
 				'version'		=> 3,
 				'sequential'	=> 1,
-				'title'			=> $optionGroup['group_name'],
+				'name'			=> $optionGroup['group_name'],
 			);
 			$result = civicrm_api('OptionGroup', 'getsingle', $params);
 
@@ -428,8 +41,8 @@ class Generic_OptionGroup {
 				$params = array(
 					'version'		=> 3,
 					'sequential'	=> 1,
-					'name'			=> substr($optionGroup['group_name'],  0, 63),
-					'title'			=> $optionGroup['group_name'],
+					'name'			=> $optionGroup['group_name'],
+					'title'			=> $optionGroup['group_title'],
 					'is_active'		=> 1,
 					'description'	=> 'nl.pum.generic',
 				);
@@ -456,7 +69,7 @@ class Generic_OptionGroup {
 						'version'			=> 3,
 						'sequential'		=> 1,
 						'option_group_id'	=> $optionGroupId,
-						'label'				=> $optionValue['label'],
+						'name'				=> $optionValue['name'],
 					);
 					$result = civicrm_api('OptionValue', 'getsingle', $params);
 					
@@ -466,8 +79,9 @@ class Generic_OptionGroup {
 							'version'			=> 3,
 							'sequential'		=> 1,
 							'option_group_id'	=> $optionGroupId,
+							'name'				=> $optionValue['name'],
 							'label'				=> $optionValue['label'],
-							'name'				=> $optionValue['value'],
+							'value'				=> $optionValue['value'],
 							'description'		=> $optionValue['description'],
 							'is_reserved'		=> TRUE,
 							'is_active'			=> TRUE,
@@ -503,7 +117,7 @@ class Generic_OptionGroup {
 				// optiongroup not found: cannot enable
 			} else {
 				// optiongroup found: proceed
-				$qryEnable = "UPDATE civicrm_option_group SET is_active = 1 WHERE title = '" . $optionGroup['group_name'] . "'";
+				$qryEnable = "UPDATE civicrm_option_group SET is_active = 1 WHERE name = '" . $optionGroup['group_name'] . "'";
 				CRM_Core_DAO::executeQuery($qryEnable);
 			}
 		}
@@ -526,7 +140,7 @@ class Generic_OptionGroup {
 				// optiongroup not found: cannot disable
 			} else {
 				// optiongroup found: proceed
-				$qryDisable = "UPDATE civicrm_option_group SET is_active = 0 WHERE title = '" . $optionGroup['group_name'] . "'";
+				$qryDisable = "UPDATE civicrm_option_group SET is_active = 0 WHERE name = '" . $optionGroup['group_name'] . "'";
 				CRM_Core_DAO::executeQuery($qryDisable);
 			}
 		}

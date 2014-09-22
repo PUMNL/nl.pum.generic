@@ -1,286 +1,14 @@
 <?php
 
+require_once 'generic.relationshiptype.def.inc.php';
+
 class Generic_RelationshipType {
 	
 	/*
 	 * returns the definitions for generic relationship types
 	 */
 	static function required() {
-		return array(
-			array(
-				'module'	=> 'nl.pum.generic',
-				'name'		=> 'Accountholder',
-				'entity'	=> 'RelationshipType',
-				'params'	=> array(
-					'version'				=> 3,
-					'name_a_b'				=> 'Accountholder',
-					'name_b_a'				=> 'Accountholder for',
-					'label_a_b'				=> 'Accountholder',
-					'label_b_a'				=> 'Accountholder for',
-					'contact_type_a'		=> 'Organization',
-					'contact_sub_type_a'	=> '',
-					'contact_type_b'		=> 'Individual',
-					'contact_sub_type_b'	=> '',
-					'description'			=> 'Accountholder relationship',
-					'is_active'				=>  1,
-				),
-			),
-			array(
-				'module'	=> 'nl.pum.generic',
-				'name'		=> 'Anamon',
-				'entity'	=> 'RelationshipType',
-				'params'	=> array(
-					'version'				=> 3,
-					'name_a_b'				=> 'Anamon',
-					'name_b_a'				=> 'Anamon',
-					'label_a_b'				=> 'Anamon',
-					'label_b_a'				=> 'Anamon',
-					'contact_type_a'		=> 'Individual',
-					'contact_sub_type_a'	=> '',
-					'contact_type_b'		=> 'Individual',
-					'contact_sub_type_b'	=> '',
-					'description'			=> 'Anamon relationship',
-					'is_active'				=>  1,
-				),
-			),
-			array(
-				'module'	=> 'nl.pum.generic',
-				'name'		=> 'Aspect advisor',
-				'entity'	=> 'RelationshipType',
-				'params'	=> array(
-					'version'				=> 3,
-					'name_a_b'				=> 'Aspect advisor',
-					'name_b_a'				=> 'Aspect advisor',
-					'label_a_b'				=> 'Aspect advisor',
-					'label_b_a'				=> 'Aspect advisor',
-					'contact_type_a'		=> 'Individual',
-					'contact_sub_type_a'	=> '',
-					'contact_type_b'		=> 'Individual',
-					'contact_sub_type_b'	=> '',
-					'description'			=> 'Aspect advisor relationship',
-					'is_active'				=>  1,
-				),
-			),
-			array(
-				'module'	=> 'nl.pum.generic',
-				'name'		=> 'Country Coordinator',
-				'entity'	=> 'RelationshipType',
-				'params'	=> array(
-					'version'				=> 3,
-					'name_a_b'				=> 'Country Coordinator is',
-					'name_b_a'				=> 'Country Coordinator for',
-					'label_a_b'				=> 'Country Coordinator is',
-					'label_b_a'				=> 'Country Coordinator for',
-					'contact_type_a'		=> 'Organization',
-					'contact_sub_type_a'	=> 'Country',
-					'contact_type_b'		=> 'Individual',
-					'contact_sub_type_b'	=> '',
-					'description'			=> 'Country Coordinator relationship',
-					'is_active'				=>  1,
-				),
-			),
-			array(
-				'module'	=> 'nl.pum.generic',
-				'name'		=> 'Customer contact',
-				'entity'	=> 'RelationshipType',
-				'params'	=> array(
-					'version'				=> 3,
-					'name_a_b'				=> 'Has authorised',
-					'name_b_a'				=> 'Authorised contact for',
-					'label_a_b'				=> 'Has authorised',
-					'label_b_a'				=> 'Authorised contact for',
-					'contact_type_a'		=> 'Organization',
-					'contact_sub_type_a'	=> '',
-					'contact_type_b'		=> 'Individual',
-					'contact_sub_type_b'	=> '',
-					'description'			=> 'Customer contact relationship',
-					'is_active'				=>  1,
-				),
-			),
-			array(
-				'module'	=> 'nl.pum.generic',
-				'name'		=> 'Customer',
-				'entity'	=> 'RelationshipType',
-				'params'	=> array(
-					'version'				=> 3,
-					'name_a_b'				=> 'Customer of',
-					'name_b_a'				=> 'Service Provider for',
-					'label_a_b'				=> 'Customer of',
-					'label_b_a'				=> 'Service Provider for',
-					'contact_type_a'		=> 'Organization',
-					'contact_sub_type_a'	=> 'Customer',
-					'contact_type_b'		=> 'Organization',
-					'contact_sub_type_b'	=> '',
-					'description'			=> 'Customer relationship',
-					'is_active'				=>  1,
-				),
-			),
-			array(
-				'module'	=> 'nl.pum.generic',
-				'name'		=> 'Head Office',
-				'entity'	=> 'RelationshipType',
-				'params'	=> array(
-					'version'				=> 3,
-					'name_a_b'				=> 'Head Office for',
-					'name_b_a'				=> 'Sub Office of',
-					'label_a_b'				=> 'Head Office for',
-					'label_b_a'				=> 'Sub Office of',
-					'contact_type_a'		=> 'Organization',
-					'contact_sub_type_a'	=> '',
-					'contact_type_b'		=> 'Organization',
-					'contact_sub_type_b'	=> '',
-					'description'			=> 'Head Office relationship',
-					'is_active'				=>  1,
-				),
-			),
-			array(
-				'module'	=> 'nl.pum.generic',
-				'name'		=> 'Project member',
-				'entity'	=> 'RelationshipType',
-				'params'	=> array(
-					'version'				=> 3,
-					'name_a_b'				=> 'Project member',
-					'name_b_a'				=> 'Project member',
-					'label_a_b'				=> 'Project member',
-					'label_b_a'				=> 'Project member',
-					//'contact_type_a'		=> 'Individual',
-					'contact_type_a'		=> '',
-					'contact_sub_type_a'	=> '',
-					'contact_type_b'		=> 'Individual',
-					'contact_sub_type_b'	=> '',
-					'description'			=> 'Project member relationship',
-					'is_active'				=>  1,
-				),
-			),
-			array(
-				'module'	=> 'nl.pum.generic',
-				'name'		=> 'Project Officer',
-				'entity'	=> 'RelationshipType',
-				'params'	=> array(
-					'version'				=> 3,
-					'name_a_b'				=> 'Project Officer for',
-					'name_b_a'				=> 'Project Officer is',
-					'label_a_b'				=> 'Project Officer',
-					'label_b_a'				=> 'Project Officer',
-					//'contact_type_a'		=> 'Individual',
-					'contact_type_a'		=> '',
-					'contact_sub_type_a'	=> '',
-					'contact_type_b'		=> 'Individual',
-					'contact_sub_type_b'	=> '',
-					'description'			=> 'Project Officer relationship',
-					'is_active'				=>  1,
-				),
-			),
-			array(
-				'module'	=> 'nl.pum.generic',
-				'name'		=> 'Prospect Expert',
-				'entity'	=> 'RelationshipType',
-				'params'	=> array(
-					'version'				=> 3,
-					'name_a_b'				=> 'Prospect Expert for',
-					'name_b_a'				=> 'Prospect Expert is',
-					'label_a_b'				=> 'Prospect Expert for',
-					'label_b_a'				=> 'Prospect Expert is',
-					'contact_type_a'		=> 'Individual',
-					'contact_sub_type_a'	=> 'Expert',
-					'contact_type_b'		=> 'Organization',
-					'contact_sub_type_b'	=> 'Customer',
-					'description'			=> 'Prospect Expert relationship',
-					'is_active'				=>  1,
-				),
-			),
-			array(
-				'module'	=> 'nl.pum.generic',
-				'name'		=> 'PUM representative',
-				'entity'	=> 'RelationshipType',
-				'params'	=> array(
-					'version'				=> 3,
-					'name_a_b'				=> 'Representative is',
-					'name_b_a'				=> 'Representative for',
-					'label_a_b'				=> 'Representative is',
-					'label_b_a'				=> 'Representative for',
-					'contact_type_a'		=> 'Organization',
-					'contact_sub_type_a'	=> '',
-					'contact_type_b'		=> 'Individual',
-					'contact_sub_type_b'	=> '',
-					'description'			=> 'PUM representative relationship',
-					'is_active'				=>  1,
-				),
-			),
-			array(
-				'module'	=> 'nl.pum.generic',
-				'name'		=> 'PUM-expert',
-				'entity'	=> 'RelationshipType',
-				'params'	=> array(
-					'version'				=> 3,
-					'name_a_b'				=> 'PUM-expert at',
-					'name_b_a'				=> 'PUM-expert for',
-					'label_a_b'				=> 'PUM-expert at',
-					'label_b_a'				=> 'PUM-expert for',
-					'contact_type_a'		=> 'Individual',
-					'contact_sub_type_a'	=> '',
-					'contact_type_b'		=> 'Organization',
-					'contact_sub_type_b'	=> '',
-					'description'			=> 'PUM-expert relationship',
-					'is_active'				=>  1,
-				),
-			),
-			array(
-				'module'	=> 'nl.pum.generic',
-				'name'		=> 'RCT Manager',
-				'entity'	=> 'RelationshipType',
-				'params'	=> array(
-					'version'				=> 3,
-					'name_a_b'				=> 'RCT Manager for',
-					'name_b_a'				=> 'Expert of',
-					'label_a_b'				=> 'RCT Manager for',
-					'label_b_a'				=> 'Expert of',
-					'contact_type_a'		=> 'Individual',
-					'contact_sub_type_a'	=> '',
-					'contact_type_b'		=> 'Individual',
-					'contact_sub_type_b'	=> 'Expert',
-					'description'			=> 'RCT Manager relationship',
-					'is_active'				=>  1,
-				),
-			), 
-			array(
-				'module'	=> 'nl.pum.generic',
-				'name'		=> 'Sector Coordinator',
-				'entity'	=> 'RelationshipType',
-				'params'	=> array(
-					'version'				=> 3,
-					'name_a_b'				=> 'Sector Coordinator',
-					'name_b_a'				=> 'Sector Coordinator',
-					'label_a_b'				=> 'Sector Coordinator',
-					'label_b_a'				=> 'Sector Coordinator',
-					//'contact_type_a'		=> 'Individual',
-					'contact_type_a'		=> '',
-					'contact_sub_type_a'	=> '',
-					'contact_type_b'		=> 'Individual',
-					'contact_sub_type_b'	=> '',
-					'description'			=> 'Sector Coordinator relationship',
-					'is_active'				=>  1,
-				),
-			),
-			array(
-				'module'	=> 'nl.pum.generic',
-				'name'		=> 'Projectmanager',
-				'entity'	=> 'RelationshipType',
-				'params'	=> array(
-					'version'				=> 3,
-					'name_a_b'				=> 'Projectmanager',
-					'name_b_a'				=> 'Projectmanager',
-					'label_a_b'				=> 'Projectmanager',
-					'label_b_a'				=> 'Projectmanager',
-					'contact_type_a'		=> 'Organization',
-					'contact_sub_type_a'	=> '',
-					'contact_type_b'		=> 'Individual',
-					'contact_sub_type_b'	=> '',
-					'description'			=> 'Projectmanager relationship',
-					'is_active'				=>  1,
-				),
-			),
-		);
+		return Generic_RelationshipType_Def::required();
 	}
 	
 	/*
@@ -367,13 +95,29 @@ class Generic_RelationshipType {
 					$needCacheFlush = TRUE;
 				}
 			}
+			if ($relationship['params']['contact_type_b']=='') {
+				// Error in CiviCRM 4.4.5:
+				// if contact_type_b=='' (for 'All contacts') and the entity does not yet exist, an error will occur and the module will report itself installed
+				// workaround: first make contact_type_b 'Individual', then update to '' using e.g. .../CiviCRM/clearcache
+				$params = array(
+					'version' => 3,
+					'sequential' => 1,
+					'name_a_b' => $relationship['params']['name_a_b'],
+				);
+				$result = civicrm_api('RelationshipType', 'get', $params);
+				if ($result['count']==0) {
+					$relationship['params']['contact_type_b'] = 'Individual';
+					$needCacheFlush = TRUE;
+				}
+			}
 			$entities[] = $relationship;
 			$created[] = '"' . $relationship['name'] . '"';
 		}
 		$message = "Relationship Type " . implode(", ", $created) . " successfully created";
 		CRM_Utils_System::setUFMessage($message);
 		if ($needCacheFlush) {
-			CRM_Utils_System::setUFMessage('*** IMPORTANT ***: one ore more relationships have not yet been set to ALL CONTACTS. Please run <base url>/civicrm/clearcache now to solve this!');
+			$session = CRM_Core_Session::singleton();
+			$session::setStatus('One ore more relationships have not yet been set to ALL CONTACTS. Please run <base url>/civicrm/clearcache now to solve this!', '*** IMPORTANT ***', 'info', array('expires'=>0));
 		}
 	}
 	

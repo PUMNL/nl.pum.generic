@@ -1,5 +1,7 @@
 <?php
 
+require_once 'generic.tag.def.inc.php';
+
 class Generic_Tag {
 	
 	/*
@@ -9,104 +11,7 @@ class Generic_Tag {
 	 *
 	 */
 	static function required() {
-		return array(
-			array(
-				'name'			=> 'Customer',
-				'description'	=> 'Customer of PUM',
-				'parent_tag'	=> NULL,
-				'used_for'		=> 'Contacts',
-			),
-			array(
-				'name'			=> 'Partner',
-				'description'	=> 'Partner',
-				'parent_tag'	=> NULL,
-				'used_for'		=> 'Contacts',
-			),
-			array(
-				'name'			=> 'Expert',
-				'description'	=> 'Expert',
-				'parent_tag'	=> NULL,
-				'used_for'		=> 'Contacts',
-			),
-			array(
-				'name'			=> 'Current customer',
-				'description'	=> 'Current customer',
-				'parent_tag'	=> 'Customer',
-				'used_for'		=> 'Contacts',
-			),
-			array(
-				'name'			=> 'Former Customer',
-				'description'	=> 'Done projects with PUM in the past',
-				'parent_tag'	=> 'Customer',
-				'used_for'		=> 'Contacts',
-			),
-			array(
-				'name'			=> 'Prospect Customer',
-				'description'	=> 'Customer who has applied for a project',
-				'parent_tag'	=> 'Customer',
-				'used_for'		=> 'Contacts',
-			),
-			array(
-				'name'			=> 'Rejected Customer',
-				'description'	=> 'Customer who has applied for a project but has been turned down',
-				'parent_tag'	=> 'Customer',
-				'used_for'		=> 'Contacts',
-			),
-			array(
-				'name'			=> 'Suspect Customer',
-				'description'	=> 'Customer interested in PUM or vice versa',
-				'parent_tag'	=> 'Customer',
-				'used_for'		=> 'Contacts',
-			),
-			array(
-				'name'			=> 'Candidate Expert',
-				'description'	=> 'Person who has applied to PUM',
-				'parent_tag'	=> 'Expert',
-				'used_for'		=> 'Contacts',
-			),
-			array(
-				'name'			=> 'Former Expert',
-				'description'	=> 'Expert who used to work for PUM',
-				'parent_tag'	=> 'Expert',
-				'used_for'		=> 'Contacts',
-			),
-			array(
-				'name'			=> 'Current Partner',
-				'description'	=> 'Current Partner',
-				'parent_tag'	=> 'Partner',
-				'used_for'		=> 'Contacts',
-			),
-			array(
-				'name'			=> 'Former Partner',
-				'description'	=> 'Former Partner of PUM',
-				'parent_tag'	=> 'Partner',
-				'used_for'		=> 'Contacts',
-			),
-			array(
-				'name'			=> 'Hot Prospect Partner',
-				'description'	=> 'Hot prospect partner',
-				'parent_tag'	=> 'Partner',
-				'used_for'		=> 'Contacts',
-			),
-			array(
-				'name'			=> 'Lost Contact Partner',
-				'description'	=> 'Lost Contact Partner',
-				'parent_tag'	=> 'Partner',
-				'used_for'		=> 'Contacts',
-			),
-			array(
-				'name'			=> 'Prospect Partner',
-				'description'	=> 'Partner very interested in PUM or vice versa',
-				'parent_tag'	=> 'Partner',
-				'used_for'		=> 'Contacts',
-			),
-			array(
-				'name'			=> 'Suspect Partner',
-				'description'	=> 'Partner interested in PUM or vice versa',
-				'parent_tag'	=> 'Partner',
-				'used_for'		=> 'Contacts',
-			),
-		);
+		return Generic_Tag_Def::required();
 	}
 	
 	/*
@@ -115,7 +20,7 @@ class Generic_Tag {
 	static function install() {
 		$created = array();
 		$required = self::required();
-		$usedForAr = array();
+/*		$usedForAr = array();
 		
 		// collect option values for 'tag_used_for': build translations for 'used_for' parameters
 		// step 1: retrieve option_group_id
@@ -147,7 +52,7 @@ class Generic_Tag {
 				}
 			}
 		}
-		
+*/		
 		// process required tags
 		foreach ($required as $tag) {
 			$parentId = -1; // assume required parent_id cannot be found (would prevent tag creation)
@@ -178,20 +83,8 @@ class Generic_Tag {
 					}
 				}	
 				
-				// translate used_for
-				if (is_null($tag['used_for'])) {
-					$usedFor = NULL;
-				} else {
-					if (array_key_exists($tag['used_for'], $usedForAr)) {
-						$usedFor = $usedForAr[$tag['used_for']];
-					} else {
-						$usedFor = -1;
-						CRM_Utils_System::setUFMessage('Error creating Tag "' . $tag['name'] . '": used for "' . $tag['used_for'] . '" cannot be referenced.');
-					}
-				}
-				
 				// actual tag creation
-				if (($parentId != -1) && ($usedFor != -1)) {
+				if ($parentId != -1) {
 					// allow tag creation
 					$params = array(
 						'version'		=> 3,
@@ -199,7 +92,7 @@ class Generic_Tag {
 						'parent_id'		=> $parentId,
 						'name'			=> $tag['name'],
 						'description'	=> 'nl.pum.generic - ' . $tag['description'],
-						'used_for'		=> $usedFor,
+						'used_for'		=> $tag['used_for'],
 						'is_reserved'	=> TRUE,
 					);
 					$result = civicrm_api('Tag', 'create', $params);

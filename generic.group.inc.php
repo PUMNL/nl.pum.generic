@@ -1,37 +1,14 @@
 <?php
 
+require_once 'generic.group.def.inc.php';
+
 class Generic_Group {
 	
 	/*
 	 * returns the definitions for generic relationship types
 	 */
 	static function required() {
-		return array(
-			array(
-			'module'    => 'nl.pum.generic',
-			'name'      => 'Experts',
-			'entity'    => 'Group',
-			'params'    => array(
-				'version'       => 3,
-				'name'          => 'Experts',
-				'title'         => 'Experts',
-				'description'   => 'Test Group for Experts',
-				'is_active'     =>  1,
-				'group_type'    =>  array(2 => 1))
-			),
-			array(
-			'module'    => 'nl.pum.generic',
-			'name'      => 'Candidate Expert',
-			'entity'    => 'Group',
-			'params'    => array(
-				'version'       => 3,
-				'name'          => 'Candidate Expert',
-				'title'         => 'Candidate Expert',
-				'description'   => 'Gebruikt voor aanmelding van Experts',
-				'is_active'     =>  1,
-				'group_type'    =>  array(2 => 1))
-			),
-		);
+		return Generic_Group_Def::required();
 	}
 	
 	/*

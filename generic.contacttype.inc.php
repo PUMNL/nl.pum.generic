@@ -1,33 +1,14 @@
 <?php
 
+require_once 'generic.contacttype.def.inc.php';
+
 class Generic_ContactType {
 	
 	/*
 	 * returns the definitions for generic contact types
 	 */
 	static function required() {
-		return array(
-			array(
-				'name'			=> 'Expert',
-				'parent'		=> 'Individual',
-				'description'	=> 'PUM Expert'
-			),
-			array(
-				'name'			=> 'Customer',
-				'parent'		=> 'Organization',
-				'description'	=> 'PUM Customer'
-			),
-			array(
-				'name'			=> 'Partner',
-				'parent'		=> 'Organization',
-				'description'	=> 'Partner Organisation'
-			),
-			array(
-				'name'			=> 'Donor',
-				'parent'		=> 'Organization',
-				'description'	=> 'Donor Organisation'
-			)
-		);
+		return Generic_ContactType_Def::required();
 	}
 	
 	/*
@@ -45,7 +26,7 @@ class Generic_ContactType {
 					civicrm_api3('ContactType', 'Getsingle', array('title' => $contactType['name']));
 				} catch (CiviCRM_API3_Exception $e) {
 					$contactTypeParams = array(
-						'label'         =>  $contactType['name'],
+						'label'         =>  $contactType['label'],
 						'name'          =>  $contactType['name'],
 						'parent_id'     =>  $apiResult,
 						'description'	=>  'nl.pum.generic - ' . $contactType['description'],
@@ -133,7 +114,7 @@ class Generic_ContactType {
 	 */
 	static function hook_navigationMenu(&$params) {
 		/* navigation entries appear present, but not yet active
-		 * this function is currentlyl limited to 3 menu levels:
+		 * this function is currently limited to 3 menu levels:
 		 * Contacts
 		 * 	+- New <parent type>
 		 *		+- New <custom type>
