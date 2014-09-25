@@ -36,6 +36,12 @@ class Generic_ContactType {
 					try {
 						civicrm_api3('ContactType', 'Create', $contactTypeParams);
 						$created[] = $contactType['name'];
+						try {
+							$params = array('name'=> $contactType['name']);
+							$bao_contactType = CRM_Contact_BAO_ContactType::add($params);
+						} catch (CiviCRM_API3_Exception $e) {
+							CRM_Utils_System::setUFMessage("Failed to create menu entry 'New " . $contactType['name'] . "'");
+						}
 					} catch (CiviCRM_API3_Exception $e) {
 						CRM_Utils_System::setUFMessage("Could not create contact subtype {$contactType['name']}");
 					}    
@@ -57,16 +63,24 @@ class Generic_ContactType {
 		foreach ($required as $contactType) {
 			$params = array(
 				'version' => 3,
+				'q' => 'civicrm/ajax/rest',
 				'sequential' => 1,
 				'name' => $contactType['name'],
-				);
+			);
 			$result = civicrm_api('ContactType', 'getsingle', $params);
 			if (in_array('is_error', $result)) {
 				// contact type not found: cannot enable
 			} else {
 				// contact type found: proceed
-				$qryEnable = "UPDATE civicrm_contact_type SET is_active = 1 WHERE name = '" . $contactType['name'] . "'";
-				CRM_Core_DAO::executeQuery($qryEnable);
+				$id = $result['id'];
+				$params = array(
+					'version' => 3,
+					'q' => 'civicrm/ajax/rest',
+					'sequential' => 1,
+					'id' => $id,
+					'is_active' => 1,
+				);
+				$result = civicrm_api('ContactType', 'update', $params);
 			}
 		}
 	}
@@ -80,16 +94,24 @@ class Generic_ContactType {
 		foreach ($required as $contactType) {
 			$params = array(
 				'version' => 3,
+				'q' => 'civicrm/ajax/rest',
 				'sequential' => 1,
 				'name' => $contactType['name'],
-				);
+			);
 			$result = civicrm_api('ContactType', 'getsingle', $params);
 			if (in_array('is_error', $result)) {
 				// contact type not found: cannot disable
 			} else {
 				// contact type found: proceed
-				$qryDisable = "UPDATE civicrm_contact_type SET is_active = 0 WHERE name = '" . $contactType['name'] . "'";
-				CRM_Core_DAO::executeQuery($qryDisable);
+				$id = $result['id'];
+				$params = array(
+					'version' => 3,
+					'q' => 'civicrm/ajax/rest',
+					'sequential' => 1,
+					'id' => $id,
+					'is_active' => 0,
+				);
+				$result = civicrm_api('ContactType', 'update', $params);
 			}
 		}
 	}
