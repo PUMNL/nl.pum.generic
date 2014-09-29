@@ -10,30 +10,68 @@ class CRM_Generic_Upgrader extends CRM_Generic_Upgrader_Base {
 
   /**
    * Example: Run an external SQL script when the module is installed
-   *
+<<<<<<< HEAD
+   */
   public function install() {
-    $this->executeSqlFile('sql/myinstall.sql');
+    //$this->executeSqlFile('sql/myinstall.sql');
+	Generic_ContactType::install();
+	Generic_Group::install();
+	Generic_RelationshipType::install();
+	Generic_OptionGroup::install();
+	Generic_CustomField::install();
+	Generic_Tag::install();
+	Generic_ActivityType::install();
+	//upgrade process
+	CRM_Generic_Upgrader::upgrade_1001(FALSE);
+	CRM_Generic_Upgrader::upgrade_1002(FALSE);
+	CRM_Generic_Upgrader::upgrade_1004(FALSE);
+	CRM_Generic_Upgrader::upgrade_1005(FALSE);
+	CRM_Generic_Upgrader::upgrade_1006(FALSE);
+	CRM_Generic_Upgrader::upgrade_1007(FALSE);
   }
 
   /**
    * Example: Run an external SQL script when the module is uninstalled
-   *
+   */
   public function uninstall() {
-   $this->executeSqlFile('sql/myuninstall.sql');
+	//$this->executeSqlFile('sql/myuninstall.sql');
+	// reversed order
+	Generic_ActivityType::uninstall();
+	Generic_Tag::uninstall();
+	Generic_CustomField::uninstall();
+	Generic_OptionGroup::uninstall();
+	Generic_RelationshipType::uninstall();
+	Generic_Group::uninstall();
+	Generic_ContactType::uninstall();
   }
 
   /**
    * Example: Run a simple query when a module is enabled
-   *
+   */
   public function enable() {
-    CRM_Core_DAO::executeQuery('UPDATE foo SET is_active = 1 WHERE bar = "whiz"');
+    //CRM_Core_DAO::executeQuery('UPDATE foo SET is_active = 1 WHERE bar = "whiz"');
+	Generic_ContactType::enable();
+	Generic_Group::enable();
+	Generic_RelationshipType::enable();
+	Generic_OptionGroup::enable();
+	Generic_CustomField::enable();
+	Generic_Tag::enable();
+	Generic_ActivityType::enable();
   }
 
   /**
    * Example: Run a simple query when a module is disabled
-   *
+   */
   public function disable() {
-    CRM_Core_DAO::executeQuery('UPDATE foo SET is_active = 0 WHERE bar = "whiz"');
+    //CRM_Core_DAO::executeQuery('UPDATE foo SET is_active = 0 WHERE bar = "whiz"');
+	// reversed order
+	Generic_ActivityType::disable();
+	Generic_Tag::disable();
+	Generic_CustomField::disable();
+	Generic_OptionGroup::disable();
+	Generic_RelationshipType::disable();
+	Generic_Group::disable();
+	Generic_ContactType::disable();
   }
 
   /**
@@ -41,8 +79,10 @@ class CRM_Generic_Upgrader extends CRM_Generic_Upgrader_Base {
    * 1: main activities and DSA payments
    * 2: payment lines
    */
-  public function upgrade_1001() {
-	$this->ctx->log->info('Applying update 1001 (initiating sequences)');
+  public function upgrade_1001($info=TRUE) {
+	if ($info) {
+		$this->ctx->log->info('Applying update 1001 (initiating sequences)');
+	}
     if (!_generic_verify_sequencer()) {
 		CRM_Core_Error::fatal("Mandatory module nl.pum.sequencer is not enabled!");
 		return FALSE;
@@ -80,8 +120,10 @@ class CRM_Generic_Upgrader extends CRM_Generic_Upgrader_Base {
   /**
    * Upgrade 1002 - add custom goup PUM_Case_number
    */
-  public function upgrade_1002() {
-	$this->ctx->log->info('Applying update 1002 (add custom group PUM_Case_number)');
+  public function upgrade_1002($info=TRUE) {
+	if ($info) {
+		$this->ctx->log->info('Applying update 1002 (add custom group PUM_Case_number)');
+	}
 	$this->executeCustomDataFile('xml/1002_install_custom_group.xml');
 	return TRUE;
   }
@@ -89,8 +131,10 @@ class CRM_Generic_Upgrader extends CRM_Generic_Upgrader_Base {
   /**
     * Upgrade 1004 - alter table civicrm_dsa_compose
     */
-  public function upgrade_1004() {
-    $this->ctx->log->info('Applying update 1004 (create table civicrm_case_pum)');
+  public function upgrade_1004($info=TRUE) {
+	if ($info) {
+		$this->ctx->log->info('Applying update 1004 (create table civicrm_case_pum)');
+	}
     // create table
     $this->executeSqlFile('sql/civicrm_case_pum_1004.sql');
     return TRUE;
@@ -99,8 +143,10 @@ class CRM_Generic_Upgrader extends CRM_Generic_Upgrader_Base {
   /**
    * Upgrade 1005 - additional option group 'case type code' and initial case numbering
    */
-  public function upgrade_1005() {
-	$this->ctx->log->info('Applying update 1005 (add PUM project numbering)');
+  public function upgrade_1005($info=TRUE) {
+	if ($info) {
+		$this->ctx->log->info('Applying update 1005 (add PUM project numbering)');
+	}
 	$sql = '
 SELECT cas.id AS case_id,
        ovl1.label,
@@ -152,8 +198,10 @@ ORDER BY cas.id
    * 1: main activities and DSA payments
    * 2: payment lines
    */
-  public function upgrade_1006() {
-	$this->ctx->log->info('Applying update 1006 (initiating sequence)');
+  public function upgrade_1006($info=TRUE) {
+	if ($info) {
+		$this->ctx->log->info('Applying update 1006 (initiating sequence)');
+	}
     if (!_generic_verify_sequencer()) {
 		CRM_Core_Error::fatal("Mandatory module nl.pum.sequencer is not enabled!");
 		return FALSE;
@@ -178,8 +226,10 @@ ORDER BY cas.id
    /**
    * Upgrade 1007 - initiating sequence for dsa activities (surrogate for main activity)
    */
-   public function upgrade_1007() {
-	$this->ctx->log->info('Applying update 1007 (initiating sequence)');
+   public function upgrade_1007($info=TRUE) {
+	if ($info) {
+		$this->ctx->log->info('Applying update 1007 (initiating sequence)');
+	}
     if (!_generic_verify_sequencer()) {
 		CRM_Core_Error::fatal("Mandatory module nl.pum.sequencer is not enabled!");
 		return FALSE;
@@ -309,4 +359,17 @@ ORDER BY cas.id
 		$dao_case = CRM_Core_DAO::executeQuery($sql_case);
 	}
   }
+}
+
+function _generic_verify_sequencer() {
+	$extensionParams = array('full_name' => 'nl.pum.sequence');
+	$extensionDefaults = array();
+	$extensionPresence = CRM_Core_BAO_Extension::retrieve($extensionParams, $extensionDefaults);
+	if (!empty($extensionPresence) && $extensionPresence->is_active == 1) {
+		// ok
+		return TRUE;
+	} else {
+		CRM_Core_Error::fatal("Mandatory module nl.pum.sequencer is not enabled!");
+		return FALSE;
+	}
 }

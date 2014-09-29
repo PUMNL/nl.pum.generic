@@ -39,13 +39,13 @@ function generic_civicrm_xmlMenu(&$files) {
  * Enable all non-managed entities required for PUM
  */
 function generic_civicrm_install() {
-	Generic_ContactType::install();
+/*	Generic_ContactType::install();
 	Generic_Group::install();
 	Generic_RelationshipType::install();
 	Generic_OptionGroup::install();
 	Generic_CustomField::install();
 	Generic_Tag::install();
-	Generic_ActivityType::install();
+	Generic_ActivityType::install();*/
 	return _generic_civix_civicrm_install();
 }
 
@@ -55,14 +55,14 @@ function generic_civicrm_install() {
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_uninstall
  */
 function generic_civicrm_uninstall() {
-	// reversed order
+/*	// reversed order
 	Generic_ActivityType::uninstall();
 	Generic_Tag::uninstall();
 	Generic_CustomField::uninstall();
 	Generic_OptionGroup::uninstall();
 	Generic_RelationshipType::uninstall();
 	Generic_Group::uninstall();
-	Generic_ContactType::uninstall();
+	Generic_ContactType::uninstall();*/
 	return _generic_civix_civicrm_uninstall();
 }
 
@@ -75,13 +75,13 @@ function generic_civicrm_uninstall() {
  * Enable all non-managed entities controlled by this module
  */
 function generic_civicrm_enable() {
-	Generic_ContactType::enable();
+/*	Generic_ContactType::enable();
 	Generic_Group::enable();
 	Generic_RelationshipType::enable();
 	Generic_OptionGroup::enable();
 	Generic_CustomField::enable();
 	Generic_Tag::enable();
-	Generic_ActivityType::enable();
+	Generic_ActivityType::enable();*/
 	return _generic_civix_civicrm_enable();
 }
 
@@ -94,14 +94,14 @@ function generic_civicrm_enable() {
  * Disable all non-managed entities controlled by this module
  */
 function generic_civicrm_disable() {
-	// reversed order
+/*	// reversed order
 	Generic_ActivityType::disable();
 	Generic_Tag::disable();
 	Generic_CustomField::disable();
 	Generic_OptionGroup::disable();
 	Generic_RelationshipType::disable();
 	Generic_Group::disable();
-	Generic_ContactType::disable();
+	Generic_ContactType::disable();*/
 	return _generic_civix_civicrm_disable();
 }
 
@@ -130,7 +130,7 @@ function generic_civicrm_upgrade($op, CRM_Queue_Queue $queue = NULL) {
  * is installed, disabled, uninstalled.
  */
 function generic_civicrm_managed(&$entities) {
-  Generic_ContactType::managed($entities);
+	Generic_ContactType::managed($entities);
 	Generic_Group::managed($entities);
 	Generic_RelationshipType::managed($entities);
 	Generic_OptionGroup::managed($entities);
@@ -162,6 +162,7 @@ function generic_civicrm_alterSettingsFolders(&$metaDataFolders = NULL) {
   _generic_civix_civicrm_alterSettingsFolders($metaDataFolders);
 }
 
+/*
 function _generic_verify_sequencer() {
 	$extensionParams = array('full_name' => 'nl.pum.sequence');
 	$extensionDefaults = array();
@@ -173,7 +174,7 @@ function _generic_verify_sequencer() {
 		CRM_Core_Error::fatal("Mandatory module nl.pum.sequencer is not enabled!");
 		return FALSE;
 	}
-}
+}*/
 
 /**
  * Implementation of hook_civicrm_postProcess
