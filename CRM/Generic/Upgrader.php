@@ -10,7 +10,6 @@ class CRM_Generic_Upgrader extends CRM_Generic_Upgrader_Base {
 
   /**
    * Example: Run an external SQL script when the module is installed
-<<<<<<< HEAD
    */
   public function install() {
     //$this->executeSqlFile('sql/myinstall.sql');
