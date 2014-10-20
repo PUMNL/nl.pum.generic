@@ -10,6 +10,8 @@ require_once 'generic.optiongroup.inc.php';
 require_once 'generic.tag.inc.php';
 require_once 'generic.customfield.inc.php';
 
+require_once 'CRM/Generic/Misc.php';
+
 /**
  * Implementation of hook_civicrm_config
  *
@@ -162,20 +164,6 @@ function generic_civicrm_alterSettingsFolders(&$metaDataFolders = NULL) {
   _generic_civix_civicrm_alterSettingsFolders($metaDataFolders);
 }
 
-/*
-function _generic_verify_sequencer() {
-	$extensionParams = array('full_name' => 'nl.pum.sequence');
-	$extensionDefaults = array();
-	$extensionPresence = CRM_Core_BAO_Extension::retrieve($extensionParams, $extensionDefaults);
-	if (!empty($extensionPresence) && $extensionPresence->is_active == 1) {
-		// ok
-		return TRUE;
-	} else {
-		CRM_Core_Error::fatal("Mandatory module nl.pum.sequencer is not enabled!");
-		return FALSE;
-	}
-}*/
-
 /**
  * Implementation of hook_civicrm_postProcess
  *
@@ -194,7 +182,8 @@ function generic_civicrm_postProcess( $formName, &$form ) {
 			$sql = '
 SELECT
   cas.id AS case_id,
-  ovl1.label,
+  ovl1.label AS case_label,
+  ovl1.name AS case_name,
   cod.value AS type_code,
   con.contact_sub_type,
   con.display_name,
@@ -236,7 +225,13 @@ LIMIT 1
 			';
 			$dao_find = CRM_Core_DAO::executeQuery($sql);
 			while($dao_find->fetch()) {
-				CRM_Generic_Upgrader::_setMainActivityNumber($dao_find);
+				if (empty($dao_find->type_code)) {
+					// no case_type_code -> do not set main activity number
+				} elseif (($dao_find->case_name == 'TravelCase') && (CRM_Generic_Misc::generic_verify_extension('nl.pum.travelcase'))) {
+					// nl.pum.travel extension controls main activity number on cases of type TravelCase
+				} else {
+					CRM_Generic_Upgrader::_setMainActivityNumber($dao_find);
+				}
 			}
 			break;
 			
