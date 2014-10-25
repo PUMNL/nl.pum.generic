@@ -84,8 +84,8 @@ class CRM_Generic_Upgrader extends CRM_Generic_Upgrader_Base {
 	if ($info) {
 		$this->ctx->log->info('Applying update 1001 (initiating sequences)');
 	}
-    if (!CRM_Generic_Misc::generic_verify_extension('nl.pum.sequencer')) {
-		CRM_Core_Error::fatal("Mandatory module nl.pum.sequencer is not enabled!");
+    if (!CRM_Generic_Misc::generic_verify_extension('nl.pum.sequence')) {
+		CRM_Core_Error::fatal("Mandatory module nl.pum.sequence is not enabled!");
 		return FALSE;
 	};
 	// sequence for main activities (and for DSA: participants)
@@ -130,8 +130,8 @@ class CRM_Generic_Upgrader extends CRM_Generic_Upgrader_Base {
   }
 
   /**
-    * Upgrade 1004 - alter table civicrm_dsa_compose
-    */
+    * Upgrade 1004 - alter table civicrm_case_pum
+	*/
   public function upgrade_1004($info=TRUE) {
 	if ($info) {
 		$this->ctx->log->info('Applying update 1004 (create table civicrm_case_pum)');
@@ -203,8 +203,8 @@ ORDER BY cas.id
 	if ($info) {
 		$this->ctx->log->info('Applying update 1006 (initiating sequence)');
 	}
-    if (!CRM_Generic_Misc::generic_verify_extension('nl.pum.sequencer')) {
-		CRM_Core_Error::fatal("Mandatory module nl.pum.sequencer is not enabled!");
+    if (!CRM_Generic_Misc::generic_verify_extension('nl.pum.sequence')) {
+		CRM_Core_Error::fatal("Mandatory module nl.pum.sequence is not enabled!");
 		return FALSE;
 	};
 	// sequence for invoice numbers
@@ -231,8 +231,8 @@ ORDER BY cas.id
 	if ($info) {
 		$this->ctx->log->info('Applying update 1007 (initiating sequence)');
 	}
-    if (!CRM_Generic_Misc::generic_verify_extension('nl.pum.sequencer')) {
-		CRM_Core_Error::fatal("Mandatory module nl.pum.sequencer is not enabled!");
+    if (!CRM_Generic_Misc::generic_verify_extension('nl.pum.sequence')) {
+		CRM_Core_Error::fatal("Mandatory module nl.pum.sequence is not enabled!");
 		return FALSE;
 	};
 	// sequence for main activities (and for DSA: participants)
@@ -249,6 +249,17 @@ ORDER BY cas.id
 		return FALSE;
 	}
 	return TRUE;
+  }
+  
+    /**
+    * Upgrade 1008 - additional custom field
+    */
+  public function upgrade_1008($info=TRUE) {
+	if ($info) {
+		$this->ctx->log->info('Applying update 1008 (create additional custom fields)');
+	}
+    Generic_CustomField::install();
+    return TRUE;
   }
   
   static function _setMainActivityNumber($dao_qry_result_line) {

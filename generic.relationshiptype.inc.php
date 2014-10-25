@@ -80,41 +80,73 @@ class Generic_RelationshipType {
 		$required = self::required();
 		$needCacheFlush = FALSE;
 		foreach ($required as $relationship) {
-			if ($relationship['params']['contact_type_a']=='') {
-				// Error in CiviCRM 4.4.5:
-				// if contact_type_a=='' (for 'All contacts') and the entity does not yet exist, an error will occur and the module will report itself installed
-				// workaround: first make contact_type_a 'Individual', then update to '' using e.g. .../CiviCRM/clearcache
-				$params = array(
-					'version' => 3,
-					'sequential' => 1,
-					'name_a_b' => $relationship['params']['name_a_b'],
-				);
-				$result = civicrm_api('RelationshipType', 'get', $params);
-				if ($result['count']==0) {
-					$relationship['params']['contact_type_a'] = 'Individual';
-					$needCacheFlush = TRUE;
+			
+			// need to do some management myself first:
+			
+			// #1: verify if entity already exists and, if so, if it is there as a managed entity
+			$sql = '
+SELECT
+  ifnull(mgd.name, \'-\') as nameMgd,
+  rel.name_a_b as nameEntity
+FROM
+  civicrm_relationship_type rel
+  LEFT JOIN civicrm_managed mgd ON mgd.entity_id = rel.id
+WHERE
+  rel.name_a_b = \'' . $relationship['params']['name_a_b'] . '\'
+			';
+			$dao = CRM_Core_DAO::executeQuery($sql);
+			$allow = TRUE;
+			if ($dao->N == 1) {
+				$result = $dao->fetch();
+				if ($dao->nameMgd == '-') {
+					// entity name exists, but not as a managed entity
+					$allow = FALSE;
 				}
 			}
-			if ($relationship['params']['contact_type_b']=='') {
-				// Error in CiviCRM 4.4.5:
-				// if contact_type_b=='' (for 'All contacts') and the entity does not yet exist, an error will occur and the module will report itself installed
-				// workaround: first make contact_type_b 'Individual', then update to '' using e.g. .../CiviCRM/clearcache
-				$params = array(
-					'version' => 3,
-					'sequential' => 1,
-					'name_a_b' => $relationship['params']['name_a_b'],
-				);
-				$result = civicrm_api('RelationshipType', 'get', $params);
-				if ($result['count']==0) {
-					$relationship['params']['contact_type_b'] = 'Individual';
-					$needCacheFlush = TRUE;
+			
+			if ($allow) {
+				// #2: cannot create contact_type_a as "All contacts"; only update
+				// Error observed in CiviCRM 4.4.5
+				if ($relationship['params']['contact_type_a']=='') {
+					// if contact_type_a=='' (for 'All contacts') and the entity does not yet exist, an error will occur and the module will report itself installed
+					// workaround: first make contact_type_a 'Individual', then update to '' using e.g. .../CiviCRM/clearcache
+					$params = array(
+						'version' => 3,
+						'sequential' => 1,
+						'name_a_b' => $relationship['params']['name_a_b'],
+					);
+					$result = civicrm_api('RelationshipType', 'get', $params);
+					if ($result['count']==0) {
+						$relationship['params']['contact_type_a'] = 'Individual';
+						$needCacheFlush = TRUE;
+					}
 				}
-			}
-			$entities[] = $relationship;
-			$created[] = '"' . $relationship['name'] . '"';
+				
+				// #3: cannot create contact_type_b as "All contacts"; only update
+				// Error observed in CiviCRM 4.4.5
+				if ($relationship['params']['contact_type_b']=='') {
+					// if contact_type_b=='' (for 'All contacts') and the entity does not yet exist, an error will occur and the module will report itself installed
+					// workaround: first make contact_type_b 'Individual', then update to '' using e.g. .../CiviCRM/clearcache
+					$params = array(
+						'version' => 3,
+						'sequential' => 1,
+						'name_a_b' => $relationship['params']['name_a_b'],
+					);
+					$result = civicrm_api('RelationshipType', 'get', $params);
+					if ($result['count']==0) {
+						$relationship['params']['contact_type_b'] = 'Individual';
+						$needCacheFlush = TRUE;
+					}
+				}
+				
+				// List as managed entity
+				$entities[] = $relationship;
+				$created[] = '"' . $relationship['name'] . '"';
+			} // $allow
 		}
-		$message = "Relationship Type " . implode(", ", $created) . " successfully created";
+		$message = "Relationship Type " . implode(", ", $created) . " listed as managed entity";
 		CRM_Utils_System::setUFMessage($message);
+		
 		if ($needCacheFlush) {
 			$session = CRM_Core_Session::singleton();
 			$session::setStatus('One ore more relationships have not yet been set to ALL CONTACTS. Please run <base url>/civicrm/clearcache now to solve this!', '*** IMPORTANT ***', 'info', array('expires'=>0));

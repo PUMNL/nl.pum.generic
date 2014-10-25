@@ -238,3 +238,49 @@ LIMIT 1
 		default:
 	}
 }
+
+/*
+ * helper function to supply table- column names for custom fields
+ */
+function generic_getCustomTableInfo($customGroupName) {
+	// default return value
+	$customTable = array(
+		'group_id' => NULL,
+		'group_name' => NULL,
+		'group_table' => NULL,
+		'columns' => array(),
+		'sql_columns' => '',
+	);
+	
+	// retrieve table name for custom group
+	$sql = 'SELECT id, name, table_name FROM civicrm_custom_group WHERE name = \'' . $customGroupName . '\'';
+	$dao = CRM_Core_DAO::executeQuery($sql);
+	if (!$dao->N == 1) {
+		// leave empty
+	} else {
+		$dao->fetch();
+		$customTable['group_id'] = $dao->id;
+		$customTable['group_name'] = $dao->name;
+		$customTable['group_table'] = $dao->table_name;
+		// retrieve fieldnames for custom fields
+		$sql = "SELECT name, label, column_name FROM civicrm_custom_field WHERE custom_group_id = " . $customTable['group_id'];
+		$dao = CRM_Core_DAO::executeQuery($sql);
+		if ($dao->N >= 1) {
+			$sql_cols = array();
+			while ($dao->fetch()) {
+				$customTable['columns'][$dao->name] = array(
+					'name' => $dao->name,
+					'label' => $dao->label,
+					'column_name' => $dao->column_name,
+				);
+				$sql_cols[] = $customTable['group_table'] . '.' . $dao->column_name . ' AS \'' . $dao->name . '\'';
+			}
+		} else {
+			// leave columns empty
+		}
+		if (!empty($sql_cols)) {
+			$customTable['sql_columns'] = implode(',' . PHP_EOL, $sql_cols);
+		}
+	}
+	return $customTable;
+}

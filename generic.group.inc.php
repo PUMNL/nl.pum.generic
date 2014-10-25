@@ -42,10 +42,35 @@ class Generic_Group {
 		$created = array();
 		$required = self::required();
 		foreach ($required as $group) {
-			$entities[] = $group;
-			$created[] = $group['name'];
+			
+			// need to do some management myself first:
+			// verify if entity already exists and, if so, if it is there as a managed entity
+			$sql = '
+SELECT
+  ifnull(mgd.name, \'-\') as nameMgd,
+  grp.name as nameEntity
+FROM
+  civicrm_group grp
+  LEFT JOIN civicrm_managed mgd ON mgd.entity_id = grp.id
+WHERE
+  grp.name = \'' . $group['params']['name'] . '\'
+			';
+			$dao = CRM_Core_DAO::executeQuery($sql);
+			$allow = TRUE;
+			if ($dao->N == 1) {
+				$result = $dao->fetch();
+				if ($dao->nameMgd == '-') {
+					// entity name exists, but not as a managed entity
+					$allow = FALSE;
+				}
+			}
+			
+			if ($allow) {
+				$entities[] = $group;
+				$created[] = $group['name'];
+			}
 		}
-		$message = "Groups " . implode(", ", $created) . " successfully created";
+		$message = "Groups " . implode(", ", $created) . " listed as managed entity";
 		CRM_Utils_System::setUFMessage($message);
 	}
 	
