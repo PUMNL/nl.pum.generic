@@ -234,8 +234,24 @@ LIMIT 1
 				}
 			}
 			break;
-			
+
+		case 'CRM_Contact_Form_Contact':
+			$type = $form->_contactType;
+			$id = $form->_contactId;
+			if ($type == 'Individual') {
+				$params = array(
+					'version' => 3,
+					'q' => 'civicrm/ajax/rest',
+					'sequential' => 1,
+					'id' => $id,
+				);
+				$result = civicrm_api('Shortname', 'set', $params);
+			}
+			break;
+		
 		default:
+			print_r($formName);
+			exit();
 	}
 }
 
