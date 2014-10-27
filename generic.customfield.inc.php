@@ -137,6 +137,7 @@ class Generic_CustomField {
 								'is_active'				=>	1,
 								'default_value'			=>	$field['default_value'],
 								'is_required'			=>	$field['is_required'],
+								'is_view'				=>	$field['is_view'],
 								'is_searchable'			=>	$field['is_searchable'],
 								'is_search_range'		=>	$field['is_search_range'],
 								'weight'				=>	$field['weight'],
