@@ -68,7 +68,7 @@ FROM
   LEFT JOIN ' . $tbl['Additional_Data']['group_table'] . ' dat ON dat.entity_id = con.id
 WHERE
   con.contact_type = \'Individual\' AND
-  dat.' . $tbl['Additional_Data']['columns']['Shortname']['column_name'] . ' IS NULL
+  ifnull(trim(dat.' . $tbl['Additional_Data']['columns']['Shortname']['column_name'] . '), \'\') = \'\'
 		';
 
 	} else {
@@ -84,7 +84,7 @@ FROM
 WHERE
   con.contact_type = \'Individual\' AND
   con.id = ' . $criteria['id'] . ' AND
-  dat.' . $tbl['Additional_Data']['columns']['Shortname']['column_name'] . ' IS NULL
+  ifnull(trim(dat.' . $tbl['Additional_Data']['columns']['Shortname']['column_name'] . '), \'\') = \'\'
 		';
 	}
 
@@ -118,7 +118,10 @@ WHERE
 function _apply_new_shortname($id, $short_id, $last_name, $tbl) {
 	try {
 		// name part of the shortname
-		$shortkey = substr(CRM_Generic_Misc::generic_charReplacement(strtoupper($last_name . 'XXXX')), 0, 4);
+		$shortkey = strtoupper(CRM_Generic_Misc::generic_charReplacement(trim($last_name))); // substitutes / removed 'odd' characters and make uppercase
+		$shortkey = PREG_REPLACE("/[^A-Z]/i", '', $shortkey); // remove any character other that A-Z
+		$shortkey = substr($shortkey . 'XXXX', 0, 4); // trim down to 4 characters / extend to 4 characters using 'X'
+		
 		// make sure there is a sequence for the name part
 		$sequence = 'short_' . $shortkey;
 		if (!CRM_Sequence_Page_PumSequence::ispresent($sequence)) {
