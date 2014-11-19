@@ -10,9 +10,6 @@
  * @return array API result descriptor
  * @see civicrm_api3_create_success
  * @see civicrm_api3_create_error
- * @throws API_Exception when class CRM_Threepeas_Config (to retrieve relationship
- *                       type id for Country Coordinator)
- * @throws API_Exception when no activity_type with name new_cap_request
  */
 function civicrm_api3_country_action_plan_request($params) {
   $country_coordinators = get_active_country_coordinators();
@@ -22,7 +19,12 @@ function civicrm_api3_country_action_plan_request($params) {
   }
   return civicrm_api3_create_success($return_values, $params, 'CountryActionPlan', 'Request');
 }
-
+/**
+ * Function to create cap_activity
+ * 
+ * @param int $contact_id
+ * @param int $country_id
+ */
 function create_cap_activity($contact_id, $country_id) {
   if (_threepeasContactIsCountry($country_id) == TRUE) {
     $activity_type_id = get_new_cap_request_activity();
@@ -33,7 +35,7 @@ function create_cap_activity($contact_id, $country_id) {
       'activity_subject' => 'New Country Action Plan required for '.$new_year,
       'target_id' => $country_id,
       'assignee_id' => $contact_id,
-      'activity_date_time' => $new_year.'-12-31',
+      'activity_date_time' => date('Y').'-12-31',
       'activity_status_id' => $activity_status_id
     );
     civicrm_api3('Activity', 'Create', $params);
@@ -41,6 +43,7 @@ function create_cap_activity($contact_id, $country_id) {
 }
 /**
  * Function to get activity_status_id for scheduled
+ * 
  * @return int $activity_status_id
  * @throws API_Exception when no option group activity_status found
  * @throws API_Exception when no option value Scheduled found
@@ -67,6 +70,7 @@ function get_activity_status_scheduled() {
 }
 /**
  * Function to get activity_type_id for new_cap_request
+ * 
  * @return int $activity_type_id
  * @throws API_Exception when no option group activity_type found
  * @throws API_Exception when no option value new_cap_request found
@@ -93,18 +97,21 @@ function get_new_cap_request_activity() {
 }
 /**
  * Function to get active country coordinators
+ * 
  * @return array $country_coordinators['values']
  * @throws API_Exception when api Relationship Get throws an error
+ * @throws API_Exception when class CRM_Threepeas_CaseRelationConfig (to retrieve relationship
+ *         type id for Country Coordinator)
  */
 function get_active_country_coordinators() {
-  if (!class_exists('CRM_Threepeas_Config')) {
-    throw new API_Exception('Could not find class CRM_Threepeas_Config, check if '
+  if (!class_exists('CRM_Threepeas_CaseRelationConfig')) {
+    throw new API_Exception('Could not find class CRM_Threepeas_CaseRelationConfig, check if '
       . 'required extension nl.pum.threepeas is installed and enabled');
   }
-  $threepeas_config = CRM_Threepeas_Config::singleton();
+  $case_relation_config = CRM_Threepeas_CaseRelationConfig::singleton();
   $params = array(
     'is_active' => 1, 
-    'relationship_type_id' => $threepeas_config->countryCoordinatorRelationshipTypeId);
+    'relationship_type_id' => $case_relation_config->get_relationship_type_id('country_coordinator'));
   try {
     $country_coordinators = civicrm_api3('Relationship', 'Get', $params);
   } catch (CiviCRM_API3_Exception $ex) {
