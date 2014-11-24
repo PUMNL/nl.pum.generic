@@ -91,7 +91,7 @@ class Generic_Tag {
 						'sequential'	=> 1,
 						'parent_id'		=> $parentId,
 						'name'			=> $tag['name'],
-						'description'	=> 'nl.pum.generic - ' . $tag['description'],
+						'description'	=> $tag['description'],
 						'used_for'		=> $tag['used_for'],
 						'is_reserved'	=> TRUE,
 					);

@@ -78,7 +78,7 @@ class Generic_ActivityType {
 						'label'				=> $activityType['label'],
 						'name'				=> $activityType['name'],
 						'value'				=> $new_value,
-						'description'		=> 'nl.pum.generic - ' . $activityType['description'],
+						'description'		=> $activityType['description'],
 						'is_reserved'		=> TRUE,
 						'is_active'			=> FALSE,
 					);

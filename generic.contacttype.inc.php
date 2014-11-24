@@ -29,7 +29,7 @@ class Generic_ContactType {
 						'label'         =>  $contactType['label'],
 						'name'          =>  $contactType['name'],
 						'parent_id'     =>  $apiResult,
-						'description'	=>  'nl.pum.generic - ' . $contactType['description'],
+						'description'	=>  $contactType['description'],
 						'is_active'     =>  0,
 						'is_reserved'   =>  1
 					);
