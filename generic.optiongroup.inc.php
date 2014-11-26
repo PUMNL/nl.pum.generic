@@ -54,7 +54,7 @@ class Generic_OptionGroup {
 					try {
 						$result = civicrm_api3('OptionGroup', 'getsingle', $params);
 						$optionGroupId = $result['id'];
-						$created[] = $optionGroup['group_label'];
+						$created[] = $optionGroup['group_title'];
 					} catch (Exception $e) {
 						// optiongroup not found: $optionGroupId remains NULL
 					}
@@ -125,7 +125,7 @@ class Generic_OptionGroup {
 			}
 			
 			if (count($created) > 0) {
-				$message = 'Option group ' . $optionGroup['group_label'] . ': value(s) ' . implode(', ', $created) . ' succesfully created';
+				$message = 'Option group ' . $optionGroup['group_title'] . ': value(s) ' . implode(', ', $created) . ' succesfully created';
 				CRM_Utils_System::setUFMessage($message);
 			}
 			
