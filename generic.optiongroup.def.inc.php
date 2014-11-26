@@ -264,8 +264,8 @@ class Generic_OptionGroup_Def {
 						'description' => '',
 					),
 					array(
-						'name' => 'Remote Coaching',
-						'label' => 'Remote Coaching',
+						'name' => 'RemoteCoaching',
+						'label' => 'RemoteCoaching',
 						'value' => 'R',
 						'weight' => 80,
 						'description' => '',
