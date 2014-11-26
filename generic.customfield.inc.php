@@ -95,8 +95,8 @@ class Generic_CustomField {
 						);
 						$result = civicrm_api('OptionGroup', 'getsingle', $params);
 						
-						if (in_array('is_error', $result)) {
-							// option group name provided, but none found
+						if (!empty($result['is_error'])) {
+							// option group name provided, but none found (NULL, 0, and "0" are all considered empty)
 							$optionGroupId = -1;
 						} else {
 							// option group name provided and found: use id
