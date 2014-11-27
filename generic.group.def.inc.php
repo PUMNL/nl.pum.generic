@@ -8,21 +8,6 @@ class Generic_Group_Def {
 		return array(
 			array(
 				'module' => 'nl.pum.generic',
-				'name' => 'Administrators',
-				'entity' => 'Group',
-				'params' => array(
-					'version' => 3,
-					'name' => 'Administrators',
-					'title' => 'Administrators',
-					'description' => 'Contacts in this group are assigned Administrator role permissions.',
-					'is_active' => 1,
-					'group_type' => array(
-						1 => 1,
-					),
-				),
-			),
-			array(
-				'module' => 'nl.pum.generic',
 				'name' => 'Recruitment_Team_13',
 				'entity' => 'Group',
 				'params' => array(
