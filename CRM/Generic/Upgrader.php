@@ -251,9 +251,9 @@ ORDER BY cas.id
 	return TRUE;
   }
   
-    /**
-    * Upgrade 1008 - additional custom field
-    */
+  /**
+   * Upgrade 1008 - additional custom field
+   */
   public function upgrade_1008($info=TRUE) {
 	if ($info) {
 		$this->ctx->log->info('Applying update 1008 (create additional custom fields)');
@@ -261,6 +261,19 @@ ORDER BY cas.id
     Generic_CustomField::install();
     return TRUE;
   }
+  
+  /**
+   * Upgrade 1009 - additional custom group and option groups
+   */
+  public function upgrade_1009($info=TRUE) {
+	if ($info) {
+		$this->ctx->log->info('Applying update 1009 (additional custom group and option groups)');
+	}
+	Generic_OptionGroup::install();
+    Generic_CustomField::install();
+    return TRUE;
+  }
+  
   
   static function _setMainActivityNumber($dao_qry_result_line) {
   	$arFld = array();
