@@ -513,6 +513,13 @@ class Generic_ActivityType_Def {
 				'description' => '<p>Used in \'Remote Coaching\'</p>
 ',
 			),
+			array(
+				'name' => 'Condition: Applicant Pays',
+				'label' => 'Condition: Applicant Pays',
+				'component' => 'CiviCase',
+				'description' => '<p>Used in \'Advice, Remote Coaching, Seminar\'</p>
+',
+			),
 		);
 	}
 }
