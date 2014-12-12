@@ -274,6 +274,17 @@ ORDER BY cas.id
     return TRUE;
   }
   
+  /**
+   * Upgrade 1010 - additional activity type
+   */
+  public function upgrade_1010($info=TRUE) {
+	if ($info) {
+		$this->ctx->log->info('Applying update 1010 (additional activity type)');
+	}
+	Generic_ActivityType::install();
+	return TRUE;
+  }
+  
   
   static function _setMainActivityNumber($dao_qry_result_line) {
   	$arFld = array();
