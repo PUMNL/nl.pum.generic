@@ -23,6 +23,8 @@ class Generic_OptionGroup {
 		foreach ($required as $optionGroup) {
 			$optionGroupId = NULL;
 			
+			CRM_Core_Error::debug_log_message('nl.pum.generic option group ' . $optionGroup['group_name']);
+			
 			// verify if group exists
 			$params = array(
 				'sequential'	=> 1,
@@ -76,6 +78,8 @@ class Generic_OptionGroup {
 			$created = array();
 			$optionGroupId = NULL;
 			
+			CRM_Core_Error::debug_log_message('nl.pum.generic processing option group ' . $optionGroup['group_name'] . ' (continued)');
+			
 			// verify if group exists
 			$params = array(
 				'sequential'	=> 1,
@@ -91,6 +95,9 @@ class Generic_OptionGroup {
 			// create optionvalues (if option group exists)
 			if (!is_null($optionGroupId)) {
 				foreach ($optionGroup['values'] as $optionValue) {
+				
+					CRM_Core_Error::debug_log_message('nl.pum.generic option value ' . $optionValue['name']);
+				
 					// verify if option value exists
 					$params = array(
 						'sequential'		=> 1,

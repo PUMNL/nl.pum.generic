@@ -56,6 +56,8 @@ class Generic_Tag {
 		// process required tags
 		foreach ($required as $tag) {
 			$parentId = -1; // assume required parent_id cannot be found (would prevent tag creation)
+			
+			CRM_Core_Error::debug_log_message('nl.pum.generic processing tag ' .  $tag['name']);
 
 			// verify if tag exists
 			$params = array(

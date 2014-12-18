@@ -50,6 +50,7 @@ class Generic_ActivityType {
 			foreach ($required as $activityType) {
 				$componentId = NULL;
 				$tolerate[] = $activityType['name']; // add $required elements to $tolerate to avoid disabling
+				CRM_Core_Error::debug_log_message('nl.pum.generic processing activity type ' . $activityType['name']);
 				
 				// translate component to id (null = 'Contacts OR Cases')
 				if (array_key_exists($activityType['component'], $existingComponents)) {

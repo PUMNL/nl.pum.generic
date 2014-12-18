@@ -25,6 +25,8 @@ class Generic_CustomField {
 		foreach ($required as $fieldGroup) {
 			$customGroupId = NULL;
 			
+			CRM_Core_Error::debug_log_message('nl.pum.generic processing custom group ' . $fieldGroup['group_name']);
+			
 			// verify if group exists
 			$params = array(
 				'version'		=> 3,
@@ -85,6 +87,7 @@ class Generic_CustomField {
 			if (!is_null($customGroupId)) {
 				// field group is present: process fields within group
 				foreach ($fieldGroup['fieldset'] as $field) {
+					CRM_Core_Error::debug_log_message('nl.pum.generic processing custom field ' . $field['name']);
 					// if option_group_name is provided, the field depends on an options list: retrieve its option_group_id
 					if ($field['option_group_name'] != '') {
 						$params = array(

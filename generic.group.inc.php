@@ -43,6 +43,8 @@ class Generic_Group {
 		$required = self::required();
 		foreach ($required as $group) {
 			
+			CRM_Core_Error::debug_log_message('nl.pum.generic processing group ' . $group['name']);
+			
 			// need to do some management myself first:
 			// verify if entity already exists and, if so, if it is there as a managed entity
 			$sql = '

@@ -81,6 +81,8 @@ class Generic_RelationshipType {
 		$needCacheFlush = FALSE;
 		foreach ($required as $relationship) {
 			
+			CRM_Core_Error::debug_log_message('nl.pum.generic processing relationship type ' . $relationship['params']['name_a_b']);
+			
 			// need to do some management myself first:
 			
 			// #1: verify if entity already exists and, if so, if it is there as a managed entity

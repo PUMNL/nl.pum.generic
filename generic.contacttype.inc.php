@@ -21,6 +21,7 @@ class Generic_ContactType {
 			// only if Contact Type does not exist yet
 			// and only if parent is available
 			try {
+				CRM_Core_Error::debug_log_message('nl.pum.generic processing contact type ' . $contactType['label']);
 				$apiResult = civicrm_api3('ContactType', 'getvalue', array('sequential'=>1, 'json'=>1, 'return'=>'id', 'name'=>$contactType['parent']));
 				try {
 					civicrm_api3('ContactType', 'Getsingle', array('title' => $contactType['name']));
