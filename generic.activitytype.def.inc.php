@@ -136,7 +136,7 @@ class Generic_ActivityType_Def {
 				'name' => 'Accept Main Activity Proposal',
 				'label' => 'Accept Main Activity Proposal',
 				'component' => 'CiviCase',
-				'description' => '<p>Used in \'Advice, Seminar\' by Expert</p>
+				'description' => '<p>Used in \'Advice, Seminar, Business\' by Expert</p>
 ',
 			),
 			array(
@@ -511,6 +511,76 @@ class Generic_ActivityType_Def {
 				'label' => 'Remote Coaching Debriefing Expert',
 				'component' => 'CiviCase',
 				'description' => '<p>Used in \'Remote Coaching\'</p>
+',
+			),
+			array(
+				'name' => 'Concept list of participants',
+				'label' => 'Concept list of participants',
+				'component' => 'CiviCase',
+				'description' => '<p>Used in \'Seminar\'</p>
+',
+			),
+			array(
+				'name' => 'Business Debriefing Expert',
+				'label' => 'Business Debriefing Expert',
+				'component' => 'CiviCase',
+				'description' => '<p>Used in \'Business\'</p>
+',
+			),
+			array(
+				'name' => 'Business Debriefing Customer',
+				'label' => 'Business Debriefing Customer',
+				'component' => 'CiviCase',
+				'description' => '<p>Used in \'Business\'</p>
+',
+			),
+			array(
+				'name' => 'Business Debriefing CC',
+				'label' => 'Business Debriefing CC',
+				'component' => 'CiviCase',
+				'description' => '<p>Used in \'Business\'</p>
+',
+			),
+			array(
+				'name' => 'Business Debriefing SC',
+				'label' => 'Business Debriefing SC',
+				'component' => 'CiviCase',
+				'description' => '<p>Used in \'Business\'</p>
+',
+			),
+			array(
+				'name' => 'Business Debriefing PrOf',
+				'label' => 'Business Debriefing PrOf',
+				'component' => 'CiviCase',
+				'description' => '<p>Used in \'Business\'</p>
+',
+			),
+			array(
+				'name' => 'Business Programme',
+				'label' => 'Business Programme',
+				'component' => 'CiviCase',
+				'description' => '<p>Used in \'Business\'</p>
+',
+			),
+			array(
+				'name' => 'Request Approval Business Programme SC',
+				'label' => 'Request Approval Business Programme SC',
+				'component' => 'CiviCase',
+				'description' => '<p>Used in \'Business\'</p>
+',
+			),
+			array(
+				'name' => 'Request Approval Business Programme CC',
+				'label' => 'Request Approval Business Programme CC',
+				'component' => 'CiviCase',
+				'description' => '<p>Used in \'Business\'</p>
+',
+			),
+			array(
+				'name' => 'Acquisition',
+				'label' => 'Acquisition',
+				'component' => 'CiviCase',
+				'description' => '<p>Used in \'Advice\' en \'Seminar\'</p>
 ',
 			),
 			array(
