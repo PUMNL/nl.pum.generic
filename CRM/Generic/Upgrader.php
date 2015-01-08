@@ -303,6 +303,17 @@ ORDER BY cas.id
 	return TRUE;
   }
   
+  /**
+   * Upgrade 1012 - additional entities in all areas
+   */
+  public function upgrade_1012($info=TRUE) {
+	if ($info) {
+		$this->ctx->log->info('Applying update 1012 (fix for custom group targetting)');
+	}
+	Generic_CustomField::fix_targeting();
+	return TRUE;
+  }
+    
   
   static function _setMainActivityNumber($dao_qry_result_line) {
   	$arFld = array();
