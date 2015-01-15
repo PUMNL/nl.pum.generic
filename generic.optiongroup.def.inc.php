@@ -19,11 +19,27 @@ class Generic_OptionGroup_Def {
 ',
 					),
 					array(
+						'name' => 'Expertapplication',
+						'label' => 'Expertapplication',
+						'value' => '12',
+						'weight' => 20,
+						'description' => '<p>This case is used to document activities related to the application of an (Candidate) Expert</p>
+',
+					),
+					array(
 						'name' => 'PDV',
 						'label' => 'PDV',
 						'value' => '15',
 						'weight' => 50,
 						'description' => '<p>A Main Activity of the type PDV</p>
+',
+					),
+					array(
+						'name' => 'OrganiseEvent',
+						'label' => 'OrganiseEvent',
+						'value' => '18',
+						'weight' => 80,
+						'description' => '<p>Case used for the back-office to document the organisation of all sorts of PUM events. Note: the publishing of events is done through CiviEvent (not this case)</p>
 ',
 					),
 					array(
@@ -35,18 +51,10 @@ class Generic_OptionGroup_Def {
 ',
 					),
 					array(
-						'name' => 'Expertapplication',
-						'label' => 'Expertapplication',
-						'value' => '2',
-						'weight' => 100,
-						'description' => '<p>This case is used to document activities related to the application of an (Candidate) Expert</p>
-',
-					),
-					array(
 						'name' => 'RemoteCoaching',
 						'label' => 'RemoteCoaching',
 						'value' => '20',
-						'weight' => 110,
+						'weight' => 100,
 						'description' => '<p>This case is used to document subactivities related to the Main Activity \'Remote Coaching\'</p>
 ',
 					),
@@ -54,15 +62,23 @@ class Generic_OptionGroup_Def {
 						'name' => 'CTM',
 						'label' => 'CTM',
 						'value' => '24',
-						'weight' => 150,
+						'weight' => 140,
 						'description' => '<p>Used to administrate a Country Visit</p>
+',
+					),
+					array(
+						'name' => 'TravelCase',
+						'label' => 'TravelCase',
+						'value' => '30',
+						'weight' => 200,
+						'description' => '<p>This case is used to manage the traveldetails of an individual</p>
 ',
 					),
 					array(
 						'name' => 'CAPAssessment',
 						'label' => 'CAPAssessment',
 						'value' => '31',
-						'weight' => 220,
+						'weight' => 210,
 						'description' => '<p>This case is used to document the intake of the Country Action Plan</p>
 ',
 					),
@@ -70,7 +86,7 @@ class Generic_OptionGroup_Def {
 						'name' => 'Seminar',
 						'label' => 'Seminar',
 						'value' => '32',
-						'weight' => 230,
+						'weight' => 220,
 						'description' => '<p>This case is used to document subactivities related to the Main Activity \'Seminar\'</p>
 ',
 					),
@@ -78,7 +94,7 @@ class Generic_OptionGroup_Def {
 						'name' => 'Solicitation',
 						'label' => 'Solicitation',
 						'value' => '33',
-						'weight' => 240,
+						'weight' => 230,
 						'description' => '<p>Used in the \'Donorproces\'</p>
 ',
 					),
@@ -86,7 +102,7 @@ class Generic_OptionGroup_Def {
 						'name' => 'Business',
 						'label' => 'Business',
 						'value' => '35',
-						'weight' => 260,
+						'weight' => 250,
 						'description' => '<p>This case is used to document activities related to the Main Activity \'Business Programme\'</p>
 ',
 					),
@@ -94,7 +110,7 @@ class Generic_OptionGroup_Def {
 						'name' => 'Advice',
 						'label' => 'Advice',
 						'value' => '6',
-						'weight' => 290,
+						'weight' => 280,
 						'description' => '<p>This case is used to document subactivities related to the Main Activity \'Advice\'</p>
 ',
 					),
@@ -251,10 +267,24 @@ class Generic_OptionGroup_Def {
 						'description' => '',
 					),
 					array(
+						'name' => 'Housing Support',
+						'label' => 'Housing Support',
+						'value' => 'H',
+						'weight' => 50,
+						'description' => '',
+					),
+					array(
 						'name' => 'PDV',
 						'label' => 'PDV',
 						'value' => 'P',
 						'weight' => 60,
+						'description' => '',
+					),
+					array(
+						'name' => 'Acquisitie',
+						'label' => 'Acquisitie',
+						'value' => 'Q',
+						'weight' => 70,
 						'description' => '',
 					),
 					array(
@@ -269,6 +299,54 @@ class Generic_OptionGroup_Def {
 						'label' => 'Seminar',
 						'value' => 'S',
 						'weight' => 90,
+						'description' => '',
+					),
+				),
+			),
+			array(
+				'group_name' => 'activity_status',
+				'group_title' => 'Activity Status',
+				'values' => array(
+					array(
+						'name' => 'Waiting Approval',
+						'label' => 'Waiting Approval',
+						'value' => '11',
+						'weight' => 20,
+						'description' => '<p>Used in Advice, after the Briefing activity is filled out by Expert. CC has to complete this by approving.</p>
+',
+					),
+				),
+			),
+			array(
+				'group_name' => 'participant_role',
+				'group_title' => 'Participant Role',
+				'values' => array(
+					array(
+						'name' => 'Country',
+						'label' => 'Country',
+						'value' => '5',
+						'weight' => 50,
+						'description' => '<p>Used for \'CTM\'</p>
+',
+					),
+				),
+			),
+			array(
+				'group_name' => 'event_type',
+				'group_title' => 'Event Type',
+				'values' => array(
+					array(
+						'name' => 'CTM',
+						'label' => 'CTM',
+						'value' => '7',
+						'weight' => 70,
+						'description' => '',
+					),
+					array(
+						'name' => 'Seminar',
+						'label' => 'Seminar',
+						'value' => '8',
+						'weight' => 80,
 						'description' => '',
 					),
 				),
@@ -2312,6 +2390,75 @@ class Generic_OptionGroup_Def {
 						'label' => 'WO',
 						'value' => 'WO',
 						'weight' => 30,
+						'description' => '',
+					),
+				),
+			),
+			array(
+				'group_name' => 'event_type_20141215100843',
+				'group_title' => 'Event type',
+				'values' => array(
+					array(
+						'name' => 'Conference',
+						'label' => 'Conference',
+						'value' => '1',
+						'weight' => 10,
+						'description' => '',
+					),
+					array(
+						'name' => 'Exhibition',
+						'label' => 'Exhibition',
+						'value' => '2',
+						'weight' => 20,
+						'description' => '',
+					),
+					array(
+						'name' => 'Fundraiser',
+						'label' => 'Fundraiser',
+						'value' => '3',
+						'weight' => 30,
+						'description' => '',
+					),
+					array(
+						'name' => 'Meeting',
+						'label' => 'Meeting',
+						'value' => '4',
+						'weight' => 40,
+						'description' => '',
+					),
+					array(
+						'name' => 'Performance',
+						'label' => 'Performance',
+						'value' => '5',
+						'weight' => 50,
+						'description' => '',
+					),
+					array(
+						'name' => 'Workshop',
+						'label' => 'Workshop',
+						'value' => '6',
+						'weight' => 60,
+						'description' => '',
+					),
+					array(
+						'name' => 'CTM',
+						'label' => 'CTM',
+						'value' => '7',
+						'weight' => 70,
+						'description' => '',
+					),
+					array(
+						'name' => 'Seminar',
+						'label' => 'Seminar',
+						'value' => '8',
+						'weight' => 80,
+						'description' => '',
+					),
+					array(
+						'name' => 'WOLS',
+						'label' => 'WOLS',
+						'value' => 'WOLS',
+						'weight' => 90,
 						'description' => '',
 					),
 				),

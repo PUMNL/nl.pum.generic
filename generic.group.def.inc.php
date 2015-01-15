@@ -206,6 +206,21 @@ class Generic_Group_Def {
 			),
 			array(
 				'module' => 'nl.pum.generic',
+				'name' => 'Expert_Introduction_92',
+				'entity' => 'Group',
+				'params' => array(
+					'version' => 3,
+					'name' => 'Expert_Introduction_92',
+					'title' => 'Expert Introduction',
+					'description' => 'Group for invitees of the Introduction day for Experts',
+					'is_active' => 1,
+					'group_type' => array(
+						2 => 1,
+					),
+				),
+			),
+			array(
+				'module' => 'nl.pum.generic',
 				'name' => 'Former_Expert_47',
 				'entity' => 'Group',
 				'params' => array(
@@ -214,6 +229,45 @@ class Generic_Group_Def {
 					'title' => 'Former Expert',
 					'description' => '',
 					'parent' => 'Experts',
+					'is_active' => 1,
+				),
+			),
+			array(
+				'module' => 'nl.pum.generic',
+				'name' => 'LDC_41',
+				'entity' => 'Group',
+				'params' => array(
+					'version' => 3,
+					'name' => 'LDC_41',
+					'title' => 'LDC',
+					'description' => 'Least Developed Countries and other low income countries',
+					'parent' => 'OECD_DAC_categories_40',
+					'is_active' => 1,
+				),
+			),
+			array(
+				'module' => 'nl.pum.generic',
+				'name' => 'LMIC_44',
+				'entity' => 'Group',
+				'params' => array(
+					'version' => 3,
+					'name' => 'LMIC_44',
+					'title' => 'LMIC',
+					'description' => 'Lower middle income countries and territories',
+					'parent' => 'OECD_DAC_categories_40',
+					'is_active' => 1,
+				),
+			),
+			array(
+				'module' => 'nl.pum.generic',
+				'name' => 'UMIC_45',
+				'entity' => 'Group',
+				'params' => array(
+					'version' => 3,
+					'name' => 'UMIC_45',
+					'title' => 'UMIC',
+					'description' => 'Upper middle income countries and territories',
+					'parent' => 'OECD_DAC_categories_40',
 					'is_active' => 1,
 				),
 			),

@@ -584,10 +584,10 @@ class Generic_ActivityType_Def {
 ',
 			),
 			array(
-				'name' => 'Condition: Applicant Pays',
-				'label' => 'Condition: Applicant Pays',
+				'name' => 'Condition: Customer Contribution',
+				'label' => 'Condition: Customer Contribution',
 				'component' => 'CiviCase',
-				'description' => '<p>Used in \'Advice, Remote Coaching, Seminar\'</p>
+				'description' => '<p>Used in \'Advice, RemoteCoaching, Seminar\'</p>
 ',
 			),
 		);
