@@ -29,7 +29,7 @@ class CRM_Generic_Upgrader extends CRM_Generic_Upgrader_Base {
 	CRM_Generic_Upgrader::upgrade_1005(FALSE);
 	CRM_Generic_Upgrader::upgrade_1006(FALSE);
 	CRM_Generic_Upgrader::upgrade_1007(FALSE);
-	// current installer covers updates to 1011
+	// current installer covers updates to 1013
   }
 
   /**
@@ -313,7 +313,24 @@ ORDER BY cas.id
 	Generic_CustomField::fix_targeting();
 	return TRUE;
   }
-    
+  
+  /**
+   * Upgrade 1013 - additional entities in all areas (template 1.2)
+   */
+  public function upgrade_1013($info=TRUE) {
+	if ($info) {
+		$this->ctx->log->info('Applying update 1013 (additional entities for template 1.2)');
+	}
+	Generic_ContactType::install();
+	Generic_Group::install();
+	Generic_RelationshipType::install();
+	Generic_OptionGroup::install();
+	Generic_CustomField::install();
+	Generic_Tag::install();
+	Generic_ActivityType::install();
+	Generic_CustomField::fix_targeting();
+	return TRUE;
+  }
   
   static function _setMainActivityNumber($dao_qry_result_line) {
   	$arFld = array();
