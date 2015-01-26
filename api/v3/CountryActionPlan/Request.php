@@ -38,8 +38,67 @@ function create_cap_activity($contact_id, $country_id) {
       'activity_date_time' => date('Y').'-12-31',
       'activity_status_id' => $activity_status_id
     );
-    civicrm_api3('Activity', 'Create', $params);
+    if (check_cap_activity_exists($params) == FALSE) {
+      civicrm_api3('Activity', 'Create', $params);
+    }
   }
+}
+/**
+ * Function to check if the activity to be created already exists
+ * 
+ * @param array $activityParams
+ * @return boolean
+ */
+function check_cap_activity_exists($activityParams) {
+  $assigneeCheck = FALSE;
+  $targetCheck = FALSE;
+  $query = getCheckQuery();
+  $queryParams = getCheckParams($activityParams);
+  $dao = CRM_Core_DAO::executeQuery($query, $queryParams);
+  while ($dao->fetch()) {
+    if ($dao->record_type_id == 1 && $dao->contact_id == $activityParams['assignee_id']) {
+      $assigneeCheck = TRUE;
+    }
+    if ($dao->record_type_id == 3 && $dao->contact_id == $activityParams['target_id']) {
+      $targetCheck = TRUE;
+    }
+  }
+  if ($assigneeCheck && $targetCheck) {
+    return TRUE;
+  } else {
+    return FALSE;
+  }
+}
+/**
+ * Function to build check query
+ * 
+ * @return string $query
+ */
+function getCheckQuery() {
+  $query = 'SELECT a.id, b.contact_id, b.record_type_id FROM civicrm_activity a
+    JOIN civicrm_activity_contact b ON a.id = b.activity_id AND record_type_id in(%1,%2)
+    WHERE activity_type_id = %3 AND is_current_revision = %4 AND subject = %5 
+    AND status_id = %6 AND activity_date_time = %7 AND (b.contact_id = %8 or b.contact_id = %9)';
+  return $query;
+}
+/**
+ * Function to build check query params
+ * 
+ * @param array $activityParams
+ * @return array $queryParams
+ */
+function getCheckParams($activityParams) {
+    $queryParams = array(
+    1 => array(1, 'Integer'),
+    2 => array(3, 'Integer'),
+    3 => array($activityParams['activity_type_id'], 'Integer'),
+    4 => array(1, 'Integer'),
+    5 => array($activityParams['activity_status_id'], 'Integer'),
+    6 => array($activityParams['activity_date_time'], 'String'),
+    7 => array($activityParams['activity_subject'], 'String'),
+    8 => array($activityParams['assignee_id'], 'Integer'),
+    9 => array($activityParams['target_id'], 'Integer'));
+    return $queryParams;
 }
 /**
  * Function to get activity_status_id for scheduled
