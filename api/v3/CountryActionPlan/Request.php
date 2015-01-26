@@ -63,7 +63,7 @@ function check_cap_activity_exists($activityParams) {
       $targetCheck = TRUE;
     }
   }
-  if ($assigneeCheck && $targetCheck) {
+  if ($assigneeCheck == TRUE && $targetCheck == TRUE) {
     return TRUE;
   } else {
     return FALSE;
@@ -93,9 +93,9 @@ function getCheckParams($activityParams) {
     2 => array(3, 'Integer'),
     3 => array($activityParams['activity_type_id'], 'Integer'),
     4 => array(1, 'Integer'),
-    5 => array($activityParams['activity_status_id'], 'Integer'),
-    6 => array($activityParams['activity_date_time'], 'String'),
-    7 => array($activityParams['activity_subject'], 'String'),
+    5 => array($activityParams['activity_subject'], 'String'),
+    6 => array($activityParams['activity_status_id'], 'Integer'),
+    7 => array($activityParams['activity_date_time'], 'String'),
     8 => array($activityParams['assignee_id'], 'Integer'),
     9 => array($activityParams['target_id'], 'Integer'));
     return $queryParams;
