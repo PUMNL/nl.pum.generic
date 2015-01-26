@@ -43,19 +43,24 @@ class Generic_CustomField {
 			
 			// if group was not found: create it
 			if (is_null($customGroupId)) {
+				$extends = $fieldGroup['extends'][0];
 				// create group (what does parameter 'extends_entity_column_id' do?)
 				if (empty($fieldGroup['entities'])) {
 					$extends_column_value = NULL;
 				} else {
-					$extends_column_value = array();
-					foreach($fieldGroup['entities'] as $entity) {
-						if (array_key_exists($entity, $entitiesTranslation)) {
-							$extends_column_value[] = $entitiesTranslation[$entity];
-						} else {
-							$extends_column_value[] = $entity;
+					if ((count($fieldGroup['entities'])==1) && (is_null($fieldGroup['entities'][0]))) {
+						$extends_column_value = NULL;
+					} else {
+						$extends_column_value = array();
+						foreach($fieldGroup['entities'] as $entity) {
+							if (array_key_exists($entity, $entitiesTranslation[$extends])) {
+								$extends_column_value[] = $entitiesTranslation[$extends][$entity];
+							} else {
+								$extends_column_value[] = $entity;
+							}
 						}
+						$extends_column_value = CRM_Core_DAO::VALUE_SEPARATOR . implode(CRM_Core_DAO::VALUE_SEPARATOR, $extends_column_value) . CRM_Core_DAO::VALUE_SEPARATOR;
 					}
-					$extends_column_value = CRM_Core_DAO::VALUE_SEPARATOR . implode(CRM_Core_DAO::VALUE_SEPARATOR, $extends_column_value) . CRM_Core_DAO::VALUE_SEPARATOR; // ==================== TRANSLATE FIRST
 				}
 				
 				$params = array(
@@ -262,19 +267,81 @@ class Generic_CustomField {
 	static function getEntityTranslations() {
 		$entitiesTranslation = array();
 		self::_getContactTranslations($entitiesTranslation);
+		self::_getRelationshipTranslations($entitiesTranslation);
+		self::_getContributionTranslations($entitiesTranslation);
 		self::_getCaseTypeTranslations($entitiesTranslation);
 		self::_getActivityTypeTranslations($entitiesTranslation);
+		self::_getParticipantRoleTranslations($entitiesTranslation);
 		// etc
 		return $entitiesTranslation;
 	}
 	
 	/*
-	 * contact type names translate to contact type names when used for 'used for'-column names
+	 * contact type names translate to their id's when used for 'used for'-column names
 	 */
 	private static function _getContactTranslations(&$entitiesTranslation) {
-		$result = CRM_Contact_BAO_ContactType::contactTypeInfo();
-		foreach($result as $contactType) {
-			$entitiesTranslation[$contactType['name']] = $contactType['name'];
+		$qry = '
+SELECT
+  ifnull(c2.label, c1.label) cat,
+  c1.label,
+  c1.id,
+  c1.parent_id
+FROM
+  civicrm_contact_type c1
+  left join civicrm_contact_type c2 on c2.id = c1.parent_id
+ORDER BY
+  cat,
+  c1.id
+		';
+		$dao = CRM_Core_DAO::executeQuery($qry);
+		while ($dao->fetch()) {
+			if (!array_key_exists($dao->cat, $entitiesTranslation)) {
+				$entitiesTranslation[$dao->cat] = array();
+			}
+			//$entitiesTranslation[$dao->cat][$dao->label] = $dao->id;
+			$entitiesTranslation[$dao->cat][$dao->label] = $dao->label; // extends_entity_column_value records label(s), not id(s)
+		}
+	}
+	
+	/*
+	 * relationship types label_a_b translate to their id's when used for 'used for'-column names
+	 */
+	private static function _getRelationshipTranslations(&$entitiesTranslation) {
+		$cat = 'Relationship';
+		if (!array_key_exists($cat, $entitiesTranslation)) {
+			$entitiesTranslation[$cat] = array();
+		}
+		$qry = '
+SELECT
+  label_a_b label,
+  id
+FROM
+  civicrm_relationship_type
+		';
+		$dao = CRM_Core_DAO::executeQuery($qry);
+		while ($dao->fetch()) {
+			$entitiesTranslation[$cat][$dao->label] = $dao->id;
+		}
+	}
+	
+	/*
+	 * contributions (financial types) translate to their id's when used for 'used for'-column names
+	 */
+	private static function _getContributionTranslations(&$entitiesTranslation) {
+		$cat = 'Contribution';
+		if (!array_key_exists($cat, $entitiesTranslation)) {
+			$entitiesTranslation[$cat] = array();
+		}
+		$qry = '
+SELECT
+  name label,
+  id
+FROM
+  civicrm_financial_type
+		';
+		$dao = CRM_Core_DAO::executeQuery($qry);
+		while ($dao->fetch()) {
+			$entitiesTranslation[$cat][$dao->label] = $dao->id;
 		}
 	}
 	
@@ -282,57 +349,98 @@ class Generic_CustomField {
 	 * translation table from case type name to case type value
 	 */
 	private static function _getCaseTypeTranslations(&$entitiesTranslation) {
-		self::_getOptionGroupTranslations('case_type', $entitiesTranslation);
+		self::_getOptionGroupTranslations('case_type', 'Case', $entitiesTranslation);
 	}
 	
 	/*
 	 * translation table from activity type to activity type value
 	 */
 	private static function _getActivityTypeTranslations(&$entitiesTranslation) {
-		self::_getOptionGroupTranslations('activity_type', $entitiesTranslation);
+		self::_getOptionGroupTranslations('activity_type', 'Activity', $entitiesTranslation);
+	}
+	
+	/*
+	 * translation table from activity type to activity type value
+	 */
+	private static function _getParticipantRoleTranslations(&$entitiesTranslation) {
+		self::_getOptionGroupTranslations('participant_role', 'Participant', $entitiesTranslation);
 	}
 	
 	/*
 	 * translation table from option value name to the option values value
 	 */
-	private static function _getOptionGroupTranslations($optionGroupName, &$entitiesTranslation) {
-		/*
-		 * sadly this part cannot repy on the API as the 'limit' parameter is not obeyed:
-		 * result count for option values will exceed the default 25
-		 *
-		$params = array(
-			'version' => 3,
-			'sequential' => 1,
-			'name' => $optionGroupName,
-		);
-		$result = civicrm_api('OptionGroup', 'get', $params);
-		if ($result['count']==0) {
-			// not found -> won't be able to translate
-		} else {
-			// found
-			$option_group_id = $result['id'];
-			// retrieve option values
-			$params = array(
-				'version' => 3,
-				'sequential' => 1,
-				'option_group_id' => $option_group_id,
-			);
-			$result = civicrm_api('OptionValue', 'get', $params);
-			if ($result['is_error']==0) {
-				// link names to values
-				foreach($result['values'] as $optionValue) {
-					$entitiesTranslation[$optionValue['label']] = $optionValue['value'];
-				}
-			} else {
-				// no values -> can't add to translation
-			}
-		}
-		 *
-		 */
+	private static function _getOptionGroupTranslations($optionGroupName, $translationCategory, &$entitiesTranslation) {
 		$qry = 'SELECT ogv.label, ogv.value FROM `civicrm_option_value` AS `ogv`, `civicrm_option_group` as `ogp` WHERE ogv.option_group_id=ogp.id AND ogp.name=\'' . $optionGroupName . '\'';
 		$dao = CRM_Core_DAO::executeQuery($qry);
+		$entitiesTranslation[$translationCategory] = array();
 		while ($dao->fetch()) {
-			$entitiesTranslation[$dao->label] = $dao->value;
+			$entitiesTranslation[$translationCategory][$dao->label] = $dao->value;
 		}
 	}
+	
+	static function fix_targeting() {
+		$created = array();
+		$required = self::required();
+		$entitiesTranslation = self::getEntityTranslations();
+		
+		foreach ($required as $fieldGroup) {
+			$customGroupId = NULL;
+			
+			CRM_Core_Error::debug_log_message('nl.pum.generic fixing custom group ' . $fieldGroup['group_name']);
+			
+			// verify if group exists
+			$params = array(
+				'version'		=> 3,
+				'sequential'	=> 1,
+				'name'			=> $fieldGroup['group_name'],
+			);
+			$result = civicrm_api('CustomGroup', 'getsingle', $params);
+			if (in_array('is_error', $result)) {
+				// group not found: $customGroupId remains NULL
+				CRM_Core_Error::debug_log_message('-> skipped as custom group ' . $fieldGroup['group_name'] . ' does not exist');
+			} else {
+				// group found: use id
+				$customGroupId = $result['id'];
+			}
+			
+			// if group was found: update it
+			if (!is_null($customGroupId)) {
+				$extends = $fieldGroup['extends'][0];
+				if (empty($fieldGroup['entities'])) {
+					$extends_column_value = NULL;
+				} else {
+					if ((count($fieldGroup['entities'])==1) && (is_null($fieldGroup['entities'][0]))) {
+						$extends_column_value = NULL;
+					} else {
+						$extends_column_value = array();
+						foreach($fieldGroup['entities'] as $entity) {
+							if (array_key_exists($entity, $entitiesTranslation[$extends])) {
+								$extends_column_value[] = $entitiesTranslation[$extends][$entity];
+							} else {
+								$extends_column_value[] = $entity;
+							}
+						}
+						$extends_column_value = CRM_Core_DAO::VALUE_SEPARATOR . implode(CRM_Core_DAO::VALUE_SEPARATOR, $extends_column_value) . CRM_Core_DAO::VALUE_SEPARATOR;
+					}
+					CRM_Core_Error::debug_log_message('-> ' . $extends . ' -> ' . $extends_column_value);
+				}
+				
+				$params = array(
+					'version'						=>	3,
+					'id'							=>	$customGroupId,
+					'extends'						=>	$extends,
+					'extends_entity_column_value'	=>	$extends_column_value,
+					'title'							=>	$fieldGroup['group_title'],
+					'name'							=>	$fieldGroup['group_name'],
+					'style'							=>	$fieldGroup['style'],
+					'is_multiple'					=>	$fieldGroup['is_multiple'],
+					'help_pre'						=>	$fieldGroup['help_pre'],
+					'help_post'						=>	$fieldGroup['help_post'],
+					'is_active'						=>	1,
+				); // need all parameters again, or data will be cleared
+				$result = civicrm_api('CustomGroup', 'Create', $params);
+			}
+		}
+	}
+	
 }
