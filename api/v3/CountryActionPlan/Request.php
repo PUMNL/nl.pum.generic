@@ -13,6 +13,8 @@
  */
 function civicrm_api3_country_action_plan_request($params) {
   $country_coordinators = get_active_country_coordinators();
+  CRM_Core_Error::debug('active coordinators', $country_coordinators);
+  exit();
   foreach ($country_coordinators as $country_coordinator) {
     create_cap_activity($country_coordinator['contact_id_b'], $country_coordinator['contact_id_a']);
     $return_values[] = 'Activity created for country coordinator '.$country_coordinator['contact_id_b'];
@@ -110,7 +112,8 @@ function get_active_country_coordinators() {
   }
   $case_relation_config = CRM_Threepeas_CaseRelationConfig::singleton();
   $params = array(
-    'is_active' => 1, 
+    'is_active' => 1,
+    'options' => array('limit' => 99999),
     'relationship_type_id' => $case_relation_config->get_relationship_type_id('country_coordinator'));
   try {
     $country_coordinators = civicrm_api3('Relationship', 'Get', $params);
