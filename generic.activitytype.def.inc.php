@@ -584,7 +584,7 @@ class Generic_ActivityType_Def {
 ',
 			),
 			array(
-				'name' => 'Condition: Customer Contribution',
+				'name' => 'Condition: Customer Contribution.',
 				'label' => 'Condition: Customer Contribution',
 				'component' => 'CiviCase',
 				'description' => '<p>Used in \'Advice, RemoteCoaching, Seminar\'</p>

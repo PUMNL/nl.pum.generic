@@ -422,24 +422,6 @@ class Generic_RelationshipType_Def {
 			),
 			array(
 				'module' => 'nl.pum.generic',
-				'name' => 'Partner',
-				'entity' => 'RelationshipType',
-				'params' => array(
-					'version' => 3,
-					'name_a_b' => 'Strategic Partner',
-					'name_b_a' => 'Strategic Partner',
-					'label_a_b' => 'Partner',
-					'label_b_a' => 'Partner',
-					'contact_type_a' => '',
-					'contact_sub_type_a' => '',
-					'contact_type_b' => '',
-					'contact_sub_type_b' => '',
-					'description' => 'PUM Partner',
-					'is_active' => 1,
-				),
-			),
-			array(
-				'module' => 'nl.pum.generic',
 				'name' => 'Replacement Policy Officer DGIS at',
 				'entity' => 'RelationshipType',
 				'params' => array(

@@ -282,7 +282,7 @@ class Generic_CustomField {
 	private static function _getContactTranslations(&$entitiesTranslation) {
 		$qry = '
 SELECT
-  ifnull(c2.label, c1.label) cat,
+  ifnull(c2.name, c1.name) cat,
   c1.label,
   c1.id,
   c1.parent_id

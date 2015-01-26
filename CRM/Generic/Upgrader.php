@@ -16,12 +16,12 @@ class CRM_Generic_Upgrader extends CRM_Generic_Upgrader_Base {
   public function install() {
     //$this->executeSqlFile('sql/myinstall.sql');
 	Generic_ContactType::install();
-	Generic_Group::install();
-	Generic_RelationshipType::install();
+	Generic_Group::install();				// mgd
+	Generic_RelationshipType::install();	// mgd
 	Generic_OptionGroup::install();
-	Generic_CustomField::install();
 	Generic_Tag::install();
 	Generic_ActivityType::install();
+	Generic_CustomField::install();
 	//upgrade process
 	CRM_Generic_Upgrader::upgrade_1001(FALSE);
 	CRM_Generic_Upgrader::upgrade_1002(FALSE);
@@ -38,9 +38,9 @@ class CRM_Generic_Upgrader extends CRM_Generic_Upgrader_Base {
   public function uninstall() {
 	//$this->executeSqlFile('sql/myuninstall.sql');
 	// reversed order
+	Generic_CustomField::uninstall();
 	Generic_ActivityType::uninstall();
 	Generic_Tag::uninstall();
-	Generic_CustomField::uninstall();
 	Generic_OptionGroup::uninstall();
 	Generic_RelationshipType::uninstall();
 	Generic_Group::uninstall();
@@ -56,9 +56,9 @@ class CRM_Generic_Upgrader extends CRM_Generic_Upgrader_Base {
 	Generic_Group::enable();
 	Generic_RelationshipType::enable();
 	Generic_OptionGroup::enable();
-	Generic_CustomField::enable();
 	Generic_Tag::enable();
 	Generic_ActivityType::enable();
+	Generic_CustomField::enable();
   }
 
   /**
@@ -67,9 +67,9 @@ class CRM_Generic_Upgrader extends CRM_Generic_Upgrader_Base {
   public function disable() {
     //CRM_Core_DAO::executeQuery('UPDATE foo SET is_active = 0 WHERE bar = "whiz"');
 	// reversed order
+	Generic_CustomField::disable();
 	Generic_ActivityType::disable();
 	Generic_Tag::disable();
-	Generic_CustomField::disable();
 	Generic_OptionGroup::disable();
 	Generic_RelationshipType::disable();
 	Generic_Group::disable();
@@ -325,10 +325,27 @@ ORDER BY cas.id
 	Generic_Group::install();
 	Generic_RelationshipType::install();
 	Generic_OptionGroup::install();
-	Generic_CustomField::install();
 	Generic_Tag::install();
 	Generic_ActivityType::install();
+	Generic_CustomField::install();
 	Generic_CustomField::fix_targeting();
+	return TRUE;
+  }
+  
+  /**
+   * Upgrade 1014 - additional entities in all areas (template 1.3)
+   */
+  public function upgrade_1014($info=TRUE) {
+	if ($info) {
+		$this->ctx->log->info('Applying update 1014 (entities for template 1.3)');
+	}
+	Generic_ContactType::install();
+	Generic_Group::install();
+	Generic_RelationshipType::install();
+	Generic_OptionGroup::install();
+	Generic_Tag::install();
+	Generic_ActivityType::install();
+	Generic_CustomField::install();
 	return TRUE;
   }
   
