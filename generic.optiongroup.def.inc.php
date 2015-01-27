@@ -1036,31 +1036,10 @@ class Generic_OptionGroup_Def {
 				'group_title' => 'Do you think the expert matches your request',
 				'values' => array(
 					array(
-						'name' => 'Accept',
-						'label' => 'Accept',
-						'value' => 'Accept',
-						'weight' => 10,
-						'description' => '',
-					),
-					array(
 						'name' => 'Accept_proposed_expert',
 						'label' => 'Accept proposed expert',
 						'value' => 'Accept proposed expert',
 						'weight' => 20,
-						'description' => '',
-					),
-					array(
-						'name' => 'Don_t_know_yet',
-						'label' => 'Don\'t know yet',
-						'value' => 'Don\'t know yet',
-						'weight' => 30,
-						'description' => '',
-					),
-					array(
-						'name' => 'Reject',
-						'label' => 'Reject',
-						'value' => 'Reject',
-						'weight' => 40,
 						'description' => '',
 					),
 					array(
