@@ -369,7 +369,7 @@ FROM
 	/*
 	 * translation table from option value name to the option values value
 	 */
-	private static function _getOptionGroupTranslations($optionGroupName, $translationCategory, &$entitiesTranslation) {
+	static function _getOptionGroupTranslations($optionGroupName, $translationCategory, &$entitiesTranslation) {
 		$qry = 'SELECT ogv.label, ogv.value FROM `civicrm_option_value` AS `ogv`, `civicrm_option_group` as `ogp` WHERE ogv.option_group_id=ogp.id AND ogp.name=\'' . $optionGroupName . '\'';
 		$dao = CRM_Core_DAO::executeQuery($qry);
 		$entitiesTranslation[$translationCategory] = array();

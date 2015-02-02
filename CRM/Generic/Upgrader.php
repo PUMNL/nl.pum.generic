@@ -29,7 +29,10 @@ class CRM_Generic_Upgrader extends CRM_Generic_Upgrader_Base {
 	CRM_Generic_Upgrader::upgrade_1005(FALSE);
 	CRM_Generic_Upgrader::upgrade_1006(FALSE);
 	CRM_Generic_Upgrader::upgrade_1007(FALSE);
-	// current installer covers updates to 1013
+	CRM_Generic_Upgrader::upgrade_1015(FALSE);
+	CRM_Generic_Upgrader::upgrade_1017(FALSE);
+	CRM_Generic_Upgrader::upgrade_1018(FALSE);
+	// current installer covers updates to 1018
   }
 
   /**
@@ -347,6 +350,110 @@ ORDER BY cas.id
 	Generic_ActivityType::install();
 	Generic_CustomField::install();
 	return TRUE;
+  }
+  
+  /**
+   * Upgrade 1015 - change custom group PUM_Case_number (template 1.4)
+   */
+  public function upgrade_1015($info=TRUE) {
+	if ($info) {
+		$this->ctx->log->info('Applying update 1015 (PUM_Case_number)');
+	}
+	
+	$entitiesTranslation = Generic_CustomField::getEntityTranslations();
+	$tgt = array(
+			'TravelCase',
+			'Advice',
+			'Seminar',
+			'Business',
+			'RemoteCoaching',
+			'PDV',
+			'CTM',
+			'Grant',
+	);
+	$extends_column_value = array();
+	foreach($tgt as $entity) {
+		if (array_key_exists($entity, $entitiesTranslation['Case'])) {
+			$extends_column_value[] = $entitiesTranslation['Case'][$entity];
+		} else {
+			$extends_column_value[] = $entity;
+		}
+	}
+	$extends_column_value = CRM_Core_DAO::VALUE_SEPARATOR . implode(CRM_Core_DAO::VALUE_SEPARATOR, $extends_column_value) . CRM_Core_DAO::VALUE_SEPARATOR;
+	
+	$params = array(
+		'q' => 'civicrm/ajax/rest',
+		'sequential' => 1,
+		'name' => 'PUM_Case_number',
+	);
+	$result = civicrm_api3('CustomGroup', 'get', $params);
+	$fieldGroup = $result['values'][0];
+	
+	$params = array(
+		'id'							=>	$fieldGroup['id'],
+		'name'							=>	$fieldGroup['name'],
+		'title'							=>	$fieldGroup['title'],
+		'extends'						=>	$fieldGroup['extends'],
+		'extends_entity_column_value'	=>	$extends_column_value,
+		'title'							=>	$fieldGroup['group_title'],
+		'name'							=>	$fieldGroup['group_name'],
+		'style'							=>	$fieldGroup['style'],
+		'collapse_display'				=>	$fieldGroup['collapse_display'],
+		'collapse_adv_display'			=>	$fieldGroup['collapse_adv_display'],
+		'is_multiple'					=>	$fieldGroup['is_multiple'],
+		'help_pre'						=>	$fieldGroup['help_pre'],
+		'help_post'						=>	$fieldGroup['help_post'],
+		'is_active'						=>	$fieldGroup['is_active'],
+	);
+
+	$result = civicrm_api3('CustomGroup', 'Create', $params);
+	
+	return TRUE;
+  }
+  
+  /**
+   * Upgrade 1016 - reinstall for activitytypes
+   */
+  public function upgrade_1016($info=TRUE) {
+	if ($info) {
+		$this->ctx->log->info('Applying update 1016 (reinstall activity types)');
+	}
+	Generic_ActivityType::install();
+	Generic_CustomField::fix_targeting();
+	return TRUE;
+  }
+  
+  /**
+   * Upgrade 1017 - add (event) participant status
+   */
+  public function upgrade_1017($info=TRUE) {
+	if ($info) {
+		$this->ctx->log->info('Applying update 1017 (add participant status)');
+	}
+	$params = array(
+		'q' => 'civicrm/ajax/rest',
+		'sequential' => 1,
+		'name' => 'Invited',
+		'label' => 'Invited',
+		'class' => 'Waiting',
+		'is_active' => 1,
+		'is_counted' => 0,
+		'weight' => 14,
+		'visibility_id' => 'Admin',
+	);
+	$result = civicrm_api3('ParticipantStatusType', 'create', $params);
+	return TRUE;
+  }
+  
+  /**
+   * Upgrade 1018 - remove option value Gender->Transgender
+   */
+  public function upgrade_1018($info=TRUE) {
+	if ($info) {
+		$this->ctx->log->info('Applying update 1018 (remove option value Gender->Transgender)');
+	}
+	$result = Generic_OptionGroup::remove_optionvalue('gender', 'Transgender');
+	return $result;
   }
   
   static function _setMainActivityNumber($dao_qry_result_line) {

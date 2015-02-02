@@ -80,8 +80,8 @@ class Generic_ActivityType {
 						'name'				=> $activityType['name'],
 						'value'				=> $new_value,
 						'description'		=> $activityType['description'],
-						'is_reserved'		=> TRUE,
-						'is_active'			=> FALSE,
+						'is_reserved'		=> FALSE,
+						'is_active'			=> TRUE,
 					);
 					$result = civicrm_api('OptionValue', 'create', $params);
 					// result could be checked / reported here

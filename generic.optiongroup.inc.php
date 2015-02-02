@@ -198,4 +198,60 @@ class Generic_OptionGroup {
 	static function managed(&$entities) {
 	}
 	
+	static function remove_optionvalue($option_group_name, $option_value_name) {
+		$return = FALSE;
+		try {
+			// obtain group id
+			$params = array(
+				'version' => 3,
+				'q' => 'civicrm/ajax/rest',
+				'sequential' => 1,
+				'name' => $option_group_name,
+			);
+			$result = civicrm_api('OptionGroup', 'get', $params);
+			if ($result['count']==0) {
+				// option group not found -> option value must be gone too -> act as if successful
+				$return = TRUE;
+			} else {
+				$group_id = $result['values'][0]['id'];
+				// obtain value id
+				$params = array(
+					'version' => 3,
+					'q' => 'civicrm/ajax/rest',
+					'sequential' => 1,
+					'option_group_id' => $group_id,
+					'name' => $option_value_name,
+				);
+				$result = civicrm_api('OptionValue', 'get', $params);
+				if ($result['count']==0) {
+					// option value not found -> is already gone -> act as if successful
+					$return = TRUE;
+				} else {
+					$value_id = $result['values'][0]['id'];
+					// delete option value by id
+					$params = array(
+						'version' => 3,
+						'q' => 'civicrm/ajax/rest',
+						'sequential' => 1,
+						'id' => $value_id,
+					);
+					$result = civicrm_api('OptionValue', 'delete', $params);
+					if (!array_key_exists('count', $result)) {
+						// fail (already gone? should have failed earlier)
+						$result = FALSE;
+					} elseif ($result['count']==1) {
+						// success
+						$result = TRUE;
+					} else {
+						// fail (already gone? should have failed earlier)
+						$result = FALSE;
+					}
+				}
+			}
+		} catch (Exception $e) {
+			$result = FALSE;
+		}
+		return($return);
+	}
+	
 }

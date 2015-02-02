@@ -381,7 +381,7 @@ class Generic_RelationshipType_Def {
 					'contact_type_b' => '',
 					'contact_sub_type_b' => '',
 					'description' => 'Used for \"Organise Event\"',
-					'is_active' => 0,
+					'is_active' => 1,
 				),
 			),
 			array(

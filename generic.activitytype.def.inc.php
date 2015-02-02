@@ -261,25 +261,25 @@ class Generic_ActivityType_Def {
 			array(
 				'name' => 'One pager',
 				'label' => 'One pager',
-				'component' => NULL,
+				'component' => 'CiviCase',
 				'description' => '',
 			),
 			array(
 				'name' => 'Letter of Inquiry',
 				'label' => 'Letter of Inquiry',
-				'component' => NULL,
+				'component' => 'CiviCase',
 				'description' => '',
 			),
 			array(
 				'name' => 'Concept Note',
 				'label' => 'Concept Note',
-				'component' => NULL,
+				'component' => 'CiviCase',
 				'description' => '',
 			),
 			array(
 				'name' => 'Proposal',
 				'label' => 'Proposal',
-				'component' => NULL,
+				'component' => 'CiviCase',
 				'description' => '',
 			),
 			array(
