@@ -32,7 +32,7 @@ class CRM_Generic_Upgrader extends CRM_Generic_Upgrader_Base {
 	CRM_Generic_Upgrader::upgrade_1015(FALSE);
 	CRM_Generic_Upgrader::upgrade_1017(FALSE);
 	CRM_Generic_Upgrader::upgrade_1018(FALSE);
-	// current installer covers updates to 1018
+	// current installer covers updates to 1019
   }
 
   /**
@@ -456,6 +456,22 @@ ORDER BY cas.id
 	return $result;
   }
   
+  /**
+   * Upgrade 1019 - additional custom group and option groups
+   */
+  public function upgrade_1019($info=TRUE) {
+	if ($info) {
+		$this->ctx->log->info('Applying update 1019 (additional custom group and option groups)');
+	}
+	Generic_OptionGroup::install();
+    Generic_CustomField::install();
+    return TRUE;
+  }
+    
+  
+  
+  
+  
   static function _setMainActivityNumber($dao_qry_result_line) {
   	$arFld = array();
 	$arVal = array();
@@ -489,4 +505,5 @@ ORDER BY cas.id
 		$dao_case = CRM_Core_DAO::executeQuery($sql_case);
 	}
   }
+    
 }

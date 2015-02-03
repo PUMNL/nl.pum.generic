@@ -3329,6 +3329,53 @@ class Generic_OptionGroup_Def {
 					),
 				),
 			),
+			array(
+				'group_name' => 'conclusion_do_you_want_to_approv_20140824140907',
+				'group_title' => 'Conclusion: Do you want to approve this customer?',
+				'values' => array(
+					array(
+						'name' => 'No',
+						'label' => 'No',
+						'value' => 'No',
+						'weight' => 10,
+						'description' => '',
+					),
+					array(
+						'name' => 'Pending_additional_information_',
+						'label' => 'Pending (additional information required)',
+						'value' => 'Pending',
+						'weight' => 20,
+						'description' => '',
+					),
+					array(
+						'name' => 'Yes',
+						'label' => 'Yes',
+						'value' => 'Yes',
+						'weight' => 30,
+						'description' => '',
+					),
+				),
+			),
+			array(
+				'group_name' => 'pay_receive_20150113113719',
+				'group_title' => 'Pay/Receive',
+				'values' => array(
+					array(
+						'name' => 'To_be_paid_to_PUM',
+						'label' => 'To be paid to PUM',
+						'value' => 'To be paid to PUM',
+						'weight' => 10,
+						'description' => '',
+					),
+					array(
+						'name' => 'To_receive_from_PUM',
+						'label' => 'To receive from PUM',
+						'value' => 'To receive from PUM',
+						'weight' => 20,
+						'description' => '',
+					),
+				),
+			),
 		);
 	}
 }
