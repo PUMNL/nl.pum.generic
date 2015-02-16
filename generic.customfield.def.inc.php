@@ -140,7 +140,7 @@ class Generic_CustomField_Def {
 				'help_pre' => '<p>Used in Advice</p>
 ',
 				'help_post' => '',
-				'collapse_display' => 0,
+				'collapse_display' => 1,
 				'collapse_adv_display' => 0,
 				'fieldset' => array(
 					array(
@@ -324,7 +324,7 @@ class Generic_CustomField_Def {
 				'is_multiple' => FALSE,
 				'help_pre' => '',
 				'help_post' => '',
-				'collapse_display' => 0,
+				'collapse_display' => 1,
 				'collapse_adv_display' => 0,
 				'fieldset' => array(
 					array(
@@ -532,7 +532,7 @@ class Generic_CustomField_Def {
 				'is_multiple' => FALSE,
 				'help_pre' => '',
 				'help_post' => '',
-				'collapse_display' => 0,
+				'collapse_display' => 1,
 				'collapse_adv_display' => 0,
 				'fieldset' => array(
 					array(
@@ -668,7 +668,7 @@ class Generic_CustomField_Def {
 				'is_multiple' => FALSE,
 				'help_pre' => 'Additional data required by PUM',
 				'help_post' => '',
-				'collapse_display' => 0,
+				'collapse_display' => 1,
 				'collapse_adv_display' => 0,
 				'fieldset' => array(
 					array(
@@ -1382,7 +1382,7 @@ Advice / Spring 2015 / 700,--.    BLP / Autumn 2015 / 700,-- etc.',
 				'is_multiple' => FALSE,
 				'help_pre' => '',
 				'help_post' => '',
-				'collapse_display' => 0,
+				'collapse_display' => 1,
 				'collapse_adv_display' => 0,
 				'fieldset' => array(
 					array(
@@ -1470,7 +1470,7 @@ Advice / Spring 2015 / 700,--.    BLP / Autumn 2015 / 700,-- etc.',
 				'is_multiple' => FALSE,
 				'help_pre' => '',
 				'help_post' => '',
-				'collapse_display' => 0,
+				'collapse_display' => 1,
 				'collapse_adv_display' => 0,
 				'fieldset' => array(
 					array(
@@ -1510,7 +1510,7 @@ Advice / Spring 2015 / 700,--.    BLP / Autumn 2015 / 700,-- etc.',
 				'is_multiple' => FALSE,
 				'help_pre' => '',
 				'help_post' => '',
-				'collapse_display' => 0,
+				'collapse_display' => 1,
 				'collapse_adv_display' => 0,
 				'fieldset' => array(
 					array(
@@ -1698,7 +1698,7 @@ Racist and anti-democratic media,',
 				'is_multiple' => FALSE,
 				'help_pre' => '',
 				'help_post' => '',
-				'collapse_display' => 0,
+				'collapse_display' => 1,
 				'collapse_adv_display' => 0,
 				'fieldset' => array(
 					array(
@@ -2002,7 +2002,7 @@ Racist and anti-democratic media,',
 				'is_multiple' => FALSE,
 				'help_pre' => '',
 				'help_post' => '',
-				'collapse_display' => 0,
+				'collapse_display' => 1,
 				'collapse_adv_display' => 0,
 				'fieldset' => array(
 					array(
@@ -2371,7 +2371,7 @@ Racist and anti-democratic media,',
 				'is_multiple' => FALSE,
 				'help_pre' => '',
 				'help_post' => '',
-				'collapse_display' => 0,
+				'collapse_display' => 1,
 				'collapse_adv_display' => 0,
 				'fieldset' => array(
 					array(
@@ -2459,7 +2459,7 @@ Racist and anti-democratic media,',
 				'is_multiple' => FALSE,
 				'help_pre' => '',
 				'help_post' => '',
-				'collapse_display' => 0,
+				'collapse_display' => 1,
 				'collapse_adv_display' => 0,
 				'fieldset' => array(
 					array(
@@ -2763,7 +2763,7 @@ Racist and anti-democratic media,',
 				'is_multiple' => FALSE,
 				'help_pre' => '',
 				'help_post' => '',
-				'collapse_display' => 0,
+				'collapse_display' => 1,
 				'collapse_adv_display' => 0,
 				'fieldset' => array(
 					array(
@@ -2843,7 +2843,7 @@ Racist and anti-democratic media,',
 				'is_multiple' => FALSE,
 				'help_pre' => '',
 				'help_post' => '',
-				'collapse_display' => 0,
+				'collapse_display' => 1,
 				'collapse_adv_display' => 0,
 				'fieldset' => array(
 					array(
@@ -2955,7 +2955,7 @@ Racist and anti-democratic media,',
 				'is_multiple' => FALSE,
 				'help_pre' => '',
 				'help_post' => '',
-				'collapse_display' => 0,
+				'collapse_display' => 1,
 				'collapse_adv_display' => 0,
 				'fieldset' => array(
 					array(
@@ -3152,7 +3152,7 @@ Racist and anti-democratic media,',
 				'help_pre' => '<p>Used for Webform: New Customer.</p>
 ',
 				'help_post' => '',
-				'collapse_display' => 0,
+				'collapse_display' => 1,
 				'collapse_adv_display' => 0,
 				'fieldset' => array(
 					array(
@@ -3889,7 +3889,7 @@ Please explain your company\'s dependancy of the holding.',
 				'is_multiple' => FALSE,
 				'help_pre' => '',
 				'help_post' => '',
-				'collapse_display' => 0,
+				'collapse_display' => 1,
 				'collapse_adv_display' => 0,
 				'fieldset' => array(
 					array(
@@ -3930,7 +3930,7 @@ Please explain your company\'s dependancy of the holding.',
 				'help_pre' => '<p>Used on the webform \"Expert PUM CV\" where Candidate Experts can fill out their relevant Education and training details</p>
 ',
 				'help_post' => '',
-				'collapse_display' => 0,
+				'collapse_display' => 1,
 				'collapse_adv_display' => 0,
 				'fieldset' => array(
 					array(
@@ -4138,7 +4138,7 @@ Please explain your company\'s dependancy of the holding.',
 				'is_multiple' => FALSE,
 				'help_pre' => '',
 				'help_post' => '',
-				'collapse_display' => 0,
+				'collapse_display' => 1,
 				'collapse_adv_display' => 0,
 				'fieldset' => array(
 					array(
@@ -4227,7 +4227,7 @@ Please explain your company\'s dependancy of the holding.',
 				'help_pre' => '<p>Data specific to the role PUM Expert</p>
 ',
 				'help_post' => '',
-				'collapse_display' => 0,
+				'collapse_display' => 1,
 				'collapse_adv_display' => 0,
 				'fieldset' => array(
 					array(
@@ -4531,7 +4531,7 @@ Please explain your company\'s dependancy of the holding.',
 				'is_multiple' => FALSE,
 				'help_pre' => '',
 				'help_post' => '',
-				'collapse_display' => 0,
+				'collapse_display' => 1,
 				'collapse_adv_display' => 0,
 				'fieldset' => array(
 					array(
@@ -4595,7 +4595,7 @@ Please explain your company\'s dependancy of the holding.',
 				'is_multiple' => FALSE,
 				'help_pre' => '',
 				'help_post' => '',
-				'collapse_display' => 0,
+				'collapse_display' => 1,
 				'collapse_adv_display' => 0,
 				'fieldset' => array(
 					array(
@@ -4660,7 +4660,7 @@ Please explain your company\'s dependancy of the holding.',
 				'is_multiple' => FALSE,
 				'help_pre' => '',
 				'help_post' => '',
-				'collapse_display' => 0,
+				'collapse_display' => 1,
 				'collapse_adv_display' => 0,
 				'fieldset' => array(
 					array(
@@ -4845,7 +4845,7 @@ Please explain your company\'s dependancy of the holding.',
 				'help_pre' => '<p>Used in \"projectintake\"</p>
 ',
 				'help_post' => '',
-				'collapse_display' => 0,
+				'collapse_display' => 1,
 				'collapse_adv_display' => 0,
 				'fieldset' => array(
 					array(
@@ -4934,7 +4934,7 @@ Please explain your company\'s dependancy of the holding.',
 				'help_pre' => '<p>Used in \"Projectintake\"</p>
 ',
 				'help_post' => '',
-				'collapse_display' => 0,
+				'collapse_display' => 1,
 				'collapse_adv_display' => 0,
 				'fieldset' => array(
 					array(
@@ -5359,7 +5359,7 @@ Please explain your company\'s dependancy of the holding.',
 				'help_pre' => '<p>Used in \"Projectintake\"</p>
 ',
 				'help_post' => '',
-				'collapse_display' => 0,
+				'collapse_display' => 1,
 				'collapse_adv_display' => 0,
 				'fieldset' => array(
 					array(
@@ -5632,7 +5632,7 @@ Please explain your company\'s dependancy of the holding.',
 				'is_multiple' => TRUE,
 				'help_pre' => '',
 				'help_post' => '',
-				'collapse_display' => 0,
+				'collapse_display' => 1,
 				'collapse_adv_display' => 1,
 				'fieldset' => array(
 					array(
@@ -5696,7 +5696,7 @@ Please explain your company\'s dependancy of the holding.',
 				'is_multiple' => FALSE,
 				'help_pre' => '',
 				'help_post' => '',
-				'collapse_display' => 0,
+				'collapse_display' => 1,
 				'collapse_adv_display' => 0,
 				'fieldset' => array(
 					array(
@@ -5904,7 +5904,7 @@ Please explain your company\'s dependancy of the holding.',
 				'is_multiple' => FALSE,
 				'help_pre' => '',
 				'help_post' => '',
-				'collapse_display' => 0,
+				'collapse_display' => 1,
 				'collapse_adv_display' => 0,
 				'fieldset' => array(
 					array(
@@ -6040,7 +6040,7 @@ Please explain your company\'s dependancy of the holding.',
 				'is_multiple' => FALSE,
 				'help_pre' => '',
 				'help_post' => '',
-				'collapse_display' => 0,
+				'collapse_display' => 1,
 				'collapse_adv_display' => 0,
 				'fieldset' => array(
 					array(
@@ -6224,7 +6224,7 @@ Please explain your company\'s dependancy of the holding.',
 				'is_multiple' => FALSE,
 				'help_pre' => '',
 				'help_post' => '',
-				'collapse_display' => 0,
+				'collapse_display' => 1,
 				'collapse_adv_display' => 0,
 				'fieldset' => array(
 					array(
@@ -6361,7 +6361,7 @@ Please explain your company\'s dependancy of the holding.',
 				'help_pre' => '<p>Used in PDV</p>
 ',
 				'help_post' => '',
-				'collapse_display' => 0,
+				'collapse_display' => 1,
 				'collapse_adv_display' => 0,
 				'fieldset' => array(
 					array(
@@ -6846,7 +6846,7 @@ Please explain your company\'s dependancy of the holding.',
 				'is_multiple' => FALSE,
 				'help_pre' => '',
 				'help_post' => '',
-				'collapse_display' => 0,
+				'collapse_display' => 1,
 				'collapse_adv_display' => 0,
 				'fieldset' => array(
 					array(
@@ -7977,7 +7977,7 @@ Please explain your company\'s dependancy of the holding.',
 				'help_pre' => '<p>Filled in the Webform \'Expert PUM CV\'</p>
 ',
 				'help_post' => '',
-				'collapse_display' => 0,
+				'collapse_display' => 1,
 				'collapse_adv_display' => 0,
 				'fieldset' => array(
 					array(
@@ -8233,7 +8233,7 @@ Please explain your company\'s dependancy of the holding.',
 				'is_multiple' => TRUE,
 				'help_pre' => '',
 				'help_post' => '',
-				'collapse_display' => 0,
+				'collapse_display' => 1,
 				'collapse_adv_display' => 0,
 				'fieldset' => array(
 					array(
