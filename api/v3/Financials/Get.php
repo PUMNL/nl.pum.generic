@@ -68,7 +68,7 @@ function _civicrm_api3_financials_get_dsa_data(&$result_ar, $params) {
 			'sequential' => 1,
 			'contact_id' => $params['contact_id'],
 		);
-		$result = civicrm_api('Dsa', 'getfinancials', $params_api);
+		$result = civicrm_api('Dsa', 'GetFinancials', $params_api);
 		
 		if ($result['is_error'] == 0) {
 			if ($result['count'] > 0) {
@@ -91,7 +91,7 @@ function _civicrm_api3_financials_get_representative_payment_data(&$result_ar, $
 			'sequential' => 1,
 			'contact_id' => $params['contact_id'],
 		);
-		$result = civicrm_api('Representative', 'getfinancials', $params_api);
+		$result = civicrm_api('Representative', 'GetFinancials', $params_api);
 		
 		if ($result['is_error'] == 0) {
 			if ($result['count'] > 0) {
@@ -107,34 +107,21 @@ function _civicrm_api3_financials_get_representative_payment_data(&$result_ar, $
  * function to provide claim details
  */
 function _civicrm_api3_financials_get_claim_data(&$result_ar, $params) {
-/*	$params = array(
+	$params_api = array(
 		'version' => 3,
+		'q' => 'civicrm/ajax/rest',
 		'sequential' => 1,
-		'option_group_name' => 'activity_type',
-		'name' => 'Claim',
+		'contact_id' => $params['contact_id'],
 	);
-	$result = civicrm_api('OptionValue', 'getsingle', $params);
-	if ($result->is_error == 0) {
-		$result_ar[] = array(
-			'type' => 'Claim',
-			'reference' => '12345 X YY',
-			'description' => 'Dummy Claim data',
-			'payment_type' => 'X',
-			'amount' => 20,
-			'contact_id' => 123,
-			'date' => '17-10-2014',
-		);
-		$result_ar[] = array(
-			'type' => 'Claim',
-			'reference' => '12345 X YY',
-			'description' => 'Dummy Claim data',
-			'payment_type' => 'Y',
-			'amount' => 10,
-			'contact_id' => 123,
-			'date' => '17-10-2014',
-		);
+	$result = civicrm_api('Claim', 'GetFinancials', $params_api);
+	
+	if ($result['is_error'] == 0) {
+		if ($result['count'] > 0) {
+			foreach($result['values'] as $key=>$value) {
+				$result_ar[] = $value;
+			}
+		}
 	}
-*/
 }
 
 /**

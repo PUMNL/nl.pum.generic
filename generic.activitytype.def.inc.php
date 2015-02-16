@@ -14,13 +14,6 @@ class Generic_ActivityType_Def {
 ',
 			),
 			array(
-				'name' => 'RCT Intake Report',
-				'label' => 'RCT Intake Report',
-				'component' => 'CiviCase',
-				'description' => '<p>Used in \"ExpertApplication\"</p>
-',
-			),
-			array(
 				'name' => 'Create Candidate Expert Account',
 				'label' => 'Create Candidate Expert Account',
 				'component' => 'CiviCase',
