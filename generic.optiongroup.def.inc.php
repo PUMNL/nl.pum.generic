@@ -91,14 +91,6 @@ class Generic_OptionGroup_Def {
 ',
 					),
 					array(
-						'name' => 'Solicitation',
-						'label' => 'Solicitation',
-						'value' => '33',
-						'weight' => 230,
-						'description' => '<p>Used in the \'Donorproces\'</p>
-',
-					),
-					array(
 						'name' => 'Business',
 						'label' => 'Business',
 						'value' => '35',
@@ -112,6 +104,14 @@ class Generic_OptionGroup_Def {
 						'value' => '6',
 						'weight' => 280,
 						'description' => '<p>This case is used to document subactivities related to the Main Activity \'Advice\'</p>
+',
+					),
+					array(
+						'name' => 'Opportunity',
+						'label' => 'Opportunity',
+						'value' => '36',
+						'weight' => 290,
+						'description' => '<p>Used in the \'Donorproces\'</p>
 ',
 					),
 				),
