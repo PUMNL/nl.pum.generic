@@ -125,6 +125,7 @@ class Generic_OptionGroup_Def {
 						'label' => 'Ongoing',
 						'value' => '1',
 						'weight' => 10,
+						'grouping' => 'Opened',
 						'description' => '',
 					),
 					array(
@@ -132,6 +133,7 @@ class Generic_OptionGroup_Def {
 						'label' => 'Debriefing',
 						'value' => '10',
 						'weight' => 20,
+						'grouping' => 'Opened',
 						'description' => '<p>Used in \'Factfindingmission, Advice\'</p>
 ',
 					),
@@ -140,6 +142,7 @@ class Generic_OptionGroup_Def {
 						'label' => 'Completed',
 						'value' => '11',
 						'weight' => 30,
+						'grouping' => 'Closed',
 						'description' => '<p>Used for \'Expertapplication case\'</p>
 ',
 					),
@@ -148,6 +151,7 @@ class Generic_OptionGroup_Def {
 						'label' => 'Final Check Application',
 						'value' => '12',
 						'weight' => 40,
+						'grouping' => 'Opened',
 						'description' => '<p>Used in \"ExpertApplication\"</p>
 ',
 					),
@@ -156,6 +160,7 @@ class Generic_OptionGroup_Def {
 						'label' => 'Submitted',
 						'value' => '13',
 						'weight' => 50,
+						'grouping' => 'Opened',
 						'description' => '<p>Used in \"Projectintake\"</p>
 ',
 					),
@@ -164,6 +169,7 @@ class Generic_OptionGroup_Def {
 						'label' => 'Accepted',
 						'value' => '15',
 						'weight' => 70,
+						'grouping' => 'Closed',
 						'description' => '<p>Used in \"ExpertApplication\" when the Candidate Expert has been accepted.</p>
 ',
 					),
@@ -172,6 +178,7 @@ class Generic_OptionGroup_Def {
 						'label' => 'Rejected',
 						'value' => '16',
 						'weight' => 80,
+						'grouping' => 'Opened',
 						'description' => '<p>Used in \"ExpertApplication\". The SC has somewhere during the application proces decided this candidate is not suitable for PUM.</p>
 <p>Used in \"ProjectInatek\". When a local rep, a CC, Anamon or the SC has rejected the project request</p>
 ',
@@ -181,6 +188,7 @@ class Generic_OptionGroup_Def {
 						'label' => 'Execution',
 						'value' => '17',
 						'weight' => 90,
+						'grouping' => 'Opened',
 						'description' => '<p>Used in \"advice\"</p>
 ',
 					),
@@ -189,6 +197,7 @@ class Generic_OptionGroup_Def {
 						'label' => 'Intake',
 						'value' => '4',
 						'weight' => 120,
+						'grouping' => 'Opened',
 						'description' => '<p>Used in \'ProjectIntake\'</p>
 ',
 					),
@@ -197,6 +206,7 @@ class Generic_OptionGroup_Def {
 						'label' => 'Matching',
 						'value' => '5',
 						'weight' => 130,
+						'grouping' => 'Opened',
 						'description' => '<p>Used in \'Advice, BLP, Remote Coaching\'</p>
 ',
 					),
@@ -205,6 +215,7 @@ class Generic_OptionGroup_Def {
 						'label' => 'Preparation',
 						'value' => '6',
 						'weight' => 140,
+						'grouping' => 'Opened',
 						'description' => '<p>Used in \"Advice, BLP, Remote Coaching\"</p>
 ',
 					),
@@ -213,6 +224,7 @@ class Generic_OptionGroup_Def {
 						'label' => 'Interview',
 						'value' => '7',
 						'weight' => 150,
+						'grouping' => 'Opened',
 						'description' => '<p>Used in \"ExpertApplication\"</p>
 ',
 					),
@@ -221,6 +233,7 @@ class Generic_OptionGroup_Def {
 						'label' => 'Assess Expert Applicaton',
 						'value' => '8',
 						'weight' => 160,
+						'grouping' => 'Opened',
 						'description' => '<p>Used in \"ExpertApplication\" to show a CV has been uploaded by a Candidate Expert</p>
 ',
 					),
@@ -229,8 +242,33 @@ class Generic_OptionGroup_Def {
 						'label' => 'Fill Out PUM CV',
 						'value' => '9',
 						'weight' => 170,
+						'grouping' => 'Opened',
 						'description' => '<p>Used in \"ExpertApplication\" to show that an Expert has done a succesfull interview and can now fill out his PUM CV .</p>
 ',
+					),
+					array(
+						'name' => 'Closed',
+						'label' => 'Resolved',
+						'value' => '19',
+						'weight' => 180,
+						'grouping' => 'Closed',
+						'description' => '',
+					),
+					array(
+						'name' => 'Declined',
+						'label' => 'Declined',
+						'value' => '18',
+						'weight' => 190,
+						'grouping' => 'Closed',
+						'description' => '',
+					),
+					array(
+						'name' => 'Urgent',
+						'label' => 'Urgent',
+						'value' => '20',
+						'weight' => 200,
+						'grouping' => 'Opened',
+						'description' => '',
 					),
 				),
 			),
@@ -2015,23 +2053,23 @@ class Generic_OptionGroup_Def {
 				'group_title' => 'RoI of the project: Has the customer substantial growth potential',
 				'values' => array(
 					array(
+						'name' => 'Yes',
+						'label' => 'Yes',
+						'value' => 'Yes',
+						'weight' => 10,
+						'description' => '',
+					),
+					array(
 						'name' => 'No',
 						'label' => 'No',
 						'value' => 'No',
-						'weight' => 10,
+						'weight' => 20,
 						'description' => '',
 					),
 					array(
 						'name' => 'Unknown',
 						'label' => 'Unknown',
 						'value' => 'Unknown',
-						'weight' => 20,
-						'description' => '',
-					),
-					array(
-						'name' => 'Yes',
-						'label' => 'Yes',
-						'value' => 'Yes',
 						'weight' => 30,
 						'description' => '',
 					),
@@ -2042,23 +2080,23 @@ class Generic_OptionGroup_Def {
 				'group_title' => 'RoI of the project: Has the customer enough investment potential',
 				'values' => array(
 					array(
+						'name' => 'Yes',
+						'label' => 'Yes',
+						'value' => 'Yes',
+						'weight' => 10,
+						'description' => '',
+					),
+					array(
 						'name' => 'No',
 						'label' => 'No',
 						'value' => 'No',
-						'weight' => 10,
+						'weight' => 20,
 						'description' => '',
 					),
 					array(
 						'name' => 'Unknown',
 						'label' => 'Unknown',
 						'value' => 'Unknown',
-						'weight' => 20,
-						'description' => '',
-					),
-					array(
-						'name' => 'Yes',
-						'label' => 'Yes',
-						'value' => 'Yes',
 						'weight' => 30,
 						'description' => '',
 					),
@@ -2069,23 +2107,23 @@ class Generic_OptionGroup_Def {
 				'group_title' => 'Conclusion: Do you want to approve this customer?',
 				'values' => array(
 					array(
+						'name' => 'Yes',
+						'label' => 'Yes',
+						'value' => 'Yes',
+						'weight' => 10,
+						'description' => '',
+					),
+					array(
 						'name' => 'No',
 						'label' => 'No',
 						'value' => 'No',
-						'weight' => 10,
+						'weight' => 20,
 						'description' => '',
 					),
 					array(
 						'name' => 'Pending_additional_information_',
 						'label' => 'Pending (additional information required)',
 						'value' => 'Pending',
-						'weight' => 20,
-						'description' => '',
-					),
-					array(
-						'name' => 'Yes',
-						'label' => 'Yes',
-						'value' => 'Yes',
 						'weight' => 30,
 						'description' => '',
 					),
