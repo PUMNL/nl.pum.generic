@@ -5275,7 +5275,7 @@ Please explain your company\'s dependancy of the holding.',
 					),
 					array(
 						'name' => 'Conclusion_Which_project_activities_do_you_advise_foresee_for_th',
-						'label' => 'Conclusion: Which project activities do you advise/foresee for this project?',
+						'label' => 'Conclusion: Which main activities do you advise/foresee for this project?',
 						'data_type' => 'String',
 						'html_type' => 'Multi-Select',
 						'default_value' => NULL,
