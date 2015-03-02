@@ -49,8 +49,8 @@ class Generic_ActivityType_Def {
 ',
 			),
 			array(
-				'name' => 'Activity Information by CC',
-				'label' => 'Activity Information by CC',
+				'name' => 'Grant Information by CC',
+				'label' => 'Grant Information by CC',
 				'component' => 'CiviCase',
 				'description' => '<p>Used in \'Grant\'</p>
 ',
