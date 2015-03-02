@@ -7,13 +7,6 @@ class Generic_ActivityType_Def {
 	static function required() {
 		return array(
 			array(
-				'name' => 'Interview',
-				'label' => 'Interview',
-				'component' => 'CiviCase',
-				'description' => '<p>Used in ExpertApplication</p>
-',
-			),
-			array(
 				'name' => 'Create Candidate Expert Account',
 				'label' => 'Create Candidate Expert Account',
 				'component' => 'CiviCase',
