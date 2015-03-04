@@ -3414,6 +3414,102 @@ class Generic_OptionGroup_Def {
 					),
 				),
 			),
+			array(
+				'group_name' => 'hoe_beoordeelt_u_de_voorbereidin_20150223162409',
+				'group_title' => 'Hoe beoordeelt u de voorbereiding van de klant?',
+				'values' => array(
+					array(
+						'name' => 'Zeer_goed',
+						'label' => 'Zeer goed',
+						'value' => 'Zeer goed',
+						'weight' => 10,
+						'description' => '',
+					),
+					array(
+						'name' => 'Goed',
+						'label' => 'Goed',
+						'value' => 'Goed',
+						'weight' => 20,
+						'description' => '',
+					),
+					array(
+						'name' => 'Niet_goed_niet_slecht',
+						'label' => 'Niet goed, niet slecht',
+						'value' => 'Niet goed, niet slecht',
+						'weight' => 30,
+						'description' => '',
+					),
+					array(
+						'name' => 'Slecht',
+						'label' => 'Slecht',
+						'value' => 'Slecht',
+						'weight' => 40,
+						'description' => '',
+					),
+					array(
+						'name' => 'Zeer_slecht',
+						'label' => 'Zeer slecht',
+						'value' => 'Zeer slecht',
+						'weight' => 50,
+						'description' => '',
+					),
+					array(
+						'name' => 'Geen_mening',
+						'label' => 'Geen mening',
+						'value' => 'Geen mening',
+						'weight' => 60,
+						'description' => '',
+					),
+				),
+			),
+			array(
+				'group_name' => 'sloot_het_programma_goed_aan_bij_20150223162446',
+				'group_title' => 'Sloot het programma goed aan bij de behoeften van de klant?',
+				'values' => array(
+					array(
+						'name' => 'Zeer_goed',
+						'label' => 'Zeer goed',
+						'value' => 'Zeer goed',
+						'weight' => 10,
+						'description' => '',
+					),
+					array(
+						'name' => 'Goed',
+						'label' => 'Goed',
+						'value' => 'Goed',
+						'weight' => 20,
+						'description' => '',
+					),
+					array(
+						'name' => 'Niet_goed_niet_slecht',
+						'label' => 'Niet goed, niet slecht',
+						'value' => 'Niet goed, niet slecht',
+						'weight' => 30,
+						'description' => '',
+					),
+					array(
+						'name' => 'Slecht',
+						'label' => 'Slecht',
+						'value' => 'Slecht',
+						'weight' => 40,
+						'description' => '',
+					),
+					array(
+						'name' => 'Zeer_slecht',
+						'label' => 'Zeer slecht',
+						'value' => 'Zeer slecht',
+						'weight' => 50,
+						'description' => '',
+					),
+					array(
+						'name' => 'Geen_mening',
+						'label' => 'Geen mening',
+						'value' => 'Geen mening',
+						'weight' => 60,
+						'description' => '',
+					),
+				),
+			),
 		);
 	}
 }
