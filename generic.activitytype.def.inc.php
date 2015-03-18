@@ -576,6 +576,14 @@ class Generic_ActivityType_Def {
 				'description' => '<p>Used in \'Advice, RemoteCoaching, Seminar\'</p>
 ',
 			),
+			array(
+				'name' => 'Exit Expert',
+				'label' => 'Exit Expert',
+				'component' => 'CiviCase',
+				'description' => '<p>This activity is used on the case ExitExpert and contains custom fields</p>
+',
+			),
+			
 		);
 	}
 }
