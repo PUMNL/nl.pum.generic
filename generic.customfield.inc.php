@@ -282,7 +282,7 @@ class Generic_CustomField {
 	private static function _getContactTranslations(&$entitiesTranslation) {
 		$qry = '
 SELECT
-  ifnull(c2.label, c1.label) cat,
+  ifnull(c2.name, c1.name) cat,
   c1.label,
   c1.id,
   c1.parent_id
@@ -369,7 +369,7 @@ FROM
 	/*
 	 * translation table from option value name to the option values value
 	 */
-	private static function _getOptionGroupTranslations($optionGroupName, $translationCategory, &$entitiesTranslation) {
+	static function _getOptionGroupTranslations($optionGroupName, $translationCategory, &$entitiesTranslation) {
 		$qry = 'SELECT ogv.label, ogv.value FROM `civicrm_option_value` AS `ogv`, `civicrm_option_group` as `ogp` WHERE ogv.option_group_id=ogp.id AND ogp.name=\'' . $optionGroupName . '\'';
 		$dao = CRM_Core_DAO::executeQuery($qry);
 		$entitiesTranslation[$translationCategory] = array();

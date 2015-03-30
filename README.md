@@ -25,6 +25,10 @@ It initialises sequence 'main_activity' (70000 and up, step 1, non-cyclic) and '
 
 As of v1.1 nl.pum.genericsourcereader may be used to (help) build the lists of required entities.
 
+Important note:
+---------------
+As CiviCRM processes managed entities differently than other entities created in install or upgrade, you may find that custom groups do NOT get linked to their intended relationship types.      
+
 
 Known errors when disabling:
 ----------------------------

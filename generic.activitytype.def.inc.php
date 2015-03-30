@@ -7,20 +7,6 @@ class Generic_ActivityType_Def {
 	static function required() {
 		return array(
 			array(
-				'name' => 'Interview',
-				'label' => 'Interview',
-				'component' => 'CiviCase',
-				'description' => '<p>Used in ExpertApplication</p>
-',
-			),
-			array(
-				'name' => 'RCT Intake Report',
-				'label' => 'RCT Intake Report',
-				'component' => 'CiviCase',
-				'description' => '<p>Used in \"ExpertApplication\"</p>
-',
-			),
-			array(
 				'name' => 'Create Candidate Expert Account',
 				'label' => 'Create Candidate Expert Account',
 				'component' => 'CiviCase',
@@ -63,8 +49,8 @@ class Generic_ActivityType_Def {
 ',
 			),
 			array(
-				'name' => 'Activity Information by CC',
-				'label' => 'Activity Information by CC',
+				'name' => 'Grant Information by CC',
+				'label' => 'Grant Information by CC',
 				'component' => 'CiviCase',
 				'description' => '<p>Used in \'Grant\'</p>
 ',
@@ -261,25 +247,25 @@ class Generic_ActivityType_Def {
 			array(
 				'name' => 'One pager',
 				'label' => 'One pager',
-				'component' => NULL,
+				'component' => 'CiviCase',
 				'description' => '',
 			),
 			array(
 				'name' => 'Letter of Inquiry',
 				'label' => 'Letter of Inquiry',
-				'component' => NULL,
+				'component' => 'CiviCase',
 				'description' => '',
 			),
 			array(
 				'name' => 'Concept Note',
 				'label' => 'Concept Note',
-				'component' => NULL,
+				'component' => 'CiviCase',
 				'description' => '',
 			),
 			array(
 				'name' => 'Proposal',
 				'label' => 'Proposal',
-				'component' => NULL,
+				'component' => 'CiviCase',
 				'description' => '',
 			),
 			array(
@@ -584,12 +570,20 @@ class Generic_ActivityType_Def {
 ',
 			),
 			array(
-				'name' => 'Condition: Customer Contribution',
+				'name' => 'Condition: Customer Contribution.',
 				'label' => 'Condition: Customer Contribution',
 				'component' => 'CiviCase',
 				'description' => '<p>Used in \'Advice, RemoteCoaching, Seminar\'</p>
 ',
 			),
+			array(
+				'name' => 'Exit Expert',
+				'label' => 'Exit Expert',
+				'component' => 'CiviCase',
+				'description' => '<p>This activity is used on the case ExitExpert and contains custom fields</p>
+',
+			),
+			
 		);
 	}
 }
