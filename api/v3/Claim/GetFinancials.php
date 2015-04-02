@@ -66,9 +66,13 @@ function _civicrm_api3_claim_getfinancials_filter_params($params) {
 
 function _civicrm_api3_claim_getfinancials_dao($params) {
 	$tbl = array(
+		'Donor_details_FA'  => generic_getCustomTableInfo('Donor_details_FA'),	// contains donor (sponsor) code
+		'Claiminformation'  => generic_getCustomTableInfo('Claiminformation'),	// contains custom data for activity Claim
+	);
+	/*	-- merge conflict on: ----
 		'Donor_details_FA'  => _getCustomTableInfo('Donor_details_FA'),	// contains donor (sponsor) code
 		'Claiminformation'  => _getCustomTableInfo('Claiminformation'),	// contains custom data for activity Claim
-	);
+	*/
 
 	$sql = '
 SELECT

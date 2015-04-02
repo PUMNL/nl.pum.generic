@@ -171,7 +171,7 @@ function get_active_country_coordinators() {
   $params = array(
     'is_active' => 1,
     'options' => array('limit' => 99999),
-    'relationship_type_id' => $case_relation_config->get_relationship_type_id('country_coordinator'));
+    'relationship_type_id' => $case_relation_config->getRelationshipTypeId('country_coordinator'));
   try {
     $country_coordinators = civicrm_api3('Relationship', 'Get', $params);
   } catch (CiviCRM_API3_Exception $ex) {

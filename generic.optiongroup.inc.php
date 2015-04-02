@@ -120,6 +120,9 @@ class Generic_OptionGroup {
 							'is_reserved'		=> TRUE,
 							'is_active'			=> TRUE,
 						);
+						if (array_key_exists ('grouping', $optionValue)) {
+							$params['grouping'] = $optionValue['grouping'];
+						}
 						try {
 							$result_val = civicrm_api3('OptionValue', 'create', $params);
 							$created[] = $optionValue['label'];
