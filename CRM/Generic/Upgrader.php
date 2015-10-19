@@ -468,7 +468,16 @@ ORDER BY cas.id
     return TRUE;
   }
     
-  
+  /**
+   * Upgrade 1020 - additional custom group pum_history
+   */
+  public function upgrade_1020($info=TRUE) {
+	if ($info) {
+		$this->ctx->log->info('Applying update 1020 (additional custom group pum_history)');
+	}
+	Generic_CustomField::install();
+    return TRUE;
+  }
   
   
   

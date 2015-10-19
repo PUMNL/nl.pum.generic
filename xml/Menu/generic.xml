@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<menu>
+  <item>
+    <path>civicrm/importpumhistory</path>
+    <page_callback>CRM_Generic_Page_ImportPUMHistory</page_callback>
+    <title>ImportPUMHistory</title>
+    <access_arguments>access CiviCRM</access_arguments>
+  </item>
+</menu>
