@@ -73,6 +73,8 @@ class Generic_CustomField {
 					'is_multiple'					=>	$fieldGroup['is_multiple'],
 					'help_pre'						=>	$fieldGroup['help_pre'],
 					'help_post'						=>	$fieldGroup['help_post'],
+					'collapse_display' 				=> 	$fieldGroup['collapse_display'],
+					'collapse_adv_display' 			=> 	$fieldGroup['collapse_adv_display'],
 					'is_active'						=>	1,
 				);
 				$result = civicrm_api('CustomGroup', 'Create', $params);
@@ -156,6 +158,9 @@ class Generic_CustomField {
 								'note_columns'			=>	$field['note_columns'],
 								'note_rows'				=>	$field['note_rows'],
 							);
+							if (isset($field['column_name'])) {
+								$params['column_name'] = $field['column_name'];
+							}
 							$result = civicrm_api('CustomField', 'Create', $params);
 							/****************************************************************************************************
 							 * Observation in CiviCRM 4.4.4:
