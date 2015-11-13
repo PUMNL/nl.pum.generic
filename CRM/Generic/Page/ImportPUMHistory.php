@@ -11,8 +11,8 @@ class CRM_Generic_Page_ImportPUMHistory extends CRM_Core_Page {
     $this->assign('currentTime', date('Y-m-d H:i:s'));
 
 	//Get configuration
-	$grp_prinshistory = CRM_Generic_Misc::generic_getCustomTableInfo('prins_history');
-	$grp_shortname = CRM_Generic_Misc::generic_getCustomTableInfo('Additional_Data');
+	$grp_prinshistory = generic_getCustomTableInfo('prins_history');
+	$grp_shortname = generic_getCustomTableInfo('Additional_Data');
 	
 	//Fetch Shortname
 	$sql_shortname = "SELECT * FROM ".$grp_shortname['group_table'];

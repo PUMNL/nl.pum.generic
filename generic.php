@@ -308,7 +308,7 @@ function generic_getCustomTableInfo($customGroupName) {
 function generic_civicrm_summary($contactId, &$content) {
   try {
   	//Get configuration
-	$grp_prinshistory = CRM_Generic_Misc::generic_getCustomTableInfo('prins_history');
+	$grp_prinshistory = generic_getCustomTableInfo('prins_history');
 	
 	$sql = "SELECT * FROM ".$grp_prinshistory['group_table']." WHERE entity_id = '".$contactId."'";
   	$dao = CRM_Core_DAO::executeQuery($sql);
