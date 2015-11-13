@@ -326,17 +326,18 @@ function generic_civicrm_summary($contactId, &$content) {
     );
     $contactData = civicrm_api3('Contact', 'Getvalue', $contactParams);
     
-	foreach ($contactData as $contactSubType) {
- 		if ($contactSubType == 'Expert') {
-	        $template = CRM_Core_Smarty::singleton();
-		    $template->assign('NumberOfProjects', $NumberOfProjects);
-		    	
-		    $html = $template->fetch('CRM/Generic/Page/ExpertPUMHistory.tpl');
-		
-		    echo $html;
-		}
+	if (isset($contactData) && is_array($contactData)) {
+		foreach ($contactData as $contactSubType) {
+	 		if ($contactSubType == 'Expert') {
+		        $template = CRM_Core_Smarty::singleton();
+			    $template->assign('NumberOfProjects', $NumberOfProjects);
+			    	
+			    $html = $template->fetch('CRM/Generic/Page/ExpertPUMHistory.tpl');
+			
+			    echo $html;
+			}
+	    }
     }
-    
   } catch (CiviCRM_API3_Exception $ex) {
   	 CRM_Core_Error::debug_log_message($ex, FALSE);
   }
