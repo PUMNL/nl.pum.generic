@@ -305,3 +305,41 @@ function generic_getCustomTableInfo($customGroupName) {
 	}
 	return $customTable;
 }
+
+function generic_civicrm_summary($contactId, &$content) {
+  try {
+  	//Get configuration
+	$grp_prinshistory = generic_getCustomTableInfo('prins_history');
+	
+	$sql = "SELECT * FROM ".$grp_prinshistory['group_table']." WHERE entity_id = '".$contactId."'";
+  	$dao = CRM_Core_DAO::executeQuery($sql);
+  	$dao->fetch();
+  	
+	$NumberOfProjects = 0;
+  	
+  	if ($dao->N > 0) {	
+		$NumberOfProjects = $dao->$grp_prinshistory['columns']['prins_history_number_of_projects']['column_name'];
+	}
+	
+  	$contactParams = array(
+      'id' => $contactId,
+      'return' => 'contact_sub_type'
+    );
+    $contactData = civicrm_api3('Contact', 'Getvalue', $contactParams);
+    
+	if (isset($contactData) && is_array($contactData)) {
+		foreach ($contactData as $contactSubType) {
+	 		if ($contactSubType == 'Expert') {
+		        $template = CRM_Core_Smarty::singleton();
+			    $template->assign('NumberOfProjects', $NumberOfProjects);
+			    	
+			    $html = $template->fetch('CRM/Generic/Page/ExpertPUMHistory.tpl');
+			
+			    echo $html;
+			}
+	    }
+    }
+  } catch (CiviCRM_API3_Exception $ex) {
+  	 CRM_Core_Error::debug_log_message($ex, FALSE);
+  }
+}
