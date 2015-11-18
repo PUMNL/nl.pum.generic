@@ -169,17 +169,17 @@ function generic_civicrm_alterSettingsFolders(&$metaDataFolders = NULL) {
  *
  * Stores added fields in civicrm_case_pum
  */
-function generic_civicrm_postProcess( $formName, &$form ) {	
+function generic_civicrm_postProcess( $formName, &$form ) {
 //dpm($form, 'Generic - postProcess form data ' . $formName);
 	switch($formName) {
 		case 'CRM_Case_Form_Case':
-			if (isset($form->_submitvalues['case_type_id'])) {
-				// looking for case_id = 11:
-				//$form->_submitValues['contact_select_id'][1] = 229
-				//$form->_submitValues['contact'][1] = Belgium
+			// looking for case_id = 11:
+			//$form->_submitValues['contact_select_id'][1] = 229
+			//$form->_submitValues['contact'][1] = Belgium
 
-				//$form->_submitValues['case_type_id'] = 2
-				//$form->_contactID = 210 (Afghanistan)
+			//$form->_submitValues['case_type_id'] = 2
+			//$form->_contactID = 210 (Afghanistan)
+			if ($form->_action != CRM_Core_Action::DELETE) {
 				$sql = '
 	SELECT
 		cas.id AS case_id,
@@ -215,7 +215,7 @@ function generic_civicrm_postProcess( $formName, &$form ) {
 	WHERE
 		cas.case_type_id = \'' . $form->_submitValues['case_type_id'] . '\' AND
 		ccn.case_id = cas.id AND
-		ccn.contact_id = ' . $form->_currentlyViewedContactId  . ' AND
+		ccn.contact_id = ' . $form->_currentlyViewedContactId . ' AND
 		ogp1.name = \'case_type\' AND
 		ovl1.option_group_id = ogp1.id AND
 		cas.case_type_id = ovl1.value AND
@@ -224,8 +224,9 @@ function generic_civicrm_postProcess( $formName, &$form ) {
 		cas.id DESC
 	LIMIT 1
 				';
+
 				$dao_find = CRM_Core_DAO::executeQuery($sql);
-				while($dao_find->fetch()) {
+				while ($dao_find->fetch()) {
 					if (empty($dao_find->type_code)) {
 						// no case_type_code -> do not set main activity number
 					} elseif (($dao_find->case_name == 'TravelCase') && (CRM_Generic_Misc::generic_verify_extension('nl.pum.travelcase'))) {
