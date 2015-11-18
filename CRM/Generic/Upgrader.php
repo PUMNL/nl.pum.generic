@@ -467,41 +467,44 @@ ORDER BY cas.id
     Generic_CustomField::install();
     return TRUE;
   }
-    
-  /**
-   * Upgrade 1020 - additional custom group pum_history
-   */
-  public function upgrade_1020($info=TRUE) {
-	if ($info) {
-		$this->ctx->log->info('Applying update 1020 (additional custom group pum_history)');
+
+	/**
+	 * Upgrade 1020 - additional custom group pum_history
+	 */
+	public function upgrade_1020($info=TRUE) {
+		if ($info) {
+			$this->ctx->log->info('Applying update 1020 (additional custom group pum_history)');
+		}
+		Generic_CustomField::install();
+		return TRUE;
 	}
-	Generic_CustomField::install();
-    return TRUE;
-  }
-  
-  
-  
+
+	/**
+	 * Method to generate or update PUM Case Number
+	 *
+	 * @param $dao_qry_result_line
+	 */
   static function _setMainActivityNumber($dao_qry_result_line) {
   	$arFld = array();
 	$arVal = array();
-	if (is_null($dao_qry_result_line->entity_id) && (!is_null($dao_qry_result_line->case_id))) {
+	if (!$dao_qry_result_line->entity_id && $dao_qry_result_line->case_id) {
 		$arFld[] = 'entity_id';
 		$arVal[] = $dao_qry_result_line->case_id;
 	}
-	if (is_null($dao_qry_result_line->case_country) && (!is_null($dao_qry_result_line->country))) {
+	if (!$dao_qry_result_line->case_country && $dao_qry_result_line->country) {
 		$arFld[] = 'case_country';
 		$arVal[] = '\'' . $dao_qry_result_line->country . '\'';
 	}
-	if (is_null($dao_qry_result_line->case_type) && (!is_null($dao_qry_result_line->type_code))) {
+	if (!$dao_qry_result_line->case_type && $dao_qry_result_line->type_code) {
 		$arFld[] = 'case_type';
 		$arVal[] = '\'' . $dao_qry_result_line->type_code . '\'';
 	}
 	if (count($arFld)>0) {
-		if (is_null($dao_qry_result_line->case_sequence)) {
+		if (!$dao_qry_result_line->case_sequence) {
 			$arFld[] = 'case_sequence';
 			$arVal[] = CRM_Sequence_Page_PumSequence::nextval('main_activity');
 		}
-		if (is_null($dao_qry_result_line->pum_id)) {
+		if (!$dao_qry_result_line->pum_id) {
 			// insert
 			$sql_case = 'INSERT INTO civicrm_case_pum (' . implode(', ', $arFld) . ') VALUES (' . implode(', ', $arVal) . ')';
 		} else {
