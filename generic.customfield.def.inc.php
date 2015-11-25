@@ -8589,9 +8589,9 @@ Please explain your company\'s dependancy of the holding.',
 			array(
 				'group_name' => 'prins_history',
 				'group_title' => 'PRINS History',
-				'extends' => array('Contact'),
+				'extends' => array('Individual'),
 				'entities' => array(
-					NULL,
+					'Expert',
 				),
 				'style' => 'Inline',
 				'is_multiple' => FALSE,
