@@ -33,6 +33,7 @@ class CRM_Generic_Upgrader extends CRM_Generic_Upgrader_Base {
 	CRM_Generic_Upgrader::upgrade_1017(FALSE);
 	CRM_Generic_Upgrader::upgrade_1018(FALSE);
 	// current installer covers updates to 1019
+    CRM_Generic_Upgrader::upgrade_1021(FALSE);
   }
 
   /**
@@ -468,16 +469,54 @@ ORDER BY cas.id
     return TRUE;
   }
 
-	/**
-	 * Upgrade 1020 - additional custom group pum_history
-	 */
-	public function upgrade_1020($info=TRUE) {
-		if ($info) {
-			$this->ctx->log->info('Applying update 1020 (additional custom group pum_history)');
-		}
-		Generic_CustomField::install();
-		return TRUE;
+  /**
+   * Upgrade 1020 - additional custom group pum_history
+   */
+  public function upgrade_1020($info=TRUE) {
+	if ($info) {
+		$this->ctx->log->info('Applying update 1020 (additional custom group pum_history)');
 	}
+	Generic_CustomField::install();
+    return TRUE;
+  }
+
+  /**
+   * Upgrade 1021 - additional custom group pum_history
+   */
+  public function upgrade_1021($info=TRUE) {
+  	if ($info) {
+		$this->ctx->log->info('Applying update 1021 (customisation to custom group pum_history)');
+	}
+	
+	//Check for existing custom groups and remove it
+	$params = array(
+	  'version' => 3,
+  	  'sequential' => 1,
+  	  'name' => 'PUM_History',
+	);
+	$result = civicrm_api('CustomGroup', 'get', $params);
+	$this->ctx->log->info($result);
+	
+	if ($result['count'] > 0) {
+		//Delete custom group
+		$params = array(
+		  'version' => 3,
+		  'sequential' => 1,
+		  'id' => $result['values'][0]['id'],
+		);
+		$result = civicrm_api('CustomGroup', 'delete', $params);
+		$this->ctx->log->info($result);
+	}	
+	
+	if ($result['is_error'] == 0) {
+		//Install new custom group	
+		$this->executeCustomDataFile('xml/1021_install_custom_group.xml');
+	} else {
+		return FALSE;
+	}
+	
+	return TRUE;
+  }
 
 	/**
 	 * Method to generate or update PUM Case Number
