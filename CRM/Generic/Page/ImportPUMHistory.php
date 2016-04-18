@@ -36,7 +36,9 @@ class CRM_Generic_Page_ImportPUMHistory extends CRM_Core_Page {
 			//Fetch Shortname
 			$sql_shortname = "SELECT * FROM ".$grp_shortname['group_table'];
 			$dao_shortname = CRM_Core_DAO::executeQuery($sql_shortname);
-				
+			
+			$result = "";
+			
 			while ($dao_shortname->fetch()) {
 				$shortname = $dao_shortname->$grp_shortname['columns']['Shortname']['column_name'];
 				
