@@ -25,9 +25,11 @@ class CRM_Generic_Page_ImportPUMHistory extends CRM_Core_Page {
   	//Get configuration
 	$grp_prinshistory = generic_getCustomTableInfo('prins_history');
 	$grp_shortname = generic_getCustomTableInfo('Additional_Data');
+	
+	CRM_Core_Error::debug_log_message('Processing PUM History Import...');
 
-	if (isset($grp_prinshistory['group_table']) && !is_null($grp_prinshistory['group_table']) &&
-		isset($grp_shortname['group_table']) &&	!is_null($grp_shortname['group_table'])) {
+	if (isset($grp_prinshistory['group_table']) && !empty($grp_prinshistory['group_table']) &&
+		isset($grp_shortname['group_table']) &&	!empty($grp_shortname['group_table'])) {
 		
 		if ((CRM_Core_DAO::checkTableExists($grp_prinshistory['group_table']) == TRUE) &&
 			(CRM_Core_DAO::checkTableExists($grp_shortname['group_table']) == TRUE)) {
@@ -45,22 +47,16 @@ class CRM_Generic_Page_ImportPUMHistory extends CRM_Core_Page {
 				
 				if (file_exists($file_import_fullpath)) {
 					try {
+						CRM_Core_Error::debug_log_message('Processing '.$shortname.'...');
 						//Read file contents
-						$file_contents = file_get_contents($file_import_fullpath);
+						$file_contents = trim(file_get_contents($file_import_fullpath));
 						
 						//Count number or projects
 						//File format is an empty line for each new project
 						$count_projects = 0;
-						$empty_lines = explode(Chr(10).Chr(13), $file_contents);
-						$count_projects = count($empty_lines) - 1; //-1 because last lines are 2 empty lines
-						
-						if (strpos($file_contents,Chr(10)) != FALSE) {
-							$file_contents = str_replace(Chr(10),'<br />',$file_contents);
-						} elseif (strpos($file_contents,Chr(13)) != FALSE) {
-							$file_contents = str_replace(Chr(13),'<br />',$file_contents);
-						}
-						$file_contents = mysql_real_escape_string($file_contents);
-						
+						$projects_data = explode(Chr(10).Chr(13), $file_contents);
+						$count_projects = count($projects_data);
+												
 						//Determine if prins_history data is already available, if so skip it
 						$sql_checkavailability = "SELECT * FROM ".$grp_prinshistory['group_table']." WHERE entity_id = '".$dao_shortname->entity_id."'";
 						$dao_checkavailability = CRM_Core_DAO::executeQuery($sql_checkavailability);
@@ -68,11 +64,18 @@ class CRM_Generic_Page_ImportPUMHistory extends CRM_Core_Page {
 					
 						if ($dao_checkavailability->N > 0) {
 							//Do not import anything, data already available
-							CRM_Core_Error::debug_log_message($shortname.' skipped, data is already available.');
+							//CRM_Core_Error::debug_log_message($shortname.' skipped, data is already available.');
 						} else {
+							$result .= $shortname.' - '.$count_projects.'<br/>';
+																					
 							//Insert data into prins_history field
-							$sql = "INSERT INTO ".$grp_prinshistory['group_table']." (entity_id, ".$grp_prinshistory['columns']['prins_history']['column_name'].",".$grp_prinshistory['columns']['prins_history_number_of_projects']['column_name'].") VALUES ('".mysql_real_escape_string($dao_shortname->entity_id)."','".mysql_real_escape_string($file_contents)."','".mysql_real_escape_string($count_projects)."')";
-							$dao = CRM_Core_DAO::executeQuery($sql);
+							foreach ($projects_data as $key => $value) {
+								$sql = "INSERT INTO ".$grp_prinshistory['group_table']." (entity_id,".$grp_prinshistory['columns']['prins_history']['column_name'].") VALUES (%1,%2)";
+								$dao = CRM_Core_DAO::executeQuery($sql, array(
+									1 => array($dao_shortname->entity_id, 'String'),
+									2 => array(trim($value), 'String'),
+								));
+							}
 						}
 					} catch (Exception $e) {
 						CRM_Core_Error::debug_log_message($e);
@@ -80,10 +83,10 @@ class CRM_Generic_Page_ImportPUMHistory extends CRM_Core_Page {
 				} else {
 					//Skip, no data available for import
 				}
-				
-				$this->assign('result', 'Import Successful');
-				CRM_Core_Error::debug_log_message('Import Successful');
 			}
+			
+			$this->assign('result', 'Import Successful: <br />'.$result);
+			CRM_Core_Error::debug_log_message('Import Successful');
 		} else {
 			$this->assign('result', 'Table does not exist');
 			CRM_Core_Error::debug_log_message('Table does not exist');

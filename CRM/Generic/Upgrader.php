@@ -517,6 +517,44 @@ ORDER BY cas.id
 	
 	return TRUE;
   }
+  
+  /**
+   * Upgrade 1022 - additional custom group pum_history
+   */
+  public function upgrade_1022($info=TRUE) {
+  	if ($info) {
+		$this->ctx->log->info('Applying update 1022 (customisation to custom group prins_history)');
+	}
+	
+	//Check for existing custom groups and remove it
+	$params = array(
+	  'version' => 3,
+  	  'sequential' => 1,
+  	  'name' => 'prins_history',
+	);
+	$result = civicrm_api('CustomGroup', 'get', $params);
+	$this->ctx->log->info($result);
+	
+	if ($result['count'] > 0) {
+		//Delete custom group
+		$params = array(
+		  'version' => 3,
+		  'sequential' => 1,
+		  'id' => $result['values'][0]['id'],
+		);
+		$result = civicrm_api('CustomGroup', 'delete', $params);
+		$this->ctx->log->info($result);
+	}	
+	
+	if ($result['is_error'] == 0) {
+		//Install new custom group	
+		$this->executeCustomDataFile('xml/1022_install_custom_group.xml');
+	} else {
+		return FALSE;
+	}
+	
+	return TRUE;
+  }
 
 	/**
 	 * Method to generate or update PUM Case Number

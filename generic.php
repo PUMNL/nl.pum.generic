@@ -310,36 +310,33 @@ function generic_civicrm_summary($contactId, &$content) {
   try {
   	//Get configuration & check if data is available
 	$grp_prinshistory = generic_getCustomTableInfo('prins_history');
-	
+
 	if (isset($grp_prinshistory['group_table']) && !is_null($grp_prinshistory['group_table'])) {
 		if (CRM_Core_DAO::checkTableExists($grp_prinshistory['group_table']) == TRUE) {
 			$sql = "SELECT * FROM ".$grp_prinshistory['group_table']." WHERE entity_id = '".$contactId."'";
 		  	$dao = CRM_Core_DAO::executeQuery($sql);
-		  	$dao->fetch();
-		  	
-			$NumberOfProjects = 0;
-		  	
-		  	if ($dao->N > 0) {	
-				$NumberOfProjects = $dao->$grp_prinshistory['columns']['prins_history_number_of_projects']['column_name'];
-			}
+		  	$NumberOfProjects = $dao->N;
 			
-		  	$contactParams = array(
+			$contactParams = array(
 		      'id' => $contactId,
 		      'return' => 'contact_sub_type'
 		    );
 		    $contactData = civicrm_api3('Contact', 'Getvalue', $contactParams);
 		    
-			if (isset($contactData) && is_array($contactData)) {
+		    if (isset($contactData) && is_array($contactData) && $NumberOfProjects > 0) {
 				foreach ($contactData as $contactSubType) {
 			 		if ($contactSubType == 'Expert') {
-				        $template = CRM_Core_Smarty::singleton();
-					    $template->assign('NumberOfProjects', $NumberOfProjects);
-					    	
-					    $html = $template->fetch('CRM/Generic/Page/ExpertPUMHistory.tpl');
-					
-					    echo $html;
+			 			$template_projects = CRM_Core_Smarty::singleton();
+				        $template_projects->assign('NumberOfProjects', $NumberOfProjects);
+					    $html_projects = $template_projects->fetch('CRM/Generic/Page/ExpertPUMHistory.tpl');
+					    echo $html_projects;
 					}
 			    }
+		    } else {
+		    	$template_history = CRM_Core_Smarty::singleton();
+				$template_history->assign('HistoryGroupID', $grp_prinshistory['group_id']);
+			    $html_hidehistory = $template_history->fetch('CRM/Contact/Page/View/HideHistory.extra.tpl');
+			    echo $html_hidehistory;				    
 		    }
     	}
     } else {

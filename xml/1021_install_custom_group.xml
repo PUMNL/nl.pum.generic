@@ -8,14 +8,14 @@
       <extends>Individual</extends>
       <extends_entity_column_value_option_group>contact_type</extends_entity_column_value_option_group>
       <extends_entity_column_value>Expert</extends_entity_column_value>
-      <style>Inline</style>
+      <style>Tab</style>
       <collapse_display>1</collapse_display>
       <help_pre></help_pre>
       <help_post></help_post>
       <weight>123</weight>
       <is_active>1</is_active>
       <table_name>civicrm_value_prins_history</table_name>
-      <is_multiple>0</is_multiple>
+      <is_multiple>1</is_multiple>
       <collapse_adv_display>1</collapse_adv_display>
       <created_date>2016-03-03 12:56:50</created_date>
       <is_reserved>0</is_reserved>
