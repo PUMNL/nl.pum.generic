@@ -33,7 +33,7 @@ class CRM_Generic_Upgrader extends CRM_Generic_Upgrader_Base {
 	CRM_Generic_Upgrader::upgrade_1017(FALSE);
 	CRM_Generic_Upgrader::upgrade_1018(FALSE);
 	// current installer covers updates to 1019
-    CRM_Generic_Upgrader::upgrade_1021(FALSE);
+    CRM_Generic_Upgrader::upgrade_1022(FALSE);
   }
 
   /**
@@ -507,13 +507,6 @@ ORDER BY cas.id
 		$result = civicrm_api('CustomGroup', 'delete', $params);
 		$this->ctx->log->info($result);
 	}	
-	
-	if ($result['is_error'] == 0) {
-		//Install new custom group	
-		$this->executeCustomDataFile('xml/1021_install_custom_group.xml');
-	} else {
-		return FALSE;
-	}
 	
 	return TRUE;
   }
