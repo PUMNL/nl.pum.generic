@@ -346,3 +346,21 @@ function generic_civicrm_summary($contactId, &$content) {
   	 CRM_Core_Error::debug_log_message($ex, FALSE);
   }
 }
+
+function generic_civicrm_pageRun(&$page) {
+	if ($page instanceof CRM_Contact_Page_View_CustomData) {
+		try {
+			$prins_historie_gid = civicrm_api3('CustomGroup', 'getvalue', array(
+				'name' => 'prins_history',
+				'return' => 'id'
+			));
+			if ($page->_groupId == $prins_historie_gid) {
+				$page->assign('editOwnCustomData', false);
+				$page->assign('showEdit', false);
+				$page->assign('editCustomData', false);
+			}
+		} catch (Exception $e) {
+			// do nothing
+		}
+	}
+}
