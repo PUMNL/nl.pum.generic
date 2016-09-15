@@ -5,7 +5,10 @@ class Generic_Group_Def {
 	// definitions for: Group
 
 	static function required() {
-		return array(
+    define('ACCESS_CONTROL', 1);
+    define('MAILING_LIST', 2);
+    
+    return array(
 			array(
 				'module' => 'nl.pum.generic',
 				'name' => 'Recruitment_Team_13',
@@ -17,7 +20,8 @@ class Generic_Group_Def {
 					'description' => '',
 					'is_active' => 1,
 					'group_type' => array(
-						2 => 1,
+            ACCESS_CONTROL => 0,
+            MAILING_LIST => 1,
 					),
 				),
 			),
@@ -32,7 +36,8 @@ class Generic_Group_Def {
 					'description' => '',
 					'is_active' => 1,
 					'group_type' => array(
-						2 => 1,
+            ACCESS_CONTROL => 0,
+            MAILING_LIST => 1,
 					),
 				),
 			),
@@ -47,7 +52,8 @@ class Generic_Group_Def {
 					'description' => 'Newsletter for our english speaking customers.',
 					'is_active' => 1,
 					'group_type' => array(
-						2 => 1,
+            ACCESS_CONTROL => 0,
+            MAILING_LIST => 1,
 					),
 				),
 			),
@@ -62,7 +68,8 @@ class Generic_Group_Def {
 					'description' => '',
 					'is_active' => 1,
 					'group_type' => array(
-						2 => 1,
+            ACCESS_CONTROL => 0,
+            MAILING_LIST => 1,
 					),
 				),
 			),
@@ -77,22 +84,8 @@ class Generic_Group_Def {
 					'description' => 'All Experts who are availble for PUM Projects',
 					'is_active' => 1,
 					'group_type' => array(
-						2 => 1,
-					),
-				),
-			),
-			array(
-				'module' => 'nl.pum.generic',
-				'name' => 'Inactive_Expert_49',
-				'entity' => 'Group',
-				'params' => array(
-					'version' => 3,
-					'name' => 'Inactive_Expert_49',
-					'title' => 'Inactive Expert',
-					'description' => 'All Experts who are temporarily not available for PUM Projects',
-					'is_active' => 1,
-					'group_type' => array(
-						2 => 1,
+            ACCESS_CONTROL => 0,
+            MAILING_LIST => 0,
 					),
 				),
 			),
@@ -107,7 +100,8 @@ class Generic_Group_Def {
 					'description' => 'All Experts who are rejected during the Application fase and therefore not available for PUM Projects',
 					'is_active' => 1,
 					'group_type' => array(
-						2 => 1,
+            ACCESS_CONTROL => 0,
+            MAILING_LIST => 0,
 					),
 				),
 			),
@@ -122,23 +116,8 @@ class Generic_Group_Def {
 					'description' => 'All Experts in the application fase.',
 					'is_active' => 1,
 					'group_type' => array(
-						2 => 1,
-					),
-				),
-			),
-			array(
-				'module' => 'nl.pum.generic',
-				'name' => 'Country_Coordinators_53',
-				'entity' => 'Group',
-				'params' => array(
-					'version' => 3,
-					'name' => 'Country_Coordinators_53',
-					'title' => 'Country Coordinators',
-					'description' => '',
-					'is_active' => 1,
-					'group_type' => array(
-						1 => 1,
-						2 => 1,
+            ACCESS_CONTROL => 0,
+            MAILING_LIST => 0,
 					),
 				),
 			),
@@ -153,8 +132,8 @@ class Generic_Group_Def {
 					'description' => '',
 					'is_active' => 1,
 					'group_type' => array(
-						1 => 1,
-						2 => 1,
+            ACCESS_CONTROL => 1,
+            MAILING_LIST => 1,
 					),
 				),
 			),
@@ -169,8 +148,8 @@ class Generic_Group_Def {
 					'description' => '',
 					'is_active' => 1,
 					'group_type' => array(
-						1 => 1,
-						2 => 1,
+            ACCESS_CONTROL => 1,
+            MAILING_LIST => 1,
 					),
 				),
 			),
@@ -185,7 +164,8 @@ class Generic_Group_Def {
 					'description' => '',
 					'is_active' => 1,
 					'group_type' => array(
-						2 => 1,
+            ACCESS_CONTROL => 0,
+            MAILING_LIST => 1,
 					),
 				),
 			),
@@ -200,22 +180,8 @@ class Generic_Group_Def {
 					'description' => '',
 					'is_active' => 1,
 					'group_type' => array(
-						2 => 1,
-					),
-				),
-			),
-			array(
-				'module' => 'nl.pum.generic',
-				'name' => 'Expert_Introduction_92',
-				'entity' => 'Group',
-				'params' => array(
-					'version' => 3,
-					'name' => 'Expert_Introduction_92',
-					'title' => 'Expert Introduction',
-					'description' => 'Group for invitees of the Introduction day for Experts',
-					'is_active' => 1,
-					'group_type' => array(
-						2 => 1,
+            ACCESS_CONTROL => 0,
+            MAILING_LIST => 1,
 					),
 				),
 			),
@@ -230,6 +196,10 @@ class Generic_Group_Def {
 					'description' => '',
 					'parent' => 'Experts',
 					'is_active' => 1,
+          'group_type' => array(
+            ACCESS_CONTROL => 0,
+            MAILING_LIST => 0,
+					),
 				),
 			),
 			array(
@@ -243,6 +213,10 @@ class Generic_Group_Def {
 					'description' => 'Least Developed Countries and other low income countries',
 					'parent' => 'OECD_DAC_categories_40',
 					'is_active' => 1,
+          'group_type' => array(
+            ACCESS_CONTROL => 0,
+            MAILING_LIST => 0,
+					),
 				),
 			),
 			array(
@@ -256,6 +230,10 @@ class Generic_Group_Def {
 					'description' => 'Lower middle income countries and territories',
 					'parent' => 'OECD_DAC_categories_40',
 					'is_active' => 1,
+          'group_type' => array(
+            ACCESS_CONTROL => 0,
+            MAILING_LIST => 0,
+					),
 				),
 			),
 			array(
@@ -269,6 +247,10 @@ class Generic_Group_Def {
 					'description' => 'Upper middle income countries and territories',
 					'parent' => 'OECD_DAC_categories_40',
 					'is_active' => 1,
+          'group_type' => array(
+            ACCESS_CONTROL => 0,
+            MAILING_LIST => 0,
+					),
 				),
 			),
 		);
