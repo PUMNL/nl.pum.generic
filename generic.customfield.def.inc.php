@@ -19,6 +19,7 @@ class Generic_CustomField_Def {
 					'Grant',
 					'Projectevaluation',
 					'PDV',
+					'FactFinding',
 					'RemoteCoaching',
 					'Seminar',
 				),

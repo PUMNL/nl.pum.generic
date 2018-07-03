@@ -549,6 +549,29 @@ ORDER BY cas.id
 	return TRUE;
   }
 
+  public function upgrade_1023() {
+    $case_type = civicrm_api3('OptionGroup', 'getvalue', array('return' => 'id', 'name' => 'case_type'));
+    civicrm_api3('OptionValue', 'create', array(
+      'option_group_id' => $case_type,
+      'name' => 'FactFinding',
+      'label' => 'FactFinding',
+      'value' => '16',
+      'weight' => 51,
+      'description' => '<p>A Main Activity of the type FactFinding</p>',
+    ));
+
+    $case_type_code = civicrm_api3('OptionGroup', 'getvalue', array('return' => 'id', 'name' => 'case_type_code'));
+    civicrm_api3('OptionValue', 'create', array(
+      'option_group_id' => $case_type_code,
+      'name' => 'FactFinding',
+      'label' => 'FactFinding',
+      'value' => 'P',
+      'weight' => 61,
+      'description' => '',
+    ));
+    return TRUE;
+  }
+
 	/**
 	 * Method to generate or update PUM Case Number
 	 *

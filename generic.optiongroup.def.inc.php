@@ -34,6 +34,14 @@ class Generic_OptionGroup_Def {
 						'description' => '<p>A Main Activity of the type PDV</p>
 ',
 					),
+          array(
+            'name' => 'FactFinding',
+            'label' => 'FactFinding',
+            'value' => '16',
+            'weight' => 51,
+            'description' => '<p>A Main Activity of the type FactFinding</p>
+',
+          ),
 					array(
 						'name' => 'OrganiseEvent',
 						'label' => 'OrganiseEvent',
@@ -326,6 +334,13 @@ class Generic_OptionGroup_Def {
 						'weight' => 60,
 						'description' => '',
 					),
+          array(
+            'name' => 'FactFinding',
+            'label' => 'FactFinding',
+            'value' => 'FFM',
+            'weight' => 61,
+            'description' => '',
+          ),
 					array(
 						'name' => 'Acquisitie',
 						'label' => 'Acquisitie',
