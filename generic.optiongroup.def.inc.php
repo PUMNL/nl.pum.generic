@@ -337,7 +337,7 @@ class Generic_OptionGroup_Def {
           array(
             'name' => 'FactFinding',
             'label' => 'FactFinding',
-            'value' => 'FFM',
+            'value' => 'F',
             'weight' => 61,
             'description' => '',
           ),
