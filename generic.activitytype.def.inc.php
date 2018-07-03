@@ -218,7 +218,7 @@ class Generic_ActivityType_Def {
 			),
 			array(
 				'name' => 'PDV Programme',
-				'label' => 'PDV Programme',
+				'label' => 'PDV/Fact Finding Programme',
 				'component' => 'CiviCase',
 				'description' => '<p>Used in PDV</p>
 ',

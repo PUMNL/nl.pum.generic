@@ -5644,6 +5644,7 @@ Please explain your company\'s dependancy of the holding.',
 				'extends' => array('Case'),
 				'entities' => array(
 					'PDV',
+          'FactFinding'
 				),
 				'style' => 'Inline',
 				'is_multiple' => FALSE,
@@ -5776,7 +5777,7 @@ Please explain your company\'s dependancy of the holding.',
 			),
 			array(
 				'group_name' => 'PDV_Programme',
-				'group_title' => 'PDV Programme',
+				'group_title' => 'PDV/Fact Finding Programme',
 				'extends' => array('Activity'),
 				'entities' => array(
 					'PDV Programme',

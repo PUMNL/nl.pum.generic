@@ -572,6 +572,15 @@ ORDER BY cas.id
     return TRUE;
   }
 
+  public function upgrade_1024() {
+    $case_types = CRM_Core_DAO::VALUE_SEPARATOR.'15'.CRM_Core_DAO::VALUE_SEPARATOR.'16'.CRM_Core_DAO::VALUE_SEPARATOR;
+
+    CRM_Core_DAO::executeQuery("UPDATE civicrm_option_value SET label = 'PDV/Fact Finding Programme' WHERE `name` = 'PDV Programme' and option_group_id = 2");
+    CRM_Core_DAO::executeQuery("UPDATE civicrm_custom_group SET title = 'PDV/Fact Finding Programme'  WHERE `name` = 'PDV_Programme'");
+    CRM_Core_DAO::executeQuery("UPDATE civicrm_custom_group SET title = 'PDV/Fact Finding Budget', extends_entity_column_value = '{$case_types}' WHERE `name` = 'PDV_Budget'");
+    return true;
+  }
+
 	/**
 	 * Method to generate or update PUM Case Number
 	 *
