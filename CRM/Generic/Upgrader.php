@@ -565,7 +565,7 @@ ORDER BY cas.id
       'option_group_id' => $case_type_code,
       'name' => 'FactFinding',
       'label' => 'FactFinding',
-      'value' => 'P',
+      'value' => 'F',
       'weight' => 61,
       'description' => '',
     ));
