@@ -581,6 +581,61 @@ ORDER BY cas.id
     return true;
   }
 
+  public function upgrade_1025() {
+    $customer_data = civicrm_api3('CustomGroup', 'getvalue', array('return' => 'id', 'name' => 'Customers_Data'));
+    civicrm_api3('CustomField', 'create', array(
+      'name' => 'gender_entrepeneur',
+      'label' => 'What is the gender of the entrepreneur?',
+      'data_type' => 'int',
+      'html_type' => 'Select',
+      'default_value' => NULL,
+      'is_required' => FALSE,
+      'is_view' => FALSE,
+      'is_searchable' => FALSE,
+      'is_search_range' => FALSE,
+      'weight' => 291,
+      'help_pre' => NULL,
+      'help_post' => NULL,
+      'attributes' => NULL,
+      'options_per_line' => NULL,
+      'text_length' => 255,
+      'start_date_years' => NULL,
+      'end_date_years' => NULL,
+      'date_format' => NULL,
+      'time_format' => NULL,
+      'note_columns' => 60,
+      'note_rows' => 4,
+      'option_group_id' => 3, //gender
+      'custom_group_id' => $customer_data,
+    ));
+    civicrm_api3('CustomField', 'create',           array(
+      'name' => 'birthyear_entrepeneur',
+      'label' => 'What is the year of birth of the entrepreneur?',
+      'data_type' => 'int',
+      'html_type' => 'Text',
+      'default_value' => NULL,
+      'is_required' => FALSE,
+      'is_view' => FALSE,
+      'is_searchable' => FALSE,
+      'is_search_range' => FALSE,
+      'weight' => 292,
+      'help_pre' => NULL,
+      'help_post' => NULL,
+      'attributes' => NULL,
+      'options_per_line' => NULL,
+      'text_length' => 255,
+      'start_date_years' => NULL,
+      'end_date_years' => NULL,
+      'date_format' => NULL,
+      'time_format' => NULL,
+      'note_columns' => 60,
+      'note_rows' => 4,
+      'option_group_name' => NULL,
+      'custom_group_id' => $customer_data,
+    ));
+    return true;
+  }
+
 	/**
 	 * Method to generate or update PUM Case Number
 	 *
