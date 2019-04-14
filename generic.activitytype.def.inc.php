@@ -98,8 +98,8 @@ class Generic_ActivityType_Def {
 ',
 			),
 			array(
-				'name' => 'Intake Customer by Anamon',
-				'label' => 'Intake Customer by Anamon',
+				'name' => 'Intake Customer by PrOf',
+				'label' => 'Intake Customer by PrOf',
 				'component' => 'CiviCase',
 				'description' => '<p>Used in \"Projectintake\"</p>
 ',
@@ -583,7 +583,7 @@ class Generic_ActivityType_Def {
 				'description' => '<p>This activity is used on the case ExitExpert and contains custom fields</p>
 ',
 			),
-			
+
 		);
 	}
 }

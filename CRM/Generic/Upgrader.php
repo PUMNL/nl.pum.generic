@@ -122,7 +122,7 @@ class CRM_Generic_Upgrader extends CRM_Generic_Upgrader_Base {
 	}
 	return TRUE;
   }
-   
+
   /**
    * Upgrade 1002 - add custom goup PUM_Case_number
    */
@@ -145,7 +145,7 @@ class CRM_Generic_Upgrader extends CRM_Generic_Upgrader_Base {
     $this->executeSqlFile('sql/civicrm_case_pum_1004.sql');
     return TRUE;
   }
-  
+
   /**
    * Upgrade 1005 - additional option group 'case type code' and initial case numbering
    */
@@ -198,7 +198,7 @@ ORDER BY cas.id
 	}
 	return TRUE;
   }
-  
+
   /**
    * Upgrade 1006 - initiating sequences for
    * 1: main activities and DSA payments
@@ -228,7 +228,7 @@ ORDER BY cas.id
 	}
 	return TRUE;
   }
-  
+
    /**
    * Upgrade 1007 - initiating sequence for dsa activities (surrogate for main activity)
    */
@@ -255,7 +255,7 @@ ORDER BY cas.id
 	}
 	return TRUE;
   }
-  
+
   /**
    * Upgrade 1008 - additional custom field
    */
@@ -266,7 +266,7 @@ ORDER BY cas.id
     Generic_CustomField::install();
     return TRUE;
   }
-  
+
   /**
    * Upgrade 1009 - additional custom group and option groups
    */
@@ -278,7 +278,7 @@ ORDER BY cas.id
     Generic_CustomField::install();
     return TRUE;
   }
-  
+
   /**
    * Upgrade 1010 - additional activity type
    */
@@ -289,7 +289,7 @@ ORDER BY cas.id
 	Generic_ActivityType::install();
 	return TRUE;
   }
-  
+
   /**
    * Upgrade 1011 - additional entities in all areas
    */
@@ -306,7 +306,7 @@ ORDER BY cas.id
 	Generic_ActivityType::install();
 	return TRUE;
   }
-  
+
   /**
    * Upgrade 1012 - additional entities in all areas
    */
@@ -317,7 +317,7 @@ ORDER BY cas.id
 	Generic_CustomField::fix_targeting();
 	return TRUE;
   }
-  
+
   /**
    * Upgrade 1013 - additional entities in all areas (template 1.2)
    */
@@ -335,7 +335,7 @@ ORDER BY cas.id
 	Generic_CustomField::fix_targeting();
 	return TRUE;
   }
-  
+
   /**
    * Upgrade 1014 - additional entities in all areas (template 1.3)
    */
@@ -352,7 +352,7 @@ ORDER BY cas.id
 	Generic_CustomField::install();
 	return TRUE;
   }
-  
+
   /**
    * Upgrade 1015 - change custom group PUM_Case_number (template 1.4)
    */
@@ -360,7 +360,7 @@ ORDER BY cas.id
 	if ($info) {
 		$this->ctx->log->info('Applying update 1015 (PUM_Case_number)');
 	}
-	
+
 	$entitiesTranslation = Generic_CustomField::getEntityTranslations();
 	$tgt = array(
 			'TravelCase',
@@ -381,7 +381,7 @@ ORDER BY cas.id
 		}
 	}
 	$extends_column_value = CRM_Core_DAO::VALUE_SEPARATOR . implode(CRM_Core_DAO::VALUE_SEPARATOR, $extends_column_value) . CRM_Core_DAO::VALUE_SEPARATOR;
-	
+
 	$params = array(
 		'q' => 'civicrm/ajax/rest',
 		'sequential' => 1,
@@ -389,7 +389,7 @@ ORDER BY cas.id
 	);
 	$result = civicrm_api3('CustomGroup', 'get', $params);
 	$fieldGroup = $result['values'][0];
-	
+
 	$params = array(
 		'id'							=>	$fieldGroup['id'],
 		'name'							=>	$fieldGroup['name'],
@@ -408,10 +408,10 @@ ORDER BY cas.id
 	);
 
 	$result = civicrm_api3('CustomGroup', 'Create', $params);
-	
+
 	return TRUE;
   }
-  
+
   /**
    * Upgrade 1016 - reinstall for activitytypes
    */
@@ -423,7 +423,7 @@ ORDER BY cas.id
 	Generic_CustomField::fix_targeting();
 	return TRUE;
   }
-  
+
   /**
    * Upgrade 1017 - add (event) participant status
    */
@@ -445,7 +445,7 @@ ORDER BY cas.id
 	$result = civicrm_api3('ParticipantStatusType', 'create', $params);
 	return TRUE;
   }
-  
+
   /**
    * Upgrade 1018 - remove option value Gender->Transgender
    */
@@ -456,7 +456,7 @@ ORDER BY cas.id
 	$result = Generic_OptionGroup::remove_optionvalue('gender', 'Transgender');
 	return $result;
   }
-  
+
   /**
    * Upgrade 1019 - additional custom group and option groups
    */
@@ -487,7 +487,7 @@ ORDER BY cas.id
   	if ($info) {
 		$this->ctx->log->info('Applying update 1021 (customisation to custom group pum_history)');
 	}
-	
+
 	//Check for existing custom groups and remove it
 	$params = array(
 	  'version' => 3,
@@ -496,7 +496,7 @@ ORDER BY cas.id
 	);
 	$result = civicrm_api('CustomGroup', 'get', $params);
 	$this->ctx->log->info($result);
-	
+
 	if ($result['count'] > 0) {
 		//Delete custom group
 		$params = array(
@@ -506,11 +506,11 @@ ORDER BY cas.id
 		);
 		$result = civicrm_api('CustomGroup', 'delete', $params);
 		$this->ctx->log->info($result);
-	}	
-	
+	}
+
 	return TRUE;
   }
-  
+
   /**
    * Upgrade 1022 - additional custom group pum_history
    */
@@ -518,7 +518,7 @@ ORDER BY cas.id
   	if ($info) {
 		$this->ctx->log->info('Applying update 1022 (customisation to custom group prins_history)');
 	}
-	
+
 	//Check for existing custom groups and remove it
 	$params = array(
 	  'version' => 3,
@@ -527,7 +527,7 @@ ORDER BY cas.id
 	);
 	$result = civicrm_api('CustomGroup', 'get', $params);
 	$this->ctx->log->info($result);
-	
+
 	if ($result['count'] > 0) {
 		//Delete custom group
 		$params = array(
@@ -537,15 +537,15 @@ ORDER BY cas.id
 		);
 		$result = civicrm_api('CustomGroup', 'delete', $params);
 		$this->ctx->log->info($result);
-	}	
-	
+	}
+
 	if ($result['is_error'] == 0) {
-		//Install new custom group	
+		//Install new custom group
 		$this->executeCustomDataFile('xml/1022_install_custom_group.xml');
 	} else {
 		return FALSE;
 	}
-	
+
 	return TRUE;
   }
 
@@ -636,6 +636,92 @@ ORDER BY cas.id
     return true;
   }
 
+  /**
+   * CRM_Generic_Upgrader::upgrade_1026()
+   *
+   * Update activity 'Intake Customer by Anamon' to 'Intake Customer by PrOf'
+   *
+   * @return
+   */
+  public function upgrade_1026() {
+    //Change activity 'Intake Customer by Anamon' to 'Intake Customer by PrOf'
+    //first get option value id of activity
+    $params_og_id_intakeanamon = array(
+      'version' => 3,
+      'sequential' => 1,
+      'option_group_name' => 'activity_type',
+      'label' => 'Intake Customer by Anamon',
+      'return' => 'id',
+    );
+    $ov_id_intakeanamon = civicrm_api('OptionValue', 'getvalue', $params_og_id_intakeanamon);
+
+    //then update activity 'Intake Customer by Anamon' to 'Intake Customer by PrOf'
+    $params_ov_update_intakeanamon = array(
+      'version' => 3,
+      'sequential' => 1,
+      'id'=> $ov_id_intakeanamon,
+      'label' => 'Intake Customer by PrOf',
+      'name' => 'Intake Customer by PrOf'
+    );
+    $result_ov_update_intakeanamon = civicrm_api('OptionValue', 'update', $params_ov_update_intakeanamon);
+
+    if(!empty($result_ov_update_intakeanamon['is_error']) && $result_ov_update_intakeanamon['is_error'] == 1){
+      return FALSE;
+    }
+
+    //then change custom group 'Intake Customer by Anamon' to 'Intake Customer by PrOf'
+    //first get custom group id
+    $params_cg_id_intakeanamon = array(
+      'version' => 3,
+      'sequential' => 1,
+      'title' => 'Intake Customer by Anamon',
+      'return' => 'id',
+    );
+    $cg_id_intakeanamon = civicrm_api('CustomGroup', 'getvalue', $params_cg_id_intakeanamon);
+
+    //then update custom group name 'Intake Customer by Anamon' to 'Intake Customer by PrOf'
+    $params_cg_update_intakeanamon = array(
+      'version' => 3,
+      'sequential' => 1,
+      'id'=> $cg_id_intakeanamon,
+      'title' => 'Intake Customer by PrOf',
+    );
+    $result_cg_update_intakeanamon = civicrm_api('CustomGroup', 'update', $params_cg_update_intakeanamon);
+
+    if(!empty($result_cg_update_intakeanamon['is_error']) && $result_cg_update_intakeanamon['is_error'] == 1){
+      return FALSE;
+    }
+
+    $params_cg_id_doyouapprovecustomer = array(
+      'version' => 3,
+      'sequential' => 1,
+      'title' => 'Do you approve the Customer?',
+      'return' => 'id',
+    );
+    $cg_id_doyouapprovecustomer = civicrm_api('OptionGroup', 'getvalue', $params_cg_id_doyouapprovecustomer);
+
+    $params_cg_update_doyouapprovecustomer = array(
+      'version' => 3,
+      'sequential' => 1,
+      'option_group_id' => $cg_id_doyouapprovecustomer,
+      'value' => 'No check Anamon',
+      'return' => 'id',
+    );
+    $result_cg_update_doyouapprovecustomer = civicrm_api('OptionValue', 'getvalue', $params_cg_update_doyouapprovecustomer);
+
+    $params_ov_update_doyouapprovecustomer = array(
+      'version' => 3,
+      'sequential' => 1,
+      'id' => $result_cg_update_doyouapprovecustomer,
+      'label' => 'No check PrOf',
+      'value' => 'No check PrOf',
+    );
+    $result_ov_update_doyouapprovecustomer = civicrm_api('OptionValue', 'update', $params_ov_update_doyouapprovecustomer);
+
+
+    return TRUE;
+  }
+
 	/**
 	 * Method to generate or update PUM Case Number
 	 *
@@ -674,5 +760,5 @@ ORDER BY cas.id
 		$dao_case = CRM_Core_DAO::executeQuery($sql_case);
 	}
   }
-    
+
 }

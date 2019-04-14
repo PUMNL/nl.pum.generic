@@ -1108,7 +1108,7 @@ class Generic_CustomField_Def {
 						'is_searchable' => FALSE,
 						'is_search_range' => FALSE,
 						'weight' => 80,
-						'help_pre' => 'Please fill out which activities you see necessary to achieve the projectgoal. Name the type of Main Activities, the planning of the project and corresponding budget. 
+						'help_pre' => 'Please fill out which activities you see necessary to achieve the projectgoal. Name the type of Main Activities, the planning of the project and corresponding budget.
 Advice / Spring 2015 / 700,--.    BLP / Autumn 2015 / 700,-- etc.',
 						'help_post' => NULL,
 						'attributes' => 'rows=4, cols=60',
@@ -4308,10 +4308,10 @@ Please explain your company\'s dependancy of the holding.',
 			),
 			array(
 				'group_name' => 'Intake_Customer_by_Anamon',
-				'group_title' => 'Intake Customer by Anamon',
+				'group_title' => 'Intake Customer by PrOf',
 				'extends' => array('Activity'),
 				'entities' => array(
-					'Intake Customer by Anamon',
+					'Intake Customer by PrOf',
 				),
 				'style' => 'Inline',
 				'is_multiple' => FALSE,

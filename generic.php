@@ -34,10 +34,10 @@ function generic_civicrm_xmlMenu(&$files) {
 
 /**
  * Implementation of hook_civicrm_install
- * 
+ *
  * @author Erik Hommel (erik.hommel@civicoop.org - http://www.civicoop.org)
  * @date 2 Dec 2013
- * 
+ *
  * Enable all non-managed entities required for PUM
  */
 function generic_civicrm_install() {
@@ -70,10 +70,10 @@ function generic_civicrm_uninstall() {
 
 /**
  * Implementation of hook_civicrm_enable
- * 
+ *
  * @author Erik Hommel (erik.hommel@civicoop.org, http://www.civicoop.org)
  * @date 2 Dec 2013
- * 
+ *
  * Enable all non-managed entities controlled by this module
  */
 function generic_civicrm_enable() {
@@ -89,10 +89,10 @@ function generic_civicrm_enable() {
 
 /**
  * Implementation of hook_civicrm_disable
- * 
+ *
  * @author Erik Hommel (erik.hommel@civicoop.org, http://www.civicoop.org)
  * @date 2 Dec 2013
- *  
+ *
  * Disable all non-managed entities controlled by this module
  */
 function generic_civicrm_disable() {
@@ -124,7 +124,7 @@ function generic_civicrm_upgrade($op, CRM_Queue_Queue $queue = NULL) {
 
 /**
  * Implementation of hook_civicrm_managed
- * 
+ *
  * @author Erik Hommel (erik.hommel@civicoop.org - http://www.civicoop.org)
  * @date 24 Nov 2013
  *
@@ -251,12 +251,12 @@ function generic_civicrm_postProcess( $formName, &$form ) {
 				$result = civicrm_api('Shortname', 'set', $params);
 			}
 			break;
-		
+
 		default:
 //			print_r($formName);
 //			exit();
 	}
-	
+
 }
 
 
@@ -272,7 +272,7 @@ function generic_getCustomTableInfo($customGroupName) {
 		'columns' => array(),
 		'sql_columns' => '',
 	);
-	
+
 	// retrieve table name for custom group
 	$sql = 'SELECT id, name, table_name FROM civicrm_custom_group WHERE name = \'' . $customGroupName . '\'';
 	$dao = CRM_Core_DAO::executeQuery($sql);
@@ -316,13 +316,13 @@ function generic_civicrm_summary($contactId, &$content) {
 			$sql = "SELECT * FROM ".$grp_prinshistory['group_table']." WHERE entity_id = '".$contactId."'";
 		  	$dao = CRM_Core_DAO::executeQuery($sql);
 		  	$NumberOfProjects = $dao->N;
-			
+
 			$contactParams = array(
 		      'id' => $contactId,
 		      'return' => 'contact_sub_type'
 		    );
 		    $contactData = civicrm_api3('Contact', 'Getvalue', $contactParams);
-		    
+
 		    if (isset($contactData) && is_array($contactData) && $NumberOfProjects > 0) {
 				foreach ($contactData as $contactSubType) {
 			 		if ($contactSubType == 'Expert') {
@@ -336,7 +336,7 @@ function generic_civicrm_summary($contactId, &$content) {
 		    	$template_history = CRM_Core_Smarty::singleton();
 				$template_history->assign('HistoryGroupID', $grp_prinshistory['group_id']);
 			    $html_hidehistory = $template_history->fetch('CRM/Contact/Page/View/HideHistory.extra.tpl');
-			    echo $html_hidehistory;				    
+			    echo $html_hidehistory;
 		    }
     	}
     } else {

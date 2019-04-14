@@ -1912,8 +1912,8 @@ class Generic_OptionGroup_Def {
 					),
 					array(
 						'name' => 'No_check_Anamon',
-						'label' => 'No check Anamon',
-						'value' => 'No check Anamon',
+						'label' => 'No check PrOf',
+						'value' => 'No check PrOf',
 						'weight' => 20,
 						'description' => '',
 					),
