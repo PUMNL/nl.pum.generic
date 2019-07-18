@@ -583,6 +583,13 @@ class Generic_ActivityType_Def {
 				'description' => '<p>This activity is used on the case ExitExpert and contains custom fields</p>
 ',
 			),
+      array(
+        'name' => 'Contact with Customer by Rep',
+        'label' => 'Contact with Customer by Rep',
+        'component' => 'CiviCase',
+        'description' => '<p>This activity is used by Representatives to add information to the case</p>
+',
+      ),
 
 		);
 	}

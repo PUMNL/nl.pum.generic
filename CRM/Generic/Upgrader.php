@@ -722,6 +722,18 @@ ORDER BY cas.id
     return TRUE;
   }
 
+  /**
+   * Upgrade 1027 - add activity Contact with Customer by Rep
+   */
+  public function upgrade_1027($info=TRUE) {
+    if ($info) {
+      $this->ctx->log->info('Applying update 1027, reinstall activity types in order to add Contact with Customer by Rep');
+    }
+    Generic_ActivityType::install();
+    Generic_CustomField::fix_targeting();
+    return TRUE;
+  }
+
 	/**
 	 * Method to generate or update PUM Case Number
 	 *
