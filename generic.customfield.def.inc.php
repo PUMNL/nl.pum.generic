@@ -30,6 +30,7 @@ class Generic_CustomField_Def {
 				'help_post' => '',
 				'collapse_display' => 1,
 				'collapse_adv_display' => 0,
+				'weight' => 52,
 				'fieldset' => array(
 					array(
 						'name' => 'Objective_of_this_Activity',
@@ -141,8 +142,9 @@ class Generic_CustomField_Def {
 				'help_pre' => '<p>Used in Advice</p>
 ',
 				'help_post' => '',
-				'collapse_display' => 1,
+				'collapse_display' => 0,
 				'collapse_adv_display' => 0,
+				'weight' => 51,
 				'fieldset' => array(
 					array(
 						'name' => 'Key_Qualifications',
@@ -325,8 +327,9 @@ class Generic_CustomField_Def {
 				'is_multiple' => FALSE,
 				'help_pre' => '',
 				'help_post' => '',
-				'collapse_display' => 1,
+				'collapse_display' => 0,
 				'collapse_adv_display' => 0,
+				'weight' => 50,
 				'fieldset' => array(
 					array(
 						'name' => 'Visit_from',
@@ -533,8 +536,9 @@ class Generic_CustomField_Def {
 				'is_multiple' => FALSE,
 				'help_pre' => '',
 				'help_post' => '',
-				'collapse_display' => 1,
+				'collapse_display' => 0,
 				'collapse_adv_display' => 0,
+				'weight' => 49,
 				'fieldset' => array(
 					array(
 						'name' => 'Wat_zijn_de_aan_te_schaffen_materialen_',
@@ -669,8 +673,9 @@ class Generic_CustomField_Def {
 				'is_multiple' => FALSE,
 				'help_pre' => 'Additional data required by PUM',
 				'help_post' => '',
-				'collapse_display' => 1,
+				'collapse_display' => 0,
 				'collapse_adv_display' => 0,
+				'weight' => 48,
 				'fieldset' => array(
 					array(
 						'name' => 'Shortname',
@@ -926,8 +931,9 @@ class Generic_CustomField_Def {
 				'help_pre' => '',
 				'help_post' => '<p>Please do not forget to update the Projectplan (activities to be performed with customer) in the associated Project!</p>
 ',
-				'collapse_display' => 1,
+				'collapse_display' => 0,
 				'collapse_adv_display' => 0,
+				'weight' => 47,
 				'fieldset' => array(
 					array(
 						'name' => 'Kwam_de_probleemstelling_zoals_in_de_aanvraag_geschetst_en_door_',
@@ -1135,8 +1141,9 @@ Advice / Spring 2015 / 700,--.    BLP / Autumn 2015 / 700,-- etc.',
 				'is_multiple' => FALSE,
 				'help_pre' => '',
 				'help_post' => '',
-				'collapse_display' => 1,
+				'collapse_display' => 0,
 				'collapse_adv_display' => 0,
+				'weight' => 46,
 				'fieldset' => array(
 					array(
 						'name' => 'Hoe_was_het_contact_met_de_PUM_expert_gedurende_de_voorbereiding',
@@ -1223,8 +1230,9 @@ Advice / Spring 2015 / 700,--.    BLP / Autumn 2015 / 700,-- etc.',
 				'is_multiple' => FALSE,
 				'help_pre' => '',
 				'help_post' => '',
-				'collapse_display' => 1,
+				'collapse_display' => 0,
 				'collapse_adv_display' => 0,
+				'weight' => 45,
 				'fieldset' => array(
 					array(
 						'name' => 'Kwam_de_probleemstelling_zoals_in_de_aanvraag_geschetst_en_door_',
@@ -1383,8 +1391,9 @@ Advice / Spring 2015 / 700,--.    BLP / Autumn 2015 / 700,-- etc.',
 				'is_multiple' => FALSE,
 				'help_pre' => '',
 				'help_post' => '',
-				'collapse_display' => 1,
+				'collapse_display' => 0,
 				'collapse_adv_display' => 0,
+				'weight' => 44,
 				'fieldset' => array(
 					array(
 						'name' => 'Target_Main_Activity_Advice_Seminar_and_Remote_Coaching_',
@@ -1436,7 +1445,7 @@ Advice / Spring 2015 / 700,--.    BLP / Autumn 2015 / 700,-- etc.',
 					),
 					array(
 						'name' => 'PDV_budget',
-						'label' => 'PDV budget Ôé¼',
+						'label' => 'PDV budget &#0128',
 						'data_type' => 'Money',
 						'html_type' => 'Text',
 						'default_value' => NULL,
@@ -1471,8 +1480,9 @@ Advice / Spring 2015 / 700,--.    BLP / Autumn 2015 / 700,-- etc.',
 				'is_multiple' => FALSE,
 				'help_pre' => '',
 				'help_post' => '',
-				'collapse_display' => 1,
+				'collapse_display' => 0,
 				'collapse_adv_display' => 0,
+				'weight' => 43,
 				'fieldset' => array(
 					array(
 						'name' => 'Does_the_company_support_child_labour_or_forced_labour_or_does_i',
@@ -1659,8 +1669,9 @@ Racist and anti-democratic media,',
 				'is_multiple' => FALSE,
 				'help_pre' => '',
 				'help_post' => '',
-				'collapse_display' => 1,
+				'collapse_display' => 0,
 				'collapse_adv_display' => 0,
+				'weight' => 42,
 				'fieldset' => array(
 					array(
 						'name' => 'Bank_Account_Number',
@@ -1963,8 +1974,9 @@ Racist and anti-democratic media,',
 				'is_multiple' => FALSE,
 				'help_pre' => '',
 				'help_post' => '',
-				'collapse_display' => 1,
+				'collapse_display' => 0,
 				'collapse_adv_display' => 0,
+				'weight' => 41,
 				'fieldset' => array(
 					array(
 						'name' => 'Gentlemen_s_Agreement',
@@ -2102,6 +2114,7 @@ Racist and anti-democratic media,',
 				'help_post' => '',
 				'collapse_display' => 1,
 				'collapse_adv_display' => 0,
+				'weight' => 40,
 				'fieldset' => array(
 					array(
 						'name' => 'Number_of_Visitors',
@@ -2188,8 +2201,9 @@ Racist and anti-democratic media,',
 				'is_multiple' => FALSE,
 				'help_pre' => '',
 				'help_post' => '',
-				'collapse_display' => 1,
-				'collapse_adv_display' => 0,
+				'collapse_display' => 0,
+				'collapse_adv_display' => 1,
+				'weight' => 118,
 				'fieldset' => array(
 					array(
 						'name' => 'Conditions',
@@ -2228,8 +2242,9 @@ Racist and anti-democratic media,',
 				'is_multiple' => FALSE,
 				'help_pre' => '',
 				'help_post' => '',
-				'collapse_display' => 1,
+				'collapse_display' => 0,
 				'collapse_adv_display' => 0,
+				'weight' => 38,
 				'fieldset' => array(
 					array(
 						'name' => 'Amount',
@@ -2268,8 +2283,9 @@ Racist and anti-democratic media,',
 				'is_multiple' => FALSE,
 				'help_pre' => '',
 				'help_post' => '',
-				'collapse_display' => 1,
+				'collapse_display' => 0,
 				'collapse_adv_display' => 0,
+				'weight' => 37,
 				'fieldset' => array(
 					array(
 						'name' => 'Concerns',
@@ -2380,8 +2396,9 @@ Racist and anti-democratic media,',
 				'is_multiple' => FALSE,
 				'help_pre' => '',
 				'help_post' => '',
-				'collapse_display' => 1,
+				'collapse_display' => 0,
 				'collapse_adv_display' => 0,
+				'weight' => 36,
 				'fieldset' => array(
 					array(
 						'name' => 'civicrm_country_id',
@@ -2421,8 +2438,9 @@ Racist and anti-democratic media,',
 				'help_pre' => '<p>Used to register Event ID.</p>
 ',
 				'help_post' => '',
-				'collapse_display' => 1,
+				'collapse_display' => 0,
 				'collapse_adv_display' => 0,
+				'weight' => 35,
 				'fieldset' => array(
 					array(
 						'name' => 'Event_ID',
@@ -2466,6 +2484,7 @@ Racist and anti-democratic media,',
 				'help_post' => '',
 				'collapse_display' => 1,
 				'collapse_adv_display' => 0,
+				'weight' => 34,
 				'fieldset' => array(
 					array(
 						'name' => 'Do_you_think_the_expert_matches_your_request',
@@ -2577,8 +2596,9 @@ Racist and anti-democratic media,',
 				'help_pre' => '<p>Used for Webform: New Customer.</p>
 ',
 				'help_post' => '',
-				'collapse_display' => 1,
+				'collapse_display' => 0,
 				'collapse_adv_display' => 0,
+				'weight' => 33,
 				'fieldset' => array(
 					array(
 						'name' => 'Legal_form_of_the_Organisation',
@@ -3362,8 +3382,9 @@ Please explain your company\'s dependancy of the holding.',
 				'is_multiple' => FALSE,
 				'help_pre' => '',
 				'help_post' => '',
-				'collapse_display' => 1,
+				'collapse_display' => 0,
 				'collapse_adv_display' => 0,
+				'weight' => 32,
 				'fieldset' => array(
 					array(
 						'name' => 'Donor_code',
@@ -3403,8 +3424,9 @@ Please explain your company\'s dependancy of the holding.',
 				'help_pre' => '<p>Used on the webform \"Expert PUM CV\" where Candidate Experts can fill out their relevant Education and training details</p>
 ',
 				'help_post' => '',
-				'collapse_display' => 1,
+				'collapse_display' => 0,
 				'collapse_adv_display' => 0,
+				'weight' => 31,
 				'fieldset' => array(
 					array(
 						'name' => 'Name_of_Institution',
@@ -3613,6 +3635,7 @@ Please explain your company\'s dependancy of the holding.',
 				'help_post' => '',
 				'collapse_display' => 1,
 				'collapse_adv_display' => 0,
+				'weight' => 30,
 				'fieldset' => array(
 					array(
 						'name' => 'Event_type',
@@ -3700,8 +3723,9 @@ Please explain your company\'s dependancy of the holding.',
 				'help_pre' => '<p>Data specific to the role PUM Expert</p>
 ',
 				'help_post' => '',
-				'collapse_display' => 1,
+				'collapse_display' => 0,
 				'collapse_adv_display' => 0,
+				'weight' => 29,
 				'fieldset' => array(
 					array(
 						'name' => 'expert_status',
@@ -4004,8 +4028,9 @@ Please explain your company\'s dependancy of the holding.',
 				'is_multiple' => FALSE,
 				'help_pre' => '',
 				'help_post' => '',
-				'collapse_display' => 1,
+				'collapse_display' => 0,
 				'collapse_adv_display' => 0,
+				'weight' => 28,
 				'fieldset' => array(
 					array(
 						'name' => 'Seat',
@@ -4068,8 +4093,9 @@ Please explain your company\'s dependancy of the holding.',
 				'is_multiple' => FALSE,
 				'help_pre' => '',
 				'help_post' => '',
-				'collapse_display' => 1,
+				'collapse_display' => 0,
 				'collapse_adv_display' => 0,
+				'weight' => 27,
 				'fieldset' => array(
 					array(
 						'name' => 'Focus_on',
@@ -4133,8 +4159,9 @@ Please explain your company\'s dependancy of the holding.',
 				'is_multiple' => FALSE,
 				'help_pre' => '',
 				'help_post' => '',
-				'collapse_display' => 1,
+				'collapse_display' => 0,
 				'collapse_adv_display' => 0,
+				'weight' => 26,
 				'fieldset' => array(
 					array(
 						'name' => 'Relationship_with_contact',
@@ -4318,8 +4345,9 @@ Please explain your company\'s dependancy of the holding.',
 				'help_pre' => '<p>Used in \"projectintake\"</p>
 ',
 				'help_post' => '',
-				'collapse_display' => 1,
+				'collapse_display' => 0,
 				'collapse_adv_display' => 0,
+				'weight' => 25,
 				'fieldset' => array(
 					array(
 						'name' => 'Do_you_approve_the_project_',
@@ -4407,8 +4435,9 @@ Please explain your company\'s dependancy of the holding.',
 				'help_pre' => '<p>Used in \"Projectintake\"</p>
 ',
 				'help_post' => '',
-				'collapse_display' => 1,
+				'collapse_display' => 0,
 				'collapse_adv_display' => 0,
+				'weight' => 24,
 				'fieldset' => array(
 					array(
 						'name' => 'Organisation_Type',
@@ -4832,8 +4861,9 @@ Please explain your company\'s dependancy of the holding.',
 				'help_pre' => '<p>Used in \"Projectintake\"</p>
 ',
 				'help_post' => '',
-				'collapse_display' => 1,
+				'collapse_display' => 0,
 				'collapse_adv_display' => 0,
+				'weight' => 23,
 				'fieldset' => array(
 					array(
 						'name' => 'PUM_Criteria_Has_the_Representative_chosen_the_correct_market_se',
@@ -5041,8 +5071,9 @@ Please explain your company\'s dependancy of the holding.',
 				'help_pre' => '<p>Used in `projectintake┬┤</p>
 ',
 				'help_post' => '',
-				'collapse_display' => 1,
+				'collapse_display' => 0,
 				'collapse_adv_display' => 0,
+				'weight' => 22,
 				'fieldset' => array(
 					array(
 						'name' => 'Assessment_Rep',
@@ -5105,8 +5136,9 @@ Please explain your company\'s dependancy of the holding.',
 				'is_multiple' => TRUE,
 				'help_pre' => '',
 				'help_post' => '',
-				'collapse_display' => 1,
-				'collapse_adv_display' => 1,
+				'collapse_display' => 0,
+				'collapse_adv_display' => 0,
+				'weight' => 21,
 				'fieldset' => array(
 					array(
 						'name' => 'Language',
@@ -5169,8 +5201,9 @@ Please explain your company\'s dependancy of the holding.',
 				'is_multiple' => FALSE,
 				'help_pre' => '',
 				'help_post' => '',
-				'collapse_display' => 1,
+				'collapse_display' => 0,
 				'collapse_adv_display' => 0,
+				'weight' => 20,
 				'fieldset' => array(
 					array(
 						'name' => 'Health_Insurance_Company',
@@ -5377,8 +5410,9 @@ Please explain your company\'s dependancy of the holding.',
 				'is_multiple' => FALSE,
 				'help_pre' => '',
 				'help_post' => '',
-				'collapse_display' => 1,
+				'collapse_display' => 0,
 				'collapse_adv_display' => 0,
+				'weight' => 19,
 				'fieldset' => array(
 					array(
 						'name' => 'Passport_Name',
@@ -5513,8 +5547,9 @@ Please explain your company\'s dependancy of the holding.',
 				'is_multiple' => FALSE,
 				'help_pre' => '',
 				'help_post' => '',
-				'collapse_display' => 1,
+				'collapse_display' => 0,
 				'collapse_adv_display' => 0,
+				'weight' => 18,
 				'fieldset' => array(
 					array(
 						'name' => 'Accountholder_name',
@@ -5688,7 +5723,7 @@ Please explain your company\'s dependancy of the holding.',
 			),
 			array(
 				'group_name' => 'PDV_Budget',
-				'group_title' => 'PDV Budget',
+				'group_title' => 'PDV/Fact Finding Budget',
 				'extends' => array('Case'),
 				'entities' => array(
 					'PDV',
@@ -5698,8 +5733,9 @@ Please explain your company\'s dependancy of the holding.',
 				'is_multiple' => FALSE,
 				'help_pre' => '',
 				'help_post' => '',
-				'collapse_display' => 1,
+				'collapse_display' => 0,
 				'collapse_adv_display' => 0,
+				'weight' => 17,
 				'fieldset' => array(
 					array(
 						'name' => 'Flight_costs_',
@@ -5835,8 +5871,9 @@ Please explain your company\'s dependancy of the holding.',
 				'help_pre' => '<p>Used in PDV</p>
 ',
 				'help_post' => '',
-				'collapse_display' => 1,
+				'collapse_display' => 0,
 				'collapse_adv_display' => 0,
+				'weight' => 16,
 				'fieldset' => array(
 					array(
 						'name' => 'Location',
@@ -5973,6 +6010,7 @@ Please explain your company\'s dependancy of the holding.',
 				'help_post' => '',
 				'collapse_display' => 1,
 				'collapse_adv_display' => 0,
+				'weight' => 15,
 				'fieldset' => array(
 					array(
 						'name' => 'Upload_documents_that_support_Projectproposal',
@@ -6086,6 +6124,7 @@ Please explain your company\'s dependancy of the holding.',
 				'help_post' => '',
 				'collapse_display' => 1,
 				'collapse_adv_display' => 0,
+				'weight' => 123,
 				'fieldset' => array(
 					array(
 						'name' => 'RCT_Remarks',
@@ -6174,6 +6213,7 @@ Please explain your company\'s dependancy of the holding.',
 				'help_post' => '',
 				'collapse_display' => 1,
 				'collapse_adv_display' => 0,
+				'weight' => 14,
 				'fieldset' => array(
 					array(
 						'name' => 'Motivation_of_Rejection',
@@ -6203,7 +6243,7 @@ Please explain your company\'s dependancy of the holding.',
 			),
 			array(
 				'group_name' => 'Assessment_Expert_Application',
-				'group_title' => 'Rejection Application New Expert',
+				'group_title' => 'Rejection Expert Application',
 				'extends' => array('Case'),
 				'entities' => array(
 					'Expertapplication',
@@ -6214,6 +6254,7 @@ Please explain your company\'s dependancy of the holding.',
 				'help_post' => '',
 				'collapse_display' => 1,
 				'collapse_adv_display' => 0,
+				'weight' => 122,
 				'fieldset' => array(
 					array(
 						'name' => 'Reject_Expert_Application',
@@ -6277,8 +6318,9 @@ Please explain your company\'s dependancy of the holding.',
 				'help_pre' => '',
 				'help_post' => '<p>Please do not forget to update the Projectplan (activities to be performed with customer) in the associated Project!</p>
 ',
-				'collapse_display' => 1,
+				'collapse_display' => 0,
 				'collapse_adv_display' => 0,
+				'weight' => 13,
 				'fieldset' => array(
 					array(
 						'name' => 'Kwam_de_probleemstelling_zoals_in_de_aanvraag_geschetst_en_door_',
@@ -6485,8 +6527,9 @@ Please explain your company\'s dependancy of the holding.',
 				'is_multiple' => FALSE,
 				'help_pre' => '',
 				'help_post' => '',
-				'collapse_display' => 1,
+				'collapse_display' => 0,
 				'collapse_adv_display' => 0,
+				'weight' => 12,
 				'fieldset' => array(
 					array(
 						'name' => 'Hoe_was_het_contact_met_de_PUM_expert_gedurende_de_voorbereiding',
@@ -6573,8 +6616,9 @@ Please explain your company\'s dependancy of the holding.',
 				'is_multiple' => FALSE,
 				'help_pre' => '',
 				'help_post' => '',
-				'collapse_display' => 1,
+				'collapse_display' => 0,
 				'collapse_adv_display' => 0,
+				'weight' => 11,
 				'fieldset' => array(
 					array(
 						'name' => 'Kwam_de_probleemstelling_zoals_in_de_aanvraag_geschetst_en_door_',
@@ -6734,8 +6778,9 @@ Please explain your company\'s dependancy of the holding.',
 				'help_pre' => '',
 				'help_post' => '<p>Please do not forget to update the Projectplan (activities to be performed with customer) in the associated Project!</p>
 ',
-				'collapse_display' => 1,
+				'collapse_display' => 0,
 				'collapse_adv_display' => 0,
+				'weight' => 10,
 				'fieldset' => array(
 					array(
 						'name' => 'Kwam_de_probleemstelling_zoals_in_de_aanvraag_geschetst_en_door_',
@@ -6942,8 +6987,9 @@ Please explain your company\'s dependancy of the holding.',
 				'is_multiple' => FALSE,
 				'help_pre' => '',
 				'help_post' => '',
-				'collapse_display' => 1,
+				'collapse_display' => 0,
 				'collapse_adv_display' => 0,
+				'weight' => 9,
 				'fieldset' => array(
 					array(
 						'name' => 'Hoe_was_het_contact_met_de_PUM_expert_gedurende_de_voorbereiding',
@@ -7030,8 +7076,9 @@ Please explain your company\'s dependancy of the holding.',
 				'is_multiple' => FALSE,
 				'help_pre' => '',
 				'help_post' => '',
-				'collapse_display' => 1,
+				'collapse_display' => 0,
 				'collapse_adv_display' => 0,
+				'weight' => 8,
 				'fieldset' => array(
 					array(
 						'name' => 'Kwam_de_probleemstelling_zoals_in_de_aanvraag_geschetst_en_door_',
@@ -7190,8 +7237,9 @@ Please explain your company\'s dependancy of the holding.',
 				'is_multiple' => FALSE,
 				'help_pre' => '',
 				'help_post' => '',
-				'collapse_display' => 1,
-				'collapse_adv_display' => 1,
+				'collapse_display' => 0,
+				'collapse_adv_display' => 0,
+				'weight' => 7,
 				'fieldset' => array(
 					array(
 						'name' => 'Focus_on',
@@ -7243,7 +7291,7 @@ Please explain your company\'s dependancy of the holding.',
 					),
 					array(
 						'name' => 'Quote_amount_',
-						'label' => 'Quote amount - Ôé¼',
+						'label' => 'Quote amount - &#0128',
 						'data_type' => 'Money',
 						'html_type' => 'Text',
 						'default_value' => NULL,
@@ -7375,8 +7423,9 @@ Please explain your company\'s dependancy of the holding.',
 				'help_pre' => '<p>Filled in the Webform \'Expert PUM CV\'</p>
 ',
 				'help_post' => '',
-				'collapse_display' => 1,
+				'collapse_display' => 0,
 				'collapse_adv_display' => 0,
+				'weight' => 6,
 				'fieldset' => array(
 					array(
 						'name' => 'Name_of_Organisation',
@@ -7631,8 +7680,9 @@ Please explain your company\'s dependancy of the holding.',
 				'is_multiple' => TRUE,
 				'help_pre' => '',
 				'help_post' => '',
-				'collapse_display' => 1,
+				'collapse_display' => 0,
 				'collapse_adv_display' => 0,
+				'weight' => 5,
 				'fieldset' => array(
 					array(
 						'name' => 'Year',
@@ -7767,8 +7817,9 @@ Please explain your company\'s dependancy of the holding.',
 				'is_multiple' => FALSE,
 				'help_pre' => '',
 				'help_post' => '',
-				'collapse_display' => 1,
+				'collapse_display' => 0,
 				'collapse_adv_display' => 0,
+				'weight' => 5,
 				'fieldset' => array(
 					array(
 						'name' => 'PUM_Projectnumber_Referencenumber',
@@ -7903,8 +7954,9 @@ Please explain your company\'s dependancy of the holding.',
 				'is_multiple' => FALSE,
 				'help_pre' => '',
 				'help_post' => '',
-				'collapse_display' => 1,
+				'collapse_display' => 0,
 				'collapse_adv_display' => 1,
+				'weight' => 115,
 				'fieldset' => array(
 					array(
 						'name' => 'Hoe_beoordeelt_u_de_voorbereiding_van_de_klant_',
@@ -8063,8 +8115,9 @@ Please explain your company\'s dependancy of the holding.',
 				'is_multiple' => FALSE,
 				'help_pre' => '',
 				'help_post' => '',
-				'collapse_display' => 1,
+				'collapse_display' => 0,
 				'collapse_adv_display' => 1,
+				'weight' => 119,
 				'fieldset' => array(
 					array(
 						'name' => 'Reden_Exit',
