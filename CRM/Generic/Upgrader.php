@@ -1264,6 +1264,29 @@ ORDER BY cas.id
     return TRUE;
   }
 
+  /**
+   * Upgrade 1029 - update budget tab title
+   */
+  public function upgrade_1029($info=TRUE) {
+    if ($info) {
+      $this->ctx->log->info('Applying update 1029, fix PDV budget tab title');
+    }
+
+    $result = array();
+
+    $dao = CRM_Core_DAO::executeQuery("UPDATE `civicrm_custom_group` SET `title` = 'PDV/Fact Finding Budget' WHERE `name` = 'PDV_Budget'");
+    if($dao->N == 1) {
+      $result['PDV_Budget'] = 1;
+    } else {
+      $result['PDV_Budget'] = 0;
+    }
+
+    $this->ctx->log->info(print_r($result,TRUE));
+
+    return TRUE;
+  }
+
+
 	/**
 	 * Method to generate or update PUM Case Number
 	 *
