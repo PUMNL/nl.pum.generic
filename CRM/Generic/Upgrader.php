@@ -1286,6 +1286,50 @@ ORDER BY cas.id
     return TRUE;
   }
 
+  public function upgrade_1030() {
+    $case_types = CRM_Core_DAO::VALUE_SEPARATOR.'65'.CRM_Core_DAO::VALUE_SEPARATOR;
+    $dao1 = CRM_Core_DAO::executeQuery("UPDATE civicrm_custom_group SET extends_entity_column_value = '{$case_types}' WHERE `name` = 'Activity_Information_by_CC'");
+    if($dao1->N == 1) {
+      $result['Activity_Information_by_CC'] = 1;
+    } else {
+      $result['Activity_Information_by_CC'] = 0;
+    }
+
+    $focus_types = CRM_Core_DAO::VALUE_SEPARATOR.'Donor'.CRM_Core_DAO::VALUE_SEPARATOR.'Partners'.CRM_Core_DAO::VALUE_SEPARATOR;
+    $dao2 = CRM_Core_DAO::executeQuery("UPDATE civicrm_custom_group SET extends_entity_column_value = '{$focus_types}' WHERE `name` = 'Focus'");
+    if($dao2->N == 1) {
+      $result['Focus'] = 1;
+    } else {
+      $result['Focus'] = 0;
+    }
+
+    $pdvfactfinding_types = CRM_Core_DAO::VALUE_SEPARATOR.'89'.CRM_Core_DAO::VALUE_SEPARATOR;
+    $dao3 = CRM_Core_DAO::executeQuery("UPDATE civicrm_custom_group SET extends_entity_column_value = '{$pdvfactfinding_types}' WHERE `name` = 'PDV_Programme'");
+    if($dao3->N == 1) {
+      $result['PDV_Programme'] = 1;
+    } else {
+      $result['PDV_Programme'] = 0;
+    }
+
+    $mainactivityinfo_types = CRM_Core_DAO::VALUE_SEPARATOR.'6'.CRM_Core_DAO::VALUE_SEPARATOR.'35'.CRM_Core_DAO::VALUE_SEPARATOR.'20'.CRM_Core_DAO::VALUE_SEPARATOR.'32'.CRM_Core_DAO::VALUE_SEPARATOR.'24'.CRM_Core_DAO::VALUE_SEPARATOR.'15'.CRM_Core_DAO::VALUE_SEPARATOR.'16'.CRM_Core_DAO::VALUE_SEPARATOR;
+    $dao4 = CRM_Core_DAO::executeQuery("UPDATE civicrm_custom_group SET extends_entity_column_value = '{$mainactivityinfo_types}' WHERE `name` = 'main_activity_info'");
+    if($dao4->N == 1) {
+      $result['main_activity_info'] = 1;
+    } else {
+      $result['main_activity_info'] = 0;
+    }
+
+    $condition_types = CRM_Core_DAO::VALUE_SEPARATOR.'74'.CRM_Core_DAO::VALUE_SEPARATOR;
+    $dao5 = CRM_Core_DAO::executeQuery("UPDATE civicrm_custom_group SET extends_entity_column_value = '{$condition_types}' WHERE `name` = 'Condition'");
+    if($dao5->N == 1) {
+      $result['Condition'] = 1;
+    } else {
+      $result['Condition'] = 0;
+    }
+
+    return TRUE;
+  }
+
 
 	/**
 	 * Method to generate or update PUM Case Number
