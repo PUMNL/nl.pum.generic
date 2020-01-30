@@ -1330,6 +1330,63 @@ ORDER BY cas.id
     return TRUE;
   }
 
+  /**
+   * Update 'first contact with pum' values
+   */
+  public function upgrade_1031() {
+    try {
+      /* Update option values */
+      $dao = CRM_Core_DAO::executeQuery("UPDATE `civicrm_option_value` SET `label` = 'Via a PUM expert', `value` = 'Via a PUM expert', `name` = 'first_contact_via_a_pum_expert', `weight` = '10' WHERE `option_group_id` = (SELECT `id` FROM `civicrm_option_group` WHERE `title` = 'First contact with PUM via') AND `value` = 'PUM expert'");
+      $dao = CRM_Core_DAO::executeQuery("UPDATE `civicrm_option_value` SET `label` = 'Via the PUM website', `value` = 'Via the PUM website', `name` = 'first_contact_pum_website', `weight` = '30' WHERE `option_group_id` = (SELECT `id` FROM `civicrm_option_group` WHERE `title` = 'First contact with PUM via') AND `value` = '(PUM) Website'");
+      $dao = CRM_Core_DAO::executeQuery("UPDATE `civicrm_option_value` SET `label` = 'I saw an advertisement', `value` = 'I saw an advertisement', `name` = 'first_contact_advertisement', `weight` = '40' WHERE `option_group_id` = (SELECT `id` FROM `civicrm_option_group` WHERE `title` = 'First contact with PUM via') AND `value` = 'Advertisement'");
+      $dao = CRM_Core_DAO::executeQuery("UPDATE `civicrm_option_value` SET `label` = 'Via a colleague', `value` = 'Via a colleague', `name` = 'first_contact_via_a_colleague', `weight` = '50' WHERE `option_group_id` = (SELECT `id` FROM `civicrm_option_group` WHERE `title` = 'First contact with PUM via') AND `value` = 'Colleague'");
+      $dao = CRM_Core_DAO::executeQuery("UPDATE `civicrm_option_value` SET `label` = 'Via a newsletter / e-mail', `value` = 'Via a newsletter / e-mail', `name` = 'first_contact_newsletter', `weight` = '60' WHERE `option_group_id` = (SELECT `id` FROM `civicrm_option_group` WHERE `title` = 'First contact with PUM via') AND `value` = 'Email/Newsletter'");
+      $dao = CRM_Core_DAO::executeQuery("UPDATE `civicrm_option_value` SET `label` = 'Through a friend / family member', `value` = 'Through a friend / family member', `name` = 'first_contact_family_friend', `weight` = '70' WHERE `option_group_id` = (SELECT `id` FROM `civicrm_option_group` WHERE `title` = 'First contact with PUM via') AND `value` = 'Family/Friend'");
+      $dao = CRM_Core_DAO::executeQuery("UPDATE `civicrm_option_value` SET `label` = 'Via an article in a newspaper / magazine', `value` = 'Via an article in a newspaper / magazine', `name` = 'first_contact_article_newspaper', `weight` = '80' WHERE `option_group_id` = (SELECT `id` FROM `civicrm_option_group` WHERE `title` = 'First contact with PUM via') AND `value` = 'Newspaper article'");
+      $dao = CRM_Core_DAO::executeQuery("DELETE FROM `civicrm_option_value` WHERE `option_group_id` = (SELECT `id` FROM `civicrm_option_group` WHERE `title` = 'First contact with PUM via') AND `value` = '(PUM) Magazine'");
+      $dao = CRM_Core_DAO::executeQuery("UPDATE `civicrm_option_value` SET `label` = 'Via another organisation', `value` = 'Via another organisation', `name` = 'first_contact_another_organisation', `weight` = '90' WHERE `option_group_id` = (SELECT `id` FROM `civicrm_option_group` WHERE `title` = 'First contact with PUM via') AND `value` = 'Trade business association'");
+      $dao = CRM_Core_DAO::executeQuery("UPDATE `civicrm_option_value` SET `label` = 'Via Facebook', `value` = 'Via Facebook', `name` = 'first_contact_facebook', `weight` = '100' WHERE `option_group_id` = (SELECT `id` FROM `civicrm_option_group` WHERE `title` = 'First contact with PUM via') AND `value` = 'Facebook'");
+      $dao = CRM_Core_DAO::executeQuery("UPDATE `civicrm_option_value` SET `label` = 'Via LinkedIn', `value` = 'Via LinkedIn', `name` = 'first_contact_linkedin', `weight` = '110' WHERE `option_group_id` = (SELECT `id` FROM `civicrm_option_group` WHERE `title` = 'First contact with PUM via') AND `value` = 'LinkedIn'");
+      $dao = CRM_Core_DAO::executeQuery("UPDATE `civicrm_option_value` SET `label` = 'Via Twitter', `value` = 'Via Twitter', `name` = 'first_contact_twitter', `weight` = '120' WHERE `option_group_id` = (SELECT `id` FROM `civicrm_option_group` WHERE `title` = 'First contact with PUM via') AND `value` = 'Twitter'");
+      $dao = CRM_Core_DAO::executeQuery("UPDATE `civicrm_option_value` SET `label` = 'Via YouTube', `value` = 'Via YouTube', `name` = 'first_contact_youtube', `weight` = '130' WHERE `option_group_id` = (SELECT `id` FROM `civicrm_option_group` WHERE `title` = 'First contact with PUM via') AND `value` = 'YouTube'");
+      $dao = CRM_Core_DAO::executeQuery("UPDATE `civicrm_option_value` SET `label` = 'Other', `value` = 'Other', `name` = 'first_contact_other', `weight` = '140' WHERE `option_group_id` = (SELECT `id` FROM `civicrm_option_group` WHERE `title` = 'First contact with PUM via') AND `value` = 'Other'");
+
+      /* Data migration CiviCRM */
+      $dao = CRM_Core_DAO::executeQuery("UPDATE `civicrm_value_expert_data_20` SET `first_contact_with_pum_via_131` = 'Via a PUM expert' WHERE `first_contact_with_pum_via_131` = 'PUM expert'");
+      $dao = CRM_Core_DAO::executeQuery("UPDATE `civicrm_value_expert_data_20` SET `first_contact_with_pum_via_131` = 'Via the PUM website' WHERE `first_contact_with_pum_via_131` = '(PUM) Website'");
+      $dao = CRM_Core_DAO::executeQuery("UPDATE `civicrm_value_expert_data_20` SET `first_contact_with_pum_via_131` = 'I saw an advertisement' WHERE `first_contact_with_pum_via_131` = 'Advertisement'");
+      $dao = CRM_Core_DAO::executeQuery("UPDATE `civicrm_value_expert_data_20` SET `first_contact_with_pum_via_131` = 'Via a colleague' WHERE `first_contact_with_pum_via_131` = 'Colleague'");
+      $dao = CRM_Core_DAO::executeQuery("UPDATE `civicrm_value_expert_data_20` SET `first_contact_with_pum_via_131` = 'Via a newsletter / e-mail' WHERE `first_contact_with_pum_via_131` = 'Email/Newsletter'");
+      $dao = CRM_Core_DAO::executeQuery("UPDATE `civicrm_value_expert_data_20` SET `first_contact_with_pum_via_131` = 'Through a friend / family member' WHERE `first_contact_with_pum_via_131` = 'Family/Friend'");
+      $dao = CRM_Core_DAO::executeQuery("UPDATE `civicrm_value_expert_data_20` SET `first_contact_with_pum_via_131` = 'Via an article in a newspaper / magazine' WHERE `first_contact_with_pum_via_131` = 'Newspaper article'");
+      $dao = CRM_Core_DAO::executeQuery("UPDATE `civicrm_value_expert_data_20` SET `first_contact_with_pum_via_131` = 'Via an article in a newspaper / magazine' WHERE `first_contact_with_pum_via_131` = '(PUM) Magazine'");
+      $dao = CRM_Core_DAO::executeQuery("UPDATE `civicrm_value_expert_data_20` SET `first_contact_with_pum_via_131` = 'Via another organisation' WHERE `first_contact_with_pum_via_131` = 'Trade business association'");
+      $dao = CRM_Core_DAO::executeQuery("UPDATE `civicrm_value_expert_data_20` SET `first_contact_with_pum_via_131` = 'Via Facebook' WHERE `first_contact_with_pum_via_131` = 'Facebook'");
+      $dao = CRM_Core_DAO::executeQuery("UPDATE `civicrm_value_expert_data_20` SET `first_contact_with_pum_via_131` = 'Via LinkedIn' WHERE `first_contact_with_pum_via_131` = 'LinkedIn'");
+      $dao = CRM_Core_DAO::executeQuery("UPDATE `civicrm_value_expert_data_20` SET `first_contact_with_pum_via_131` = 'Via YouTube' WHERE `first_contact_with_pum_via_131` = 'YouTube'");
+      $dao = CRM_Core_DAO::executeQuery("UPDATE `civicrm_value_expert_data_20` SET `first_contact_with_pum_via_131` = 'Via Twitter' WHERE `first_contact_with_pum_via_131` = 'Twitter'");
+      $dao = CRM_Core_DAO::executeQuery("UPDATE `civicrm_value_expert_data_20` SET `first_contact_with_pum_via_131` = 'Other' WHERE `first_contact_with_pum_via_131` = 'Other'");
+
+      /* Data migration webform */
+      $num_updated = db_update('webform_submitted_data')->fields(array('data' => 'Via a PUM expert'))->condition('nid', 750, '=')->condition('cid', 47, '=')->condition('data', 'PUM expert', '=')->execute();
+      $num_updated = db_update('webform_submitted_data')->fields(array('data' => 'Via the PUM website'))->condition('nid', 750, '=')->condition('cid', 47, '=')->condition('data', '(PUM) Website', '=')->execute();
+      $num_updated = db_update('webform_submitted_data')->fields(array('data' => 'I saw an advertisement'))->condition('nid', 750, '=')->condition('cid', 47, '=')->condition('data', 'Advertisement', '=')->execute();
+      $num_updated = db_update('webform_submitted_data')->fields(array('data' => 'Via a colleague'))->condition('nid', 750, '=')->condition('cid', 47, '=')->condition('data', 'Colleague', '=')->execute();
+      $num_updated = db_update('webform_submitted_data')->fields(array('data' => 'Via a newsletter / e-mail'))->condition('nid', 750, '=')->condition('cid', 47, '=')->condition('data', 'Email/Newsletter', '=')->execute();
+      $num_updated = db_update('webform_submitted_data')->fields(array('data' => 'Through a friend / family member'))->condition('nid', 750, '=')->condition('cid', 47, '=')->condition('data', 'Family/Friend', '=')->execute();
+      $num_updated = db_update('webform_submitted_data')->fields(array('data' => 'Via an article in a newspaper / magazine'))->condition('nid', 750, '=')->condition('cid', 47, '=')->condition('data', 'Newspaper article', '=')->execute();
+      $num_updated = db_update('webform_submitted_data')->fields(array('data' => 'Via another organisation'))->condition('nid', 750, '=')->condition('cid', 47, '=')->condition('data', 'Trade business association', '=')->execute();
+      $num_updated = db_update('webform_submitted_data')->fields(array('data' => 'Via Facebook'))->condition('nid', 750, '=')->condition('cid', 47, '=')->condition('data', 'Facebook', '=')->execute();
+      $num_updated = db_update('webform_submitted_data')->fields(array('data' => 'Via LinkedIn'))->condition('nid', 750, '=')->condition('cid', 47, '=')->condition('data', 'LinkedIn', '=')->execute();
+      $num_updated = db_update('webform_submitted_data')->fields(array('data' => 'Via Twitter'))->condition('nid', 750, '=')->condition('cid', 47, '=')->condition('data', 'Twitter', '=')->execute();
+      $num_updated = db_update('webform_submitted_data')->fields(array('data' => 'Via YouTube'))->condition('nid', 750, '=')->condition('cid', 47, '=')->condition('data', 'YouTube', '=')->execute();
+      $num_updated = db_update('webform_submitted_data')->fields(array('data' => 'Other'))->condition('nid', 750, '=')->condition('cid', 47, '=')->condition('data', 'Other', '=')->execute();
+
+    } catch(Exception $e) {
+      return FALSE;
+    }
+    return TRUE;
+  }
 
 	/**
 	 * Method to generate or update PUM Case Number
