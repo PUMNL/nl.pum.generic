@@ -1286,6 +1286,9 @@ ORDER BY cas.id
     return TRUE;
   }
 
+  /**
+   * Upgrade 1030 - Datafix
+   */
   public function upgrade_1030() {
     $case_types = CRM_Core_DAO::VALUE_SEPARATOR.'65'.CRM_Core_DAO::VALUE_SEPARATOR;
     $dao1 = CRM_Core_DAO::executeQuery("UPDATE civicrm_custom_group SET extends_entity_column_value = '{$case_types}' WHERE `name` = 'Activity_Information_by_CC'");
@@ -1331,7 +1334,7 @@ ORDER BY cas.id
   }
 
   /**
-   * Update 'first contact with pum' values
+   * Upgrade 1031 - Update 'first contact with pum' values
    */
   public function upgrade_1031() {
     try {
@@ -1388,6 +1391,42 @@ ORDER BY cas.id
     return TRUE;
   }
 
+  /**
+   * Upgrade 1032 - Add 'first contact with pum' value
+   */
+  public function upgrade_1032() {
+    try {
+      $params_og_firstcontact = array(
+        'version' => 3,
+        'sequential' => 1,
+        'title' => 'First contact with PUM via',
+      );
+      $result_og_firstcontact = civicrm_api('OptionGroup', 'getsingle', $params_og_firstcontact);
+
+      if(!empty($result_og_firstcontact['id'])){
+        $params = array(
+          'version' => 3,
+          'sequential' => 1,
+          'option_group_id' => $result_og_firstcontact['id'],
+          'name' => 'first_contact_pum_app',
+          'label' => 'Via the PUM app',
+          'value' => 'Via the PUM app',
+          'weight' => 20,
+          'description' => '',
+          'is_reserved' => 1,
+        );
+        $result = civicrm_api('OptionValue', 'create', $params);
+      }
+    } catch(Exception $e) {
+      return FALSE;
+    }
+
+    if($result['count'] != 1 || $result['is_error'] == 1){
+      return FALSE;
+    }
+
+    return TRUE;
+  }
 	/**
 	 * Method to generate or update PUM Case Number
 	 *
