@@ -8,8 +8,8 @@
     <author>CiviCooP</author>
     <email>helpdesk@civicoop.org</email>
   </maintainer>
-  <releaseDate>2020-01-30</releaseDate>
-  <version>1.18.1</version>
+  <releaseDate>2020-09-23</releaseDate>
+  <version>1.19</version>
   <develStage>production</develStage>
   <compatibility>
     <ver>4.4</ver>
