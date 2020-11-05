@@ -492,6 +492,24 @@ class Generic_RelationshipType_Def {
 					'is_active' => 1,
 				),
 			),
+			array(
+				'module' => 'nl.pum.generic',
+				'name' => 'Teams',
+				'entity' => 'RelationshipType',
+				'params' => array(
+					'version' => 3,
+					'name_a_b' => 'Team',
+					'name_b_a' => 'Team',
+					'label_a_b' => 'Team',
+					'label_b_a' => 'Team',
+					'contact_type_a' => '',
+					'contact_sub_type_a' => '',
+					'contact_type_b' => '',
+					'contact_sub_type_b' => '',
+					'description' => 'Used for adding a teams mail to a case',
+					'is_active' => 1,
+				),
+			),
 		);
 	}
 }
