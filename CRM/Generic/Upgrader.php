@@ -1427,6 +1427,20 @@ ORDER BY cas.id
 
     return TRUE;
   }
+
+  /**
+   * Upgrade 1033 - Set contact type PUM team to Individual
+   */
+  public function upgrade_1033() {
+    try {
+      $dao = CRM_Core_DAO::executeQuery("UPDATE `civicrm_contact_type` SET `parent_id` = 1 WHERE `name` = 'PUM_team'");
+      $dao = CRM_Core_DAO::executeQuery("UPDATE `civicrm_contact` SET `contact_type` = 'Individual' WHERE `contact_sub_type` = 'PUM_team'");
+    } catch(Exception $e){
+      return FALSE;
+    }
+    return TRUE;
+  }
+
 	/**
 	 * Method to generate or update PUM Case Number
 	 *
