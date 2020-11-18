@@ -1561,13 +1561,6 @@ class Generic_OptionGroup_Def {
 						'description' => '',
 					),
 					array(
-						'name' => 'first_contact_pum_app',
-						'label' => 'Via the PUM app',
-						'value' => 'Via the PUM app',
-						'weight' => 20,
-						'description' => '',
-					),
-					array(
 						'name' => 'first_contact_pum_website',
 						'label' => 'Via the PUM website',
 						'value' => 'Via the PUM website',

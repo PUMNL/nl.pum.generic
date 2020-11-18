@@ -1441,6 +1441,39 @@ ORDER BY cas.id
     return TRUE;
   }
 
+  /**
+   * Upgrade 1034 - Remove 'Via the PUM app' value as PUM app is phased out
+   */
+  public function upgrade_1034() {
+    try {
+      $params_og_firstcontact = array(
+        'version' => 3,
+        'sequential' => 1,
+        'name' => 'first_contact_pum_app',
+        'option_group_name' => 'first_contact_with_pum_via_20141103154142'
+      );
+      $result_og_firstcontact = civicrm_api('OptionValue', 'getsingle', $params_og_firstcontact);
+
+      if(!empty($result_og_firstcontact['id'])){
+        $params = array(
+          'version' => 3,
+          'sequential' => 1,
+          'id' => $result_og_firstcontact['id']
+        );
+        $result = civicrm_api('OptionValue', 'delete', $params);
+      }
+    } catch(Exception $e) {
+      return FALSE;
+    }
+
+    if($result['count'] != 1 || $result['is_error'] == 1){
+      return FALSE;
+    }
+
+    return TRUE;
+  }
+
+
 	/**
 	 * Method to generate or update PUM Case Number
 	 *
