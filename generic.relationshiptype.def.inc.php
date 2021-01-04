@@ -512,24 +512,6 @@ class Generic_RelationshipType_Def {
 			),
 			array(
 				'module' => 'nl.pum.generic',
-				'name' => 'Team-Organisation',
-				'entity' => 'RelationshipType',
-				'params' => array(
-					'version' => 3,
-					'name_a_b' => 'Team-Organisation',
-					'name_b_a' => 'Team member for',
-					'label_a_b' => 'Team-Organisation',
-					'label_b_a' => 'Team member for',
-					'contact_type_a' => 'Organization',
-					'contact_sub_type_a' => '',
-					'contact_type_b' => 'Organization',
-					'contact_sub_type_b' => 'PUM_team',
-					'description' => 'Used for adding a teams mail to an organisation',
-					'is_active' => 1,
-				),
-			),
-			array(
-				'module' => 'nl.pum.generic',
 				'name' => 'Team-Individual',
 				'entity' => 'RelationshipType',
 				'params' => array(
