@@ -1638,10 +1638,17 @@ class Generic_OptionGroup_Def {
 						'description' => '',
 					),
 					array(
+						'name' => 'first_contact_webinar',
+						'label' => 'Via a webinar / online event',
+						'value' => 'Via a webinar / online event',
+						'weight' => 140,
+						'description' => '',
+					),
+					array(
 						'name' => 'first_contact_other',
 						'label' => 'Other',
 						'value' => 'Other',
-						'weight' => 140,
+						'weight' => 150,
 						'description' => '',
 					),
 				),
