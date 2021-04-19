@@ -6124,7 +6124,7 @@ Please explain your company\'s dependancy of the holding.',
 				'help_post' => '',
 				'collapse_display' => 1,
 				'collapse_adv_display' => 0,
-				'weight' => 123,
+				'weight' => 121,
 				'fieldset' => array(
 					array(
 						'name' => 'RCT_Remarks',

@@ -200,6 +200,45 @@ ORDER BY cas.id
   }
 
   /**
+  * Method to generate or update PUM Case Number
+  *
+  * @param $dao_qry_result_line
+  */
+  static function _setMainActivityNumber($dao_qry_result_line) {
+    $arFld = array();
+    $arVal = array();
+    if (!$dao_qry_result_line->entity_id && $dao_qry_result_line->case_id) {
+      $arFld[] = 'entity_id';
+      $arVal[] = $dao_qry_result_line->case_id;
+    }
+    if (!$dao_qry_result_line->case_country && $dao_qry_result_line->country) {
+      $arFld[] = 'case_country';
+      $arVal[] = '\'' . $dao_qry_result_line->country . '\'';
+    }
+    if (!$dao_qry_result_line->case_type && $dao_qry_result_line->type_code) {
+      $arFld[] = 'case_type';
+      $arVal[] = '\'' . $dao_qry_result_line->type_code . '\'';
+    }
+    if (count($arFld)>0) {
+      if (!$dao_qry_result_line->case_sequence) {
+        $arFld[] = 'case_sequence';
+        $arVal[] = CRM_Sequence_Page_PumSequence::nextval('main_activity');
+      }
+      if (!$dao_qry_result_line->pum_id) {
+        // insert
+        $sql_case = 'INSERT INTO civicrm_case_pum (' . implode(', ', $arFld) . ') VALUES (' . implode(', ', $arVal) . ')';
+      } else {
+        // update
+        for ($n=0; $n<count($arFld); $n++) {
+          $arFld[$n] .= '=' . $arVal[$n];
+        }
+        $sql_case = 'UPDATE civicrm_case_pum SET ' . implode(', ', $arFld) . ' WHERE id=' . $dao_qry_result_line->pum_id;
+      }
+      $dao_case = CRM_Core_DAO::executeQuery($sql_case);
+    }
+  }
+
+  /**
    * Upgrade 1006 - initiating sequences for
    * 1: main activities and DSA payments
    * 2: payment lines
@@ -1473,44 +1512,17 @@ ORDER BY cas.id
     return TRUE;
   }
 
+  public function upgrade_1035($info=TRUE) {
+    if ($info) {
+      $this->ctx->log->info('Applying update 1035, change custom group name');
+    }
+    try {
+      $dao = CRM_Core_DAO::executeQuery("UPDATE `civicrm_custom_group` SET `name` = 'Approval_Process_by_SC', `title` = 'Approval Process by SC' WHERE `name` = 'Approval_process_Expert_Application'");
+    } catch(Exception $e){
+      return FALSE;
+    }
 
-	/**
-	 * Method to generate or update PUM Case Number
-	 *
-	 * @param $dao_qry_result_line
-	 */
-  static function _setMainActivityNumber($dao_qry_result_line) {
-  	$arFld = array();
-	$arVal = array();
-	if (!$dao_qry_result_line->entity_id && $dao_qry_result_line->case_id) {
-		$arFld[] = 'entity_id';
-		$arVal[] = $dao_qry_result_line->case_id;
-	}
-	if (!$dao_qry_result_line->case_country && $dao_qry_result_line->country) {
-		$arFld[] = 'case_country';
-		$arVal[] = '\'' . $dao_qry_result_line->country . '\'';
-	}
-	if (!$dao_qry_result_line->case_type && $dao_qry_result_line->type_code) {
-		$arFld[] = 'case_type';
-		$arVal[] = '\'' . $dao_qry_result_line->type_code . '\'';
-	}
-	if (count($arFld)>0) {
-		if (!$dao_qry_result_line->case_sequence) {
-			$arFld[] = 'case_sequence';
-			$arVal[] = CRM_Sequence_Page_PumSequence::nextval('main_activity');
-		}
-		if (!$dao_qry_result_line->pum_id) {
-			// insert
-			$sql_case = 'INSERT INTO civicrm_case_pum (' . implode(', ', $arFld) . ') VALUES (' . implode(', ', $arVal) . ')';
-		} else {
-			// update
-			for ($n=0; $n<count($arFld); $n++) {
-				$arFld[$n] .= '=' . $arVal[$n];
-			}
-			$sql_case = 'UPDATE civicrm_case_pum SET ' . implode(', ', $arFld) . ' WHERE id=' . $dao_qry_result_line->pum_id;
-		}
-		$dao_case = CRM_Core_DAO::executeQuery($sql_case);
-	}
+    return TRUE;
   }
 
 }
