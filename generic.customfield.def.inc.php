@@ -6119,7 +6119,9 @@ Please explain your company\'s dependancy of the holding.',
 				),
 				'style' => 'Inline',
 				'is_multiple' => FALSE,
-				'help_pre' => '<p>Used to add RCT Assessment.</p>
+				'help_pre' => '<p><b>Explanation</b></p>
+
+<p>The RCT Intake Report is used to have the overall impression of the (candidate) expert on file.</p>
 ',
 				'help_post' => '',
 				'collapse_display' => 1,
@@ -6137,7 +6139,7 @@ Please explain your company\'s dependancy of the holding.',
 						'is_searchable' => FALSE,
 						'is_search_range' => FALSE,
 						'weight' => 10,
-						'help_pre' => 'RCT fills in what they have observed during the interview',
+						'help_pre' => 'Fill out your overall impression of the Candidate expert based upon the output of the KIT test, the interview and the evaluation with the SC.',
 						'help_post' => NULL,
 						'attributes' => 'rows=4, cols=60',
 						'options_per_line' => NULL,
