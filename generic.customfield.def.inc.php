@@ -6122,6 +6122,10 @@ Please explain your company\'s dependancy of the holding.',
 				'help_pre' => '<p><b>Explanation</b></p>
 
 <p>The RCT Intake Report is used to have the overall impression of the (candidate) expert on file.</p>
+
+<p><b>To do RCT</b></p>
+
+<p>Fill out the language skills of the Expert.</p>
 ',
 				'help_post' => '',
 				'collapse_display' => 1,
