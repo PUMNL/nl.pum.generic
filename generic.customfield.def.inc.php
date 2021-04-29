@@ -6182,7 +6182,7 @@ Please explain your company\'s dependancy of the holding.',
 					),
 					array(
 						'name' => 'Passport_check',
-						'label' => 'Passport check',
+						'label' => 'ID check',
 						'data_type' => 'Boolean',
 						'html_type' => 'Radio',
 						'default_value' => NULL,

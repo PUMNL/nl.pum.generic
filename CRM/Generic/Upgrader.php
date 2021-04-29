@@ -1525,4 +1525,42 @@ ORDER BY cas.id
     return TRUE;
   }
 
+  /**
+   * Upgrade 1036 - Change custom field name 'Passport check' to 'ID check'
+   */
+  public function upgrade_1036($info=TRUE) {
+    if ($info) {
+      $this->ctx->log->info('Applying update 1036, change custom field name');
+    }
+
+    $cg_rctintakereport = civicrm_api('CustomGroup', 'getsingle', array('version' => 3, 'sequential' => 1, 'name' => 'Interview_information'));
+
+    try {
+      $params_rctintake = array(
+        'version' => 3,
+        'sequential' => 1,
+        'custom_group_id' => $cg_rctintakereport['id'],
+        'name' => 'Passport_check'
+      );
+      $result_rctintake = civicrm_api('CustomField', 'get', $params_rctintake);
+
+      $params_update_field_idcheck = array(
+        'version' => 3,
+        'sequential' => 1,
+        'id' => $result_rctintake['id'],
+        'label' => 'ID Check'
+      );
+      $result_update_field_idcheck = civicrm_api('CustomField', 'update', $params_update_field_idcheck);
+
+    } catch(Exception $e){
+      return FALSE;
+    }
+
+    if(!empty($result_update_field_idcheck['is_error']) && $result_update_field_idcheck['is_error'] == 1){
+      return FALSE;
+    } else {
+      return TRUE;
+    }
+  }
+
 }
